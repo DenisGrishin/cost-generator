@@ -1,0 +1,148 @@
+.container-content {
+	background-color: var(--c-white);
+	padding: 16px;
+	border-radius: 8px;
+	&:not(:last-child) {
+		margin-bottom: 24px;
+	}
+}
+// title
+:is(.big-title, .middle-title) {
+	line-height: 1.2;
+	font-weight: 700;
+}
+.big-title {
+	font-size: 28px;
+	margin-bottom: 24px;
+}
+.middle-title {
+	font-size: 24px;
+}
+// select
+.select2 {
+	width: 100% !important;
+	& .select2-selection {
+		border: none;
+		border-radius: 0;
+		border-bottom: 1px solid var(--c-gray-2);
+	}
+
+	&__add-option {
+		background-color: var(--bg);
+		border-radius: 8px;
+	}
+}
+.select2-container {
+	& .select2-results__option {
+		padding: 9px 8px;
+		margin: 4px;
+	}
+	& .select2-results__option--highlighted {
+		background-color: var(--bg) !important;
+		color: var(--c-black) !important;
+		border-radius: 8px;
+	}
+}
+
+// daterangepicker
+.daterangepicker-input {
+	padding: 6px;
+	max-width: 100px;
+	width: 100%;
+	&:focus {
+		outline-color: var(--c-black);
+	}
+}
+.daterangepicker td.active {
+	background-color: var(--c-green);
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--c-green) !important	;
+		}
+	}
+}
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover,
+.daterangepicker td.available:hover,
+.daterangepicker th.available:hover .daterangepicker-input {
+	border: none;
+	background-color: var(--bg);
+}
+.monthselect {
+	& option {
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: red;
+			}
+		}
+	}
+}
+// button
+.add-btn {
+	background-color: var(--bg);
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border-radius: 4px;
+
+	&::after,
+	&::before {
+		content: "";
+		position: absolute;
+		border-radius: 10px;
+		background-color: var(--c-black);
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	&::before {
+		width: 2px;
+		height: 10px;
+	}
+	&::after {
+		width: 10px;
+		height: 2px;
+	}
+}
+// input
+.input-default {
+	border-bottom: 1px solid var(--c-gray-2);
+	width: 100%;
+	padding: 6px;
+	&:focus {
+		outline: none;
+		border-bottom-color: var(--c-black);
+	}
+}
+//checkbox
+
+.checkbox {
+	margin-bottom: 0;
+	position: relative;
+	&::after,
+	&::before {
+		content: "";
+		width: 16px;
+		height: 16px;
+		border-radius: 4px;
+		display: inline-block;
+	}
+	&::before {
+		background-color: var(--bg);
+	}
+	&::after {
+		position: absolute;
+
+		top: 0;
+		left: 0;
+		background: url("../img/icons/arrowCheck.svg") 50% 50% no-repeat;
+		background-color: var(--c-green);
+		opacity: 0;
+		visibility: hidden;
+		transition: all 0.3s ease 0s;
+	}
+	&:has(input:checked)::after {
+		opacity: 1;
+		visibility: visible;
+	}
+}

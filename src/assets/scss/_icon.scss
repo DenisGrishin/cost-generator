@@ -1,0 +1,79 @@
+:where(
+		._icon-sidebar-arrow,
+		._icon-search,
+		._icon-dashboard,
+		._icon-priceList,
+		._icon-client,
+		._icon-pattern,
+		._icon-calendar,
+		._icon-darag
+	) {
+	&::before {
+		content: "";
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		display: inline-block;
+	}
+}
+:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern, ._icon-darag) {
+	&::before {
+		margin-right: 8px;
+		transform: translateY(3px);
+		width: 16px;
+		height: 16px;
+	}
+}
+._icon-sidebar-arrow {
+	&::before {
+		background-image: url("../img/icons/arrowSaidbar.svg");
+		width: 30px;
+		height: 20px;
+		transition: all 0.3s ease 0s;
+	}
+
+	.sidebar-collapse &::before {
+		transform: rotate(-180deg);
+	}
+}
+._icon-search {
+	&::before {
+		background-image: url("../img/icons/iconSearch.svg");
+		width: 20px;
+		height: 20px;
+	}
+}
+
+._icon-dashboard {
+	&::before {
+		background-image: url(../img/icons/iconDashbord.svg);
+	}
+}
+._icon-priceList {
+	&::before {
+		background-image: url(../img/icons/iconPriceList.svg);
+	}
+}
+
+._icon-client {
+	&::before {
+		background-image: url(../img/icons/iconClient.svg);
+	}
+}
+._icon-pattern {
+	&::before {
+		background-image: url(../img/icons/iconPatter.svg);
+	}
+}
+._icon-calendar {
+	&::before {
+		background-image: url(../img/icons/iconCalendar.svg);
+		width: 20px;
+		height: 20px;
+		transform: translateY(6px);
+	}
+}
+._icon-darag {
+	&::before {
+		background-image: url(../img/icons/iconDrag.svg);
+	}
+}
