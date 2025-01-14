@@ -234,3 +234,18 @@ li.todo-list {
 		font-weight: 700;
 	}
 }
+.tooltip-smeta {
+	display: flex;
+	justify-content: center;
+	column-gap: 16px;
+	position: fixed;
+	bottom: 0;
+	width: calc(100% - 298px);
+	right: 0;
+	margin: 24px;
+	z-index: 1000;
+	box-shadow: 0px 6px 40px rgba(0, 60, 92, 0.14);
+}
+.tooltip-margin-bottom {
+	margin-bottom: 70px;
+}
