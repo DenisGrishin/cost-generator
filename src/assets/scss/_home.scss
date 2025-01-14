@@ -81,7 +81,20 @@ li.todo-list {
 		}
 	}
 }
-
+.ui-sortable-placeholder.stage-highlight {
+	background-color: var(--bg);
+	height: 40px;
+	border-radius: 8px;
+	border: 0;
+	margin: 22px 0;
+}
+.ui-sortable-placeholder.position-highlight {
+	background-color: var(--bg);
+	height: 30px;
+	border-radius: 8px;
+	border: 0;
+	margin: 12px 0;
+}
 .todo-list {
 	overflow: hidden !important;
 	padding: 0 !important;
