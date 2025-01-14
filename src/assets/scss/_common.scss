@@ -1,13 +1,13 @@
 .container-content {
 	background-color: var(--c-white);
-	padding: 16px;
-	border-radius: 8px;
+	padding: 16px !important;
+	border-radius: 8px !important;
 	&:not(:last-child) {
 		margin-bottom: 24px;
 	}
 }
 // title
-:is(.big-title, .middle-title) {
+:is(.big-title, .middle-title, .very-small) {
 	line-height: 1.2;
 	font-weight: 700;
 }
@@ -17,6 +17,9 @@
 }
 .middle-title {
 	font-size: 24px;
+}
+.very-small {
+	font-size: 18px;
 }
 // select
 .select2 {
@@ -32,6 +35,32 @@
 		border-radius: 8px;
 	}
 }
+
+.select2-results__option--highlighted {
+	background-color: transparent;
+}
+.select2-selection__arrow {
+	position: relative;
+
+	b {
+		display: none;
+	}
+	&::after {
+		content: "";
+		display: inline-block;
+		background: url("../img/icons/arrowSelect.svg") 0 0 no-repeat;
+		width: 12px;
+		height: 8px;
+		position: absolute;
+		transform: translate(0px, -50%);
+		top: 50%;
+		left: 0;
+		transition: all 0.3s ease 0s;
+		.select2-container--open & {
+			transform: rotate(-180deg);
+		}
+	}
+}
 .select2-container {
 	& .select2-results__option {
 		padding: 9px 8px;
@@ -41,6 +70,111 @@
 		background-color: var(--bg) !important;
 		color: var(--c-black) !important;
 		border-radius: 8px;
+	}
+	& .select2-dropdown {
+		border: 1px solid var(--c-gray-2);
+	}
+}
+// select-status
+.select2-search [aria-controls*="select2-Статус"] {
+	display: none;
+}
+.select2-results__options {
+	&[id*="select2-Статус"] {
+		li {
+			font-size: 12px;
+			line-height: 1.25;
+			padding: 2px 14.5px;
+			border-radius: 12px;
+			text-align: center;
+		}
+		& li:nth-child(1) {
+			background-color: var(--bg-completed);
+			color: var(--c-completed);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-completed) !important;
+			}
+		}
+		& li:nth-child(2) {
+			background-color: var(--bg-inProgress);
+			color: var(--c-inProgress);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-inProgress) !important;
+			}
+		}
+		& li:nth-child(3) {
+			background-color: var(--bg-cancelled);
+			color: var(--c-cancelled);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-cancelled) !important;
+			}
+		}
+		& li:nth-child(4) {
+			background-color: var(--bg-postponed);
+			color: var(--c-postponed);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-postponed) !important;
+			}
+		}
+	}
+}
+.select2-selection__rendered {
+	display: inline-block;
+	padding: 4px;
+	&[title="Выполнено"] {
+		background-color: var(--bg-completed);
+		color: var(--c-completed);
+	}
+	&[title="В работе"] {
+		background-color: var(--bg-inProgress);
+		color: var(--c-inProgress);
+	}
+	&[title="Отменено"] {
+		background-color: var(--bg-cancelled);
+		color: var(--c-cancelled);
+	}
+	&[title="Отложено"] {
+		background-color: var(--bg-postponed);
+		color: var(--c-postponed);
+	}
+}
+.select-status {
+	.selection {
+		display: flex;
+	}
+	.select2 .select2-selection__rendered {
+		font-size: 12px;
+		line-height: 1.25;
+		padding: 2px 14.5px;
+		display: inline-block;
+		border-radius: 12px;
+	}
+	.select2 .select2-selection {
+		border: none;
+		display: flex;
+		align-items: center;
+		height: auto;
+		padding: 4;
+	}
+	& .select2-selection .select2-selection--single {
+		padding: 0;
+	}
+	& .select2-container--open .select2-selection {
+		border-bottom: 1px solid var(--c-gray-2);
+	}
+	.select2-selection__clear {
+		display: none;
+	}
+
+	& + .select2 .select2-selection {
+		border: none;
+	}
+	.select2-selection__arrow {
+		height: 26px !important;
+		&::after {
+			left: 21px;
+			top: 48%;
+		}
 	}
 }
 
@@ -104,6 +238,44 @@
 		height: 2px;
 	}
 }
+
+.btn-del-big,
+.btn-del-small {
+	padding: 4px;
+	background-color: var(--bg);
+	border-radius: 4px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	position: relative;
+	&::before {
+		content: "";
+		background: url("../img/icons/IconTrasher.svg") 0 0 no-repeat;
+		width: 14px;
+		height: 16px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+}
+.btn-del-big {
+	display: flex;
+	align-items: center;
+	column-gap: 8px;
+	padding: 8px 12px;
+	height: auto;
+	width: auto;
+	span {
+		font-size: 14px;
+		line-height: 1.35;
+		padding-left: 22px;
+	}
+	&::before {
+		left: 0;
+		transform: translate(8px, -50%);
+	}
+}
 // input
 .input-default {
 	border-bottom: 1px solid var(--c-gray-2);
@@ -119,22 +291,23 @@
 .checkbox {
 	margin-bottom: 0;
 	position: relative;
+	width: 16px;
+	height: 16px;
 	&::after,
 	&::before {
 		content: "";
 		width: 16px;
 		height: 16px;
 		border-radius: 4px;
-		display: inline-block;
+		position: absolute;
+
+		top: 0px;
+		left: 0;
 	}
 	&::before {
 		background-color: var(--bg);
 	}
 	&::after {
-		position: absolute;
-
-		top: 0;
-		left: 0;
 		background: url("../img/icons/arrowCheck.svg") 50% 50% no-repeat;
 		background-color: var(--c-green);
 		opacity: 0;

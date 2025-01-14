@@ -18,6 +18,10 @@ a:focus,
 a:active {
 	// outline: none;
 }
+
+label {
+	color: var(--c-black);
+}
 html,
 body {
 	height: 100vh;

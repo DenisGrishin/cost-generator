@@ -3,14 +3,23 @@
 @import url("https://fonts.googleapis.com/css?family=Onest:regular,500,600,700&display=swap");
 
 :root {
+	--font-RF: "Roboto Flex";
+	--font-Onset: "Onest";
 	--c-white: #fff;
 	--c-black: #102938;
 	--c-green: #0db25a;
 	--c-gray-1: #ced8e3;
 	--c-gray-2: #b3bdc8;
+	--c-gray-3: #92a1b1;
 	--bg: #f0f4f9;
-	--font-RF: "Roboto Flex";
-	--font-Onset: "Onest";
+	--bg-completed: #c9f8de;
+	--c-completed: #009b48;
+	--bg-inProgress: #008ddb33;
+	--c-inProgress: #0067a0;
+	--bg-cancelled: #dbe5f0;
+	--c-cancelled: #566575;
+	--bg-postponed: #ffe992;
+	--c-postponed: #d38500;
 }
 // Подключение миксинов ===========================================================================================================================================================================================================================================================================
 
