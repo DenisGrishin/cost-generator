@@ -219,9 +219,10 @@
           </div>
         </div>
       </div>
-      <div class="">
-        <ul class="todo-list" data-widget="todo-list">
-          <li class="todo-list__item d-flex container-content ">
+
+      <ul class="todo-list" data-widget="todo-list">
+        <li class="todo-list__item d-flex  ">
+          <div class="container-content">
             <div class="todo-list__contetn">
               <span class="handle  _icon-darag">
               </span>
@@ -253,9 +254,9 @@
 
 
 
-                <div class="card-body">
+                <div class="accordion__body card-body">
                   <!-- Этапы работы -->
-                  <ul class="todo-list overflow-hidden mt-3 " data-widget="todo-list">
+                  <ul class="todo-list overflow-hidden mt-3" data-widget="todo-list">
                     <li class="todo-list__item ">
                       <div class="todo-list__contetn">
                         <span class="handle  _icon-darag">
@@ -277,7 +278,7 @@
                                   class=" btn-del-small"></span></div>
                             </div>
                           </div>
-                          <div class="card-body ">
+                          <div class="accordion__body card-body ">
                             <ul class=" accordion__list list-accordion">
                               <li class=" list-accordion__head">
                                 <div></div>
@@ -384,7 +385,7 @@
                                   class="btn-del-small"></span></div>
                             </div>
                           </div>
-                          <div class="card-body">
+                          <div class="accordion__body card-body">
                             <ul class=" accordion__list list-accordion">
                               <li class=" list-accordion__head">
                                 <div></div>
@@ -485,31 +486,18 @@
               <label class="very-small"> Комментарий</label>
               <input type="text" class="input-default" name="комментарий">
             </div>
-          </li>
+            <!-- создание этапа -->
+            <div class="create-stage">
 
-        </ul>
-      </div>
+            </div>
+          </div>
+        </li>
+
+      </ul>
     </div>
+
   </div>
-  <!-- ===== -->
-  <div class="card bg-gradient-success">
 
-
-
-    <button type="button" class=" btn-success " data-card-widget="collapse">
-      <i class="fas fa-minus"></i>
-    </button>
-
-
-
-
-
-    <div class="card-body">
-      ssdasda
-    </div>
-    <!-- /.card-body -->
-  </div>
-  <!-- ===== -->
 
   <!-- jQuery -->
   <script src="./plugins/jquery/jquery.min.js"></script>

@@ -1,7 +1,7 @@
 .container-content {
 	background-color: var(--c-white);
-	padding: 16px !important;
-	border-radius: 8px !important;
+	padding: 16px;
+	border-radius: 8px;
 	&:not(:last-child) {
 		margin-bottom: 24px;
 	}
