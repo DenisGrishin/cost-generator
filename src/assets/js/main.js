@@ -76,8 +76,8 @@ function creatingSmeta() {
                 </select>
               </div>
             </div>
-            <div class="accordion__del-btn">
-              <span role="button" class=" btn-del-big"><span>Удалить</span></span>
+            <div class="accordion__del-btn" >
+                  <button type="button" onclick="deleteSmeta('${idSmeta}')" class="btn-del-big"><span>Удалить</span></button>
             </div>
           </div>
         </div>
@@ -86,10 +86,10 @@ function creatingSmeta() {
 
         <div class="accordion__body card-body">
           <!-- Этапы работы -->
-          <ul class="todo-list overflow-hidden mt-3" data-stages data-widget="todo-list">
-           
+          <ul class="todo-list  overflow-hidden mt-3" data-stages data-widget="todo-list">
 
           </ul>
+  
           <!-- Конец Этапы работы -->
         </div>
 
@@ -100,7 +100,7 @@ function creatingSmeta() {
       <button type="button" class="footer-list__btn-add-item" onclick="creatingStages('${idSmeta}')" data-create-stage><span
           class="add-btn"></span><span>Этап
           работ</span></button>
-      <span class="footer-list__sum">Итого по смете: 530 000 р.</span>
+      <span class="footer-list__sum">Итого по смете: 0 р.</span>
     </div>
     <div class="mt-3">
       <label class="very-small"> Комментарий</label>
@@ -110,6 +110,10 @@ function creatingSmeta() {
   </div>
 </li>`
     );
+    // Инициализируем D&D
+    $(".todo-list").sortable({
+      placeholder: "stage-highlight",
+    });
 
     // Инициализируем Select2 на новом элементе <select>
     $(".select2").select2({
@@ -129,13 +133,14 @@ function creatingStages(idSmeta) {
   const parentSmeta = document.querySelector(`[data-smeta-id='${idSmeta}']`);
 
   const listStages = parentSmeta.querySelector(`[data-stages]`);
+
   const idStage = generateRandomId();
 
   listStages.insertAdjacentHTML(
     "beforeend",
     `    <li class="todo-list__item " data-stage-id='${idStage}'>
                       <div class="todo-list__contetn">
-                        <span class="handle  _icon-darag">
+                        <span class="handle ui-sortable-handle  _icon-darag">
                         </span>
                         <div class="todo-list__accordion accordion card collapsed-card">
                           <!-- Начала Позиций  -->
@@ -145,8 +150,8 @@ function creatingStages(idSmeta) {
 
                             <div class="accordion__header-content">
                               <div class="accordion__name very-small accordion__name_small-text"></div>
-                              <div class="accordion__del-btn accordion__del-btn_small"><span role="button"
-                                  class=" btn-del-small"></span></div>
+                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteStage('${idStage}')" type="button" 
+                                  class=" btn-del-small"></button></div>
                             </div>
                           </div>
                           <div class="accordion__body card-body ">
@@ -165,14 +170,14 @@ function creatingStages(idSmeta) {
                                 <div></div>
                               </li>
                               <li class="list-accordion__body">
-                                <ul class="todo-list" data-position>
+                                <ul class="todo-list" data-position data-widget="todo-list">
                                
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
                                 <button type="button" class="footer-list__btn-add-item " onclick="creatingPosition('${idStage}')"
                                   data-create-position><span class="add-btn"></span><span>Позиция</span></button>
-                                <span class="footer-list__sum">Итого: 530 000 р.</span>
+                                <span class="footer-list__sum">Итого: 0 р.</span>
                               </li>
                             </ul>
                           </div>
@@ -182,6 +187,10 @@ function creatingStages(idSmeta) {
                     </li>
       `
   );
+  // Инициализируем D&D
+  $(".todo-list").sortable({
+    placeholder: "position-highlight",
+  });
 }
 
 function creatingPosition(idStage) {
@@ -189,9 +198,10 @@ function creatingPosition(idStage) {
 
   const listPosition = parentSmeta.querySelector("[data-position]");
 
+  const idPosition = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
-    `<li class="list-accordion__item">
+    `<li class="list-accordion__item" data-position-id='${idPosition}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
         <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-lvl-3">
@@ -203,12 +213,12 @@ function creatingPosition(idStage) {
     <div>__</div>
     <div>__</div>
     <div>__</div>
-    <div><button type="button" class="btn-del-small"></button></div>
+    <div><button type="button" class="btn-del-small" onclick="deletePosition('${idPosition}')" ></button></div>
   </li>`
   );
 }
 
-function deleteItemSmeata() {
+function deleteSelectedSmeata() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
   checkboxes.forEach((checkbox) => {
@@ -217,7 +227,20 @@ function deleteItemSmeata() {
     }
   });
 }
-window.deleteItemSmeata = deleteItemSmeata;
+
+function deleteSmeta(idSmeta) {
+  document.querySelector(`[data-smeta-id="${idSmeta}"]`).remove();
+}
+function deleteStage(idStage) {
+  document.querySelector(`[data-stage-id='${idStage}']`).remove();
+}
+function deletePosition(idPosition) {
+  document.querySelector(`[data-position-id='${idPosition}']`).remove();
+}
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
+window.deleteSelectedSmeata = deleteSelectedSmeata;
+window.deleteSmeta = deleteSmeta;
+window.deleteStage = deleteStage;
+window.deletePosition = deletePosition;
