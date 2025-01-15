@@ -113,6 +113,7 @@ function creatingSmeta() {
     // Инициализируем D&D
     $(".todo-list").sortable({
       placeholder: "stage-highlight",
+      handle: ".handle",
     });
 
     // Инициализируем Select2 на новом элементе <select>
@@ -141,7 +142,7 @@ function creatingStages(idSmeta) {
     "beforeend",
     `    <li class="todo-list__item " data-item-id='${idStage}'>
                       <div class="todo-list__contetn">
-                        <span class="handle ui-sortable-handle  _icon-darag">
+                        <span class="handle  _icon-darag">
                         </span>
                         <div class="todo-list__accordion accordion card collapsed-card">
                           <!-- Начала Позиций  -->
@@ -192,6 +193,7 @@ function creatingStages(idSmeta) {
   // Инициализируем D&D
   $(".todo-list").sortable({
     placeholder: "position-highlight",
+    handle: ".handle",
   });
 }
 
