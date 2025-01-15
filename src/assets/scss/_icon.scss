@@ -7,7 +7,8 @@
 		._icon-pattern,
 		._icon-calendar,
 		._icon-close,
-		._icon-folder
+		._icon-folder,
+		._icon-arrow-back
 	) {
 	&::before {
 		content: "";
@@ -85,6 +86,15 @@
 ._icon-folder {
 	&::before {
 		background-image: url("../img/icons/iconFolder.svg");
+	}
+}
+
+._icon-arrow-back {
+	margin-right: 8px;
+	&::before {
+		background-image: url(../img/icons/arrowBack.svg);
+		width: 24px;
+		height: 24px;
 	}
 }
 ._icon-darag {

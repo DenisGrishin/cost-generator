@@ -144,13 +144,16 @@
         </div>
         <div class="os-content-glue"></div>
         <div class="os-padding p-3">
-          <div class="small-title  d-flex justify-content-between mb-3"><span>Шаблоны смет</span> <button
-              class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
+          <div class=" d-flex justify-content-between mb-3">
+            <span class="d-flex">
+              <button type="button" class="_icon-arrow-back"></button><span class="small-title ">Шаблоны смет</span>
+            </span>
+            <button class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
               data-controlsidebar-slide="true"></button>
           </div>
-          <div class="search-items">
+          <div class="search-items" data-search-items>
             <div class="search-items__input _icon-search mb-3">
-              <input type="text" onkeyup="myFunction()" data-search-items class=" input-default">
+              <input type="text" onkeyup="searchItems()" class=" input-default">
             </div>
 
             <ul class="search-items__list ">
@@ -199,6 +202,10 @@
                 </div>
               </li>
             </ul>
+
+
+            <button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+              class="butt mt-4 butt-success" onclick="creatingSmeta()">Cоздать новую смету</button>
           </div>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden">
@@ -312,20 +319,14 @@
 
       </ul>
 
-      <div class="btn-group btn-dropdown my-4">
-        <button type="button" class="btn btn-success" onclick="creatingSmeta()">Добавить смету</button>
-        <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
 
-        </button>
-        <div class="dropdown-menu" role="menu">
-          <a class="dropdown-item" href="#">Пустая смета</a>
+      <button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+        class="butt my-4 butt-success">Добавить смету</button>
 
 
-        </div>
-      </div>
-      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
-        Из шаблона
-      </a>
+      </button>
+
+
       <div class="container-content">
         <label class="very-small-title"> Комментарий к КП которого на самом деле больше нет</label>
         <input type="text" class="input-default" name="комментарий">

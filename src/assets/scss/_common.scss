@@ -232,6 +232,7 @@
 	}
 }
 // button
+
 .butt {
 	background-color: var(--bg);
 	padding: 8.5px 12px;
@@ -239,6 +240,16 @@
 	font-size: 14px;
 	border-radius: 4px;
 	font-family: var(--font-RF);
+	transition: all 0.3s ease 0s;
+}
+.butt-success {
+	background-color: var(--c-green);
+	color: var(--c-white);
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--c-hover-green);
+		}
+	}
 }
 .add-btn {
 	background-color: var(--bg);
@@ -378,14 +389,21 @@
 	}
 	&__item {
 		display: flex;
-
+		transition: all 0.3s ease 0s;
+		border-radius: 4px;
 		padding: 4px 8px;
 		column-gap: 8px;
+		cursor: pointer;
 		&:not(:last-child) {
 			margin-bottom: 8px;
 		}
 		&::before {
 			margin: 0;
+		}
+		@media (any-hover: hover) {
+			&:hover {
+				background-color: var(--bg);
+			}
 		}
 	}
 	&__btn-dropdown {

@@ -251,19 +251,24 @@ function showTooltipSmeta() {
   }
 }
 
-function myFunction() {
-  const input = document.querySelector("[data-search-items]");
-  const ul = document.querySelector(".search-items__list");
-  const li = ul.querySelectorAll("li");
+function searchItems() {
+  const blcok = document.querySelectorAll("[data-search-items]");
 
-  const filter = input.value.toLowerCase();
+  blcok.forEach((element) => {
+    const input = element.querySelector("[data-search-items] input");
 
-  li.forEach((item) => {
-    if (item.textContent.toLowerCase().includes(filter)) {
-      item.style.display = "";
-    } else {
-      item.style.display = "none";
-    }
+    const ul = element.querySelector(".search-items__list");
+    const li = ul.querySelectorAll("li");
+
+    const filter = input.value.toLowerCase();
+
+    li.forEach((item) => {
+      if (item.textContent.toLowerCase().includes(filter)) {
+        item.style.display = "";
+      } else {
+        item.style.display = "none";
+      }
+    });
   });
 }
 
@@ -276,4 +281,4 @@ window.creatingPosition = creatingPosition;
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
 
-window.myFunction = myFunction;
+window.searchItems = searchItems;
