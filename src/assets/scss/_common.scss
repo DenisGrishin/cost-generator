@@ -143,19 +143,19 @@
 	font-weight: 400 !important;
 	&[title="Выполнено"] {
 		background-color: var(--bg-completed);
-		color: var(--c-completed);
+		color: var(--c-completed) !important;
 	}
 	&[title="В работе"] {
 		background-color: var(--bg-inProgress);
-		color: var(--c-inProgress);
+		color: var(--c-inProgress) !important;
 	}
 	&[title="Отменено"] {
 		background-color: var(--bg-cancelled);
-		color: var(--c-cancelled);
+		color: var(--c-cancelled) !important;
 	}
 	&[title="Отложено"] {
 		background-color: var(--bg-postponed);
-		color: var(--c-postponed);
+		color: var(--c-postponed) !important;
 	}
 }
 .select-status {
@@ -232,7 +232,29 @@
 	}
 }
 // button
-
+.add-btn {
+	background-color: var(--bg);
+	position: relative;
+	width: 24px;
+	height: 24px;
+	border-radius: 4px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease 0s;
+	&::before {
+		content: "";
+		background: url("../img/icons/iconPlus.svg") 0 0 no-repeat;
+		width: 16px;
+		height: 16px;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--gray-4);
+		}
+	}
+}
+.butt-plus,
 .butt {
 	background-color: var(--bg);
 	padding: 8.5px 12px;
@@ -241,40 +263,39 @@
 	border-radius: 4px;
 	font-family: var(--font-RF);
 	transition: all 0.3s ease 0s;
+	@media (any-hover: hover) {
+		&:hover {
+			background-color: var(--gray-4);
+		}
+	}
+}
+.butt-plus {
+	position: relative;
+	padding-left: 24px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	column-gap: 8px;
+	&::before {
+		content: "";
+
+		background: url("../img/icons/iconPlus.svg") 0 0 no-repeat;
+		width: 16px;
+		height: 16px;
+	}
+}
+.btn-success {
+	background-color: var(--c-green);
 }
 .butt-success {
 	background-color: var(--c-green);
 	color: var(--c-white);
+	display: flex;
+
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: var(--c-hover-green);
 		}
-	}
-}
-.add-btn {
-	background-color: var(--bg);
-	position: relative;
-	width: 24px;
-	height: 24px;
-	border-radius: 4px;
-
-	&::after,
-	&::before {
-		content: "";
-		position: absolute;
-		border-radius: 10px;
-		background-color: var(--c-black);
-		top: 50%;
-		left: 50%;
-		transform: translate(-50%, -50%);
-	}
-	&::before {
-		width: 2px;
-		height: 10px;
-	}
-	&::after {
-		width: 10px;
-		height: 2px;
 	}
 }
 
