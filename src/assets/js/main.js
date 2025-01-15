@@ -51,8 +51,8 @@ function creatingSmeta() {
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item  d-flex" data-item-id="${idSmeta}">
-  <div class="container-content">
+      `  <li class="todo-list__item container-content  d-flex" data-item-id="${idSmeta}">
+  <div class="todo-list__wrapper">
     <div class="todo-list__contetn">
       <span class="handle  _icon-darag">
       </span>
@@ -160,7 +160,7 @@ function creatingStages(idSmeta) {
                               <li class=" list-accordion__head">
                                 <div></div>
                                 <div><label class="checkbox">
-                                    <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-lvl-3">
+                                    <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
                                   </label></div>
                                 <div>№</div>
                                 <div>Арт.</div>
@@ -206,7 +206,7 @@ function creatingPosition(idStage) {
     `<li class="list-accordion__item" data-item-id='${idPosition}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-lvl-3">
+        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
       </label></div>
     <div>__</div>
     <div>__</div>
@@ -224,8 +224,8 @@ function deleteSelectedSmeata() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
   checkboxes.forEach((checkbox) => {
-    if (checkbox.checked && checkbox.closest("[data-smeta-id]")) {
-      checkbox.closest("[data-smeta-id]").remove();
+    if (checkbox.checked && checkbox.closest("[data-item-id]")) {
+      checkbox.closest("[data-item-id]").remove();
     }
   });
 }
