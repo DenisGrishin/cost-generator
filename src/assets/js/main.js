@@ -51,7 +51,7 @@ function creatingSmeta() {
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item d-flex" data-smeta-id="${idSmeta}">
+      `  <li class="todo-list__item  d-flex" data-item-id="${idSmeta}">
   <div class="container-content">
     <div class="todo-list__contetn">
       <span class="handle  _icon-darag">
@@ -77,7 +77,7 @@ function creatingSmeta() {
               </div>
             </div>
             <div class="accordion__del-btn" >
-                  <button type="button" onclick="deleteSmeta('${idSmeta}')" class="btn-del-big"><span>Удалить</span></button>
+                  <button type="button" onclick="deleteItem('${idSmeta}')" class="btn-del-big"><span>Удалить</span></button>
             </div>
           </div>
         </div>
@@ -127,10 +127,11 @@ function creatingSmeta() {
       },
     });
   }
+  showTooltipSmeta();
 }
 
 function creatingStages(idSmeta) {
-  const parentSmeta = document.querySelector(`[data-smeta-id='${idSmeta}']`);
+  const parentSmeta = document.querySelector(`[data-item-id='${idSmeta}']`);
 
   const listStages = parentSmeta.querySelector(`[data-stages]`);
 
@@ -138,7 +139,7 @@ function creatingStages(idSmeta) {
 
   listStages.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item " data-stage-id='${idStage}'>
+    `    <li class="todo-list__item " data-item-id='${idStage}'>
                       <div class="todo-list__contetn">
                         <span class="handle ui-sortable-handle  _icon-darag">
                         </span>
@@ -150,7 +151,7 @@ function creatingStages(idSmeta) {
 
                             <div class="accordion__header-content">
                               <div class="accordion__name very-small accordion__name_small-text"></div>
-                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteStage('${idStage}')" type="button" 
+                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idStage}')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
                           </div>
@@ -187,6 +188,7 @@ function creatingStages(idSmeta) {
                     </li>
       `
   );
+
   // Инициализируем D&D
   $(".todo-list").sortable({
     placeholder: "position-highlight",
@@ -194,14 +196,14 @@ function creatingStages(idSmeta) {
 }
 
 function creatingPosition(idStage) {
-  const parentSmeta = document.querySelector(`[data-stage-id='${idStage}']`);
+  const parentSmeta = document.querySelector(`[data-item-id='${idStage}']`);
 
   const listPosition = parentSmeta.querySelector("[data-position]");
 
   const idPosition = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
-    `<li class="list-accordion__item" data-position-id='${idPosition}'>
+    `<li class="list-accordion__item" data-item-id='${idPosition}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
         <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-lvl-3">
@@ -213,7 +215,7 @@ function creatingPosition(idStage) {
     <div>__</div>
     <div>__</div>
     <div>__</div>
-    <div><button type="button" class="btn-del-small" onclick="deletePosition('${idPosition}')" ></button></div>
+    <div><button type="button" class="btn-del-small" onclick="deleteItem('${idPosition}')" ></button></div>
   </li>`
   );
 }
@@ -228,19 +230,25 @@ function deleteSelectedSmeata() {
   });
 }
 
-function deleteSmeta(idSmeta) {
-  document.querySelector(`[data-smeta-id="${idSmeta}"]`).remove();
+function deleteItem(id) {
+  document.querySelector(`[data-item-id='${id}']`).remove();
+
+  showTooltipSmeta();
 }
-function deleteStage(idStage) {
-  document.querySelector(`[data-stage-id='${idStage}']`).remove();
-}
-function deletePosition(idPosition) {
-  document.querySelector(`[data-position-id='${idPosition}']`).remove();
+
+function showTooltipSmeta() {
+  const listSmeta = document.querySelector("[data-smeta]");
+  const tooltipSmeta = document.querySelector(".tooltip-smeta");
+
+  if (listSmeta.children.length !== 0) {
+    tooltipSmeta.classList.add("_show-tooltipSmeta");
+  } else {
+    tooltipSmeta.classList.remove("_show-tooltipSmeta");
+  }
 }
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
 window.deleteSelectedSmeata = deleteSelectedSmeata;
-window.deleteSmeta = deleteSmeta;
-window.deleteStage = deleteStage;
-window.deletePosition = deletePosition;
+
+window.deleteItem = deleteItem;

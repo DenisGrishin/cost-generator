@@ -159,6 +159,7 @@ li.todo-list {
 	}
 	&__name-select {
 		margin: 0;
+		transform: translate(0px, -1px);
 	}
 	&__btn {
 		&::before {
@@ -225,9 +226,6 @@ li.todo-list {
 	}
 }
 
-.foter-list {
-}
-
 .footer-list {
 	margin-top: 16px;
 	display: flex;
@@ -236,7 +234,7 @@ li.todo-list {
 	&__btn-add-item {
 		display: flex;
 		align-items: center;
-		column-gap: 8px;
+
 		font-size: 14px;
 		line-height: 1.35;
 		background-color: var(--bg);
@@ -258,6 +256,13 @@ li.todo-list {
 	margin: 24px;
 	z-index: 1000;
 	box-shadow: 0px 6px 40px rgba(0, 60, 92, 0.14);
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease 0s;
+	&._show-tooltipSmeta {
+		opacity: 1;
+		visibility: visible;
+	}
 }
 .tooltip-margin-bottom {
 	margin-bottom: 70px;

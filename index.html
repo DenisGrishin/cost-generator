@@ -182,27 +182,27 @@
 
           </div>
           <div class="list-input__item">
-            <label for="engineer" class="list-input__label">Название</label>
+            <label class="list-input__label">Название</label>
             <div class="list-input__wrapper-input">
               <input autocomplete="off" class="input-default" name="Название" type="text">
             </div>
           </div>
           <div class="list-input__item">
-            <label for="engineer" class="list-input__label">Координаты</label>
+            <label class="list-input__label">Координаты</label>
             <div class="list-input__wrapper-input">
               <input autocomplete="off" class="input-default" name="Координаты" type="text">
             </div>
           </div>
           <div class="list-input__item">
-            <label for="engineer" class="list-input__label">Комментарии</label>
+            <label class="list-input__label">Комментарии</label>
             <div class="list-input__wrapper-input">
               <input autocomplete="off" class="input-default" name="Комментарии" type="text">
             </div>
           </div>
           <div class="list-input__item">
-            <label for="engineer" class="list-input__label">Статус</label>
+            <label class="list-input__label">Статус</label>
             <div class="list-input__wrapper-input list-input__wrapper-input_w-small">
-              <div class="select-status">
+              <div class="select-status py-2">
                 <select class="select2  select2-hidden-accessible" name="Статус" data-select2-id="select-status"
                   tabindex="-1" aria-hidden="true">
                   <option value="Выполнено" class="select-status__completed">Выполнено</option>
@@ -230,11 +230,12 @@
         <div class="dropdown-menu" role="menu">
           <a class="dropdown-item" href="#">Пустая смета</a>
           <a class="dropdown-item" href="#">Из шаблона</a>
-
-
         </div>
       </div>
-
+      <div class="container-content">
+        <label class="very-small"> Комментарий к КП которого на самом деле больше нет</label>
+        <input type="text" class="input-default" name="комментарий">
+      </div>
       <div class="tooltip-smeta container-content">
         <div class="btn-group btn-dropdown ">
           <button type="button" class="btn btn-success">Экспортировать</button>

@@ -5,8 +5,7 @@
 		._icon-priceList,
 		._icon-client,
 		._icon-pattern,
-		._icon-calendar,
-		._icon-darag
+		._icon-calendar
 	) {
 	&::before {
 		content: "";
@@ -15,7 +14,7 @@
 		display: inline-block;
 	}
 }
-:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern, ._icon-darag) {
+:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern) {
 	&::before {
 		margin-right: 8px;
 		transform: translateY(3px);
@@ -73,7 +72,43 @@
 	}
 }
 ._icon-darag {
+	position: relative;
+	display: inline-block;
+	margin-right: 16px;
+	width: 16px;
+	height: 16px;
+
+	&::before,
+	&::after {
+		content: "";
+		width: 16px;
+		height: 16px;
+		position: absolute;
+		top: 0;
+		left: 0;
+		transition: all 0.3s ease 0s;
+	}
 	&::before {
-		background-image: url(../img/icons/iconDrag.svg);
+		background-image: url(../img/icons/IconDrag.svg);
+	}
+
+	&::after {
+		content: "";
+		background: url("../img/icons/IconHoverDrag.svg") 0 0 no-repeat;
+		opacity: 0;
+		top: 2px;
+		visibility: hidden;
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
+			&::before {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
 	}
 }
