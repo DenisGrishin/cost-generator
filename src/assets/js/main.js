@@ -51,7 +51,7 @@ function creatingSmeta() {
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item container-content  d-flex" data-item-id="${idSmeta}">
+      `  <li class="todo-list__item   d-flex" data-item-id="${idSmeta}">
   <div class="todo-list__wrapper">
     <div class="todo-list__contetn">
       <span class="handle  _icon-darag">
@@ -103,7 +103,7 @@ function creatingSmeta() {
       <span class="footer-list__sum">Итого по смете: 0 р.</span>
     </div>
     <div class="mt-3">
-      <label class="very-small"> Комментарий</label>
+      <label class="very-small-title"> Комментарий</label>
       <input type="text" class="input-default" name="комментарий">
     </div>
 
@@ -140,7 +140,7 @@ function creatingStages(idSmeta) {
 
   listStages.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item " data-item-id='${idStage}'>
+    `    <li class="todo-list__item p-0 " data-item-id='${idStage}'>
                       <div class="todo-list__contetn">
                         <span class="handle  _icon-darag">
                         </span>
@@ -151,7 +151,7 @@ function creatingStages(idSmeta) {
                             <button type="button" class="accordion__btn" data-card-widget="collapse"></button>
 
                             <div class="accordion__header-content">
-                              <div class="accordion__name very-small accordion__name_small-text"></div>
+                              <div class="accordion__name very-small-title accordion__name_small-text"></div>
                               <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idStage}')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
@@ -222,7 +222,7 @@ function creatingPosition(idStage) {
   );
 }
 
-function deleteSelectedSmeata() {
+function deleteSelectedItems() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
   checkboxes.forEach((checkbox) => {
@@ -230,6 +230,8 @@ function deleteSelectedSmeata() {
       checkbox.closest("[data-item-id]").remove();
     }
   });
+
+  showTooltipSmeta();
 }
 
 function deleteItem(id) {
@@ -248,9 +250,30 @@ function showTooltipSmeta() {
     tooltipSmeta.classList.remove("_show-tooltipSmeta");
   }
 }
+
+function myFunction() {
+  const input = document.querySelector("[data-search-items]");
+  const ul = document.querySelector(".search-items__list");
+  const li = ul.querySelectorAll("li");
+
+  const filter = input.value.toLowerCase();
+
+  li.forEach((item) => {
+    if (item.textContent.toLowerCase().includes(filter)) {
+      item.style.display = "";
+    } else {
+      item.style.display = "none";
+    }
+  });
+}
+
+// создать
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
-window.deleteSelectedSmeata = deleteSelectedSmeata;
 
+// удалить
+window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
+
+window.myFunction = myFunction;

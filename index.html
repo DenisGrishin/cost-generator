@@ -37,6 +37,8 @@
 
 
   <div class="wrapper">
+
+    <!-- Начала главгый сайдбар -->
     <aside class="main-sidebar">
 
 
@@ -127,6 +129,94 @@
                 </ul>
               </nav>
     </aside>
+    <!-- Конец главгый сайдбар -->
+    <!-- Начала папки шаблонами -->
+    <aside class="control-sidebar control-sidebar-dark secondary-sidebar">
+
+      <div
+        class="p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-overflow os-host-overflow-y"
+        style="height: 538px;">
+        <div class="os-resize-observer-host observed">
+          <div class="os-resize-observer"></div>
+        </div>
+        <div class="os-size-auto-observer observed">
+          <div class="os-resize-observer"></div>
+        </div>
+        <div class="os-content-glue"></div>
+        <div class="os-padding p-3">
+          <div class="small-title  d-flex justify-content-between mb-3"><span>Шаблоны смет</span> <button
+              class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
+              data-controlsidebar-slide="true"></button>
+          </div>
+          <div class="search-items">
+            <div class="search-items__input _icon-search mb-3">
+              <input type="text" onkeyup="myFunction()" data-search-items class=" input-default">
+            </div>
+
+            <ul class="search-items__list ">
+              <li class="search-items__item  _icon-folder ">
+                <span class="flex-fill test-searsh"> Септики</span> <span>12.12.2024</span>
+                <div class="search-items__btn-dropdown dropdown-search">
+                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+                  </button>
+                  <div class="dropdown-menu " x-placement="bottom-start">
+                    <button type="button" class="dropdown-item">что-то тут </button>
+                    <button type="button" class="dropdown-item">что-то тут</button>
+                  </div>
+                </div>
+              </li>
+              <li class="search-items__item  _icon-folder ">
+                <span class="flex-fill test-searsh"> Канализация</span> <span>12.12.2024</span>
+                <div class="search-items__btn-dropdown dropdown-search">
+                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+                  </button>
+                  <div class="dropdown-menu " x-placement="bottom-start">
+                    <button type="button" class="dropdown-item">что-то тут </button>
+                    <button type="button" class="dropdown-item">что-то тут</button>
+                  </div>
+                </div>
+              </li>
+              <li class="search-items__item  _icon-folder ">
+                <span class="flex-fill test-searsh"> Фундамент</span> <span>12.12.2024</span>
+                <div class="search-items__btn-dropdown dropdown-search">
+                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+                  </button>
+                  <div class="dropdown-menu " x-placement="bottom-start">
+                    <button type="button" class="dropdown-item">что-то тут </button>
+                    <button type="button" class="dropdown-item">что-то тут</button>
+                  </div>
+                </div>
+              </li>
+              <li class="search-items__item  _icon-folder ">
+                <span class="flex-fill test-searsh"> Скважины</span> <span>12.12.2024</span>
+                <div class="search-items__btn-dropdown dropdown-search">
+                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+                  </button>
+                  <div class="dropdown-menu " x-placement="bottom-start">
+                    <button type="button" class="dropdown-item">что-то тут </button>
+                    <button type="button" class="dropdown-item">что-то тут</button>
+                  </div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle">
+
+            </div>
+          </div>
+        </div>
+        <div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden">
+          <div class="os-scrollbar-track">
+            <div class="os-scrollbar-handle"></div>
+          </div>
+        </div>
+        <div class="os-scrollbar-corner"></div>
+      </div>
+    </aside>
+    <!-- Конец папки шаблонами -->
     <div class="content-wrapper p-4 tooltip-margin-bottom">
       <h1 class="big-title">Создать смету</h1>
       <div class="container-content">
@@ -229,11 +319,15 @@
         </button>
         <div class="dropdown-menu" role="menu">
           <a class="dropdown-item" href="#">Пустая смета</a>
-          <a class="dropdown-item" href="#">Из шаблона</a>
+
+
         </div>
       </div>
+      <a class="nav-link" data-widget="control-sidebar" data-controlsidebar-slide="true" href="#" role="button">
+        Из шаблона
+      </a>
       <div class="container-content">
-        <label class="very-small"> Комментарий к КП которого на самом деле больше нет</label>
+        <label class="very-small-title"> Комментарий к КП которого на самом деле больше нет</label>
         <input type="text" class="input-default" name="комментарий">
       </div>
       <div class="tooltip-smeta container-content">
@@ -250,7 +344,7 @@
           </div>
         </div>
         <button class="butt">Обновить цены</button>
-        <button class="butt bg-gradient-danger" onclick="deleteSelectedSmeata()">Удалить выброное</button>
+        <button class="butt bg-gradient-danger" onclick="deleteSelectedItems()">Удалить выброное</button>
       </div>
     </div>
 

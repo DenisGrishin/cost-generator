@@ -99,7 +99,7 @@ li.todo-list {
 }
 .todo-list {
 	overflow: hidden !important;
-	padding: 0 !important;
+
 	// .todo-list__item
 	&__wrapper {
 		max-width: 1060px;
@@ -108,7 +108,6 @@ li.todo-list {
 		display: flex;
 		justify-content: flex-start;
 		flex-direction: column;
-		padding: 16px !important;
 		border-radius: 8px !important;
 		background-color: var(--c-white);
 		&:not(:last-child) {
@@ -125,7 +124,9 @@ li.todo-list {
 		background-color: #fff;
 	}
 }
-
+.todo-list > li {
+	padding: 16px;
+}
 .accordion {
 	width: 100%;
 	display: flex;
