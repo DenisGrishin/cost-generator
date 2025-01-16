@@ -1,14 +1,38 @@
 import "../scss/index.scss";
-
-$(".select2").select2({
-  placeholder: "",
-  allowClear: true,
-  width: "resolve",
-  language: {
-    noResults: function () {
-      return "Ничего не найдено";
+if (document.querySelector(".select2")) {
+  $(".select2").select2({
+    placeholder: "",
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
     },
+  });
+}
+
+const tabel = $("#example2").DataTable({
+  dom: "f",
+  paging: false,
+  searching: true,
+  ordering: true,
+  info: false,
+  autoWidth: false,
+  responsive: true,
+  language: {
+    search: "",
+    zeroRecords: "Совпадений не найдено",
+    emptyTable: "Таблица пустая",
+    searchPlaceholder: "Поиск",
   },
+  columnDefs: [
+    { orderable: false, targets: [6, 7] }, // Отключить сортировку для 1-го и 3-го столбцов
+  ],
+});
+
+$("#addColumn").on("click", function () {
+  // Динамическое добавление нового столбца
 });
 
 //Date range picker
@@ -97,8 +121,7 @@ function creatingSmeta() {
       </div>
     </div>
     <div class="todo-list__footer footer-list">
-      <button type="button" class="footer-list__btn-add-item" onclick="creatingStages('${idSmeta}')" data-create-stage><span
-          class="add-btn"></span><span>Этап
+      <button type="button" class="butt-plus" onclick="creatingStages('${idSmeta}')" data-create-stage><span>Этап
           работ</span></button>
       <span class="footer-list__sum">Итого по смете: 0 р.</span>
     </div>
@@ -177,8 +200,8 @@ function creatingStages(idSmeta) {
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
-                                <button type="button" class="footer-list__btn-add-item " onclick="creatingPosition('${idStage}')"
-                                  data-create-position><span class="add-btn"></span><span>Позиция</span></button>
+                                <button type="button" class="butt-plus" onclick="creatingPosition('${idStage}')"
+                                  data-create-position><span>Позиция</span></button>
                                 <span class="footer-list__sum">Итого: 0 р.</span>
                               </li>
                             </ul>
@@ -271,14 +294,52 @@ function searchItems() {
     });
   });
 }
+function creatingItemPL(idStage) {
+  const idItem = generateRandomId();
+  let number = findMaxNumber();
 
-// создать
+  tabel.row
+    .add([
+      `${++number}`,
+      "<span class='_mat-category'>Мат</span>",
+      "",
+      "",
+      "",
+      "",
+      "<td><button type='button' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
+      "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
+    ])
+    .draw();
+}
+
+function deleteItemPL(event) {
+  let target = event.target;
+  tabel.row($(target).parents(target)).remove().draw();
+}
+
+function findMaxNumber() {
+  const tr = document.querySelectorAll(`.price-list tbody tr`);
+  // если путсая таблица
+  if (tr[0].querySelector("td").classList.contains("dataTables_empty")) {
+    return 0;
+  }
+  const arrFirstTdNumber = [];
+  tr.forEach((element) => {
+    arrFirstTdNumber.push(Number(element.children[0].innerText));
+  });
+
+  return Math.max(...arrFirstTdNumber);
+}
+
+// создание элементов сметы
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
-
-// удалить
+// удаление элементов сметы
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
-
+// поиск
 window.searchItems = searchItems;
+// создание элементов в прайс-листе
+window.creatingItemPL = creatingItemPL;
+window.deleteItemPL = deleteItemPL;

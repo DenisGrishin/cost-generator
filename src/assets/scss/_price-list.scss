@@ -1,0 +1,118 @@
+.price-list {
+	width: 100%;
+	// .price-list__grid
+
+	tbody td,
+	thead th {
+		padding: 8px 0;
+		border-bottom: 1px solid var(--bg-cancelled);
+		font-weight: 400;
+		vertical-align: middle;
+		&:not(:last-child) {
+			padding-right: 16px;
+		}
+	}
+
+	thead th {
+		color: var(--c-gray-3);
+		font-size: 14px;
+		line-height: 1.35;
+		cursor: pointer;
+		position: relative;
+
+		&[aria-sort]::after {
+			content: "";
+			background: url("../img/icons/arrowDownSort.svg") 0 0 no-repeat;
+			width: 12px;
+			height: 12px;
+			position: absolute;
+			top: 50%;
+			left: 0%;
+
+			transform: translate(0px, -50%);
+		}
+		&[aria-sort]::before {
+			content: "";
+			background-color: var(--c-white);
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			top: 0;
+			left: 0;
+		}
+		&[aria-sort="ascending"]::after {
+			transform: translate(0px, -50%) rotate(0deg);
+		}
+		&[aria-sort="descending"]::after {
+			transform: translate(0px, -50%) rotate(180deg);
+		}
+	}
+
+	&__grid {
+		display: grid;
+		column-gap: 16px;
+		grid-template-columns: 1.509434% 2.54717% 3.018868% 4.716981% 62.54717% 5.283019% 7.54717% 2.264151%;
+		align-items: center;
+		padding: 7px 0;
+		border-bottom: 1px solid var(--bg-cancelled);
+		width: 100%;
+		max-width: 100%;
+		&_cg {
+			color: var(--c-gray-3);
+			font-size: 14px;
+			line-height: 1.2;
+		}
+	}
+}
+.dataTables_filter {
+	label {
+		width: 100%;
+		margin: 0;
+		margin-bottom: 16px;
+		border-radius: 0;
+		position: relative;
+		&::after {
+			content: "";
+			background: url("../img/icons/iconSearch.svg") 0 0 no-repeat;
+			width: 20px;
+			height: 20px;
+			position: absolute;
+			right: 0;
+			top: 2px;
+		}
+		input {
+			border: none;
+			border-bottom: 1px solid var(--c-gray-2);
+			border-radius: 0 !important;
+			padding: 8.5px 0 !important;
+			height: 37px;
+			&:focus {
+				border-bottom: 1px solid var(--c-black);
+			}
+		}
+	}
+}
+
+:where(._mat-category, ._rab-category, ._meh-category, ._doc-category) {
+	border-radius: 4px;
+
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 12px;
+	line-height: 1.2;
+	height: 28px;
+}
+._mat-category {
+	background-color: var(--bg-mar-category);
+}
+._rab-category {
+	background-color: var(--bg-rab-category);
+}
+._meh-category {
+	background-color: var(--bg-meh-category);
+}
+._doc-category {
+	background-color: var(--bg-doc-category);
+}
+// 2.264151%; /* 24/1060 */

@@ -8,7 +8,8 @@
 		._icon-calendar,
 		._icon-close,
 		._icon-folder,
-		._icon-arrow-back
+		._icon-arrow-back,
+		._icon-imp-data
 	) {
 	&::before {
 		content: "";
@@ -93,8 +94,18 @@
 	margin-right: 8px;
 	&::before {
 		background-image: url(../img/icons/arrowBack.svg);
+
 		width: 24px;
 		height: 24px;
+	}
+}
+._icon-imp-data {
+	&::before {
+		background: url("../img/icons/iconImpData.svg") 0 0 no-repeat;
+		width: 16px;
+		height: 16px;
+
+		margin-left: 8px;
 	}
 }
 ._icon-darag {
