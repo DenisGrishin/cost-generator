@@ -9,7 +9,9 @@
 		._icon-close,
 		._icon-folder,
 		._icon-arrow-back,
-		._icon-imp-data
+		._icon-imp-data,
+		._icon-plus,
+		._icon-template
 	) {
 	&::before {
 		content: "";
@@ -18,7 +20,7 @@
 		display: inline-block;
 	}
 }
-:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern, ._icon-folder) {
+:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern, ._icon-folder, ._icon-plus, ._icon-template) {
 	&::before {
 		margin-right: 8px;
 		transform: translateY(3px);
@@ -89,6 +91,11 @@
 		background-image: url("../img/icons/iconFolder.svg");
 	}
 }
+._icon-template {
+	&::before {
+		background-image: url("../img/icons/iconTemplate.svg");
+	}
+}
 
 ._icon-arrow-back {
 	margin-right: 8px;
@@ -106,6 +113,13 @@
 		height: 16px;
 
 		margin-left: 8px;
+	}
+}
+._icon-plus {
+	&::before {
+		background: url("../img/icons/iconPlusWhite.svg") 0 0 no-repeat;
+
+		transform: translate(0px, 0px);
 	}
 }
 ._icon-darag {
