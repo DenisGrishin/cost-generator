@@ -141,19 +141,19 @@
 	padding: 4px;
 	color: var(--c-black) !important;
 	font-weight: 400 !important;
-	&[title="Выполнено"] {
+	&[title*="Выполнено"] {
 		background-color: var(--bg-completed);
 		color: var(--c-completed) !important;
 	}
-	&[title="В работе"] {
+	&[title*="В работе"] {
 		background-color: var(--bg-inProgress);
 		color: var(--c-inProgress) !important;
 	}
-	&[title="Отменено"] {
+	&[title*="Отменено"] {
 		background-color: var(--bg-cancelled);
 		color: var(--c-cancelled) !important;
 	}
-	&[title="Отложено"] {
+	&[title*="Отложено"] {
 		background-color: var(--bg-postponed);
 		color: var(--c-postponed) !important;
 	}
@@ -174,7 +174,6 @@
 		display: flex;
 		align-items: center;
 		height: auto;
-		padding: 4;
 	}
 	& .select2-selection .select2-selection--single {
 		padding: 0;
