@@ -306,6 +306,7 @@
 	}
 }
 
+.btn-edit,
 .btn-del-big,
 .btn-del-small {
 	padding: 4px;
@@ -326,7 +327,11 @@
 		transform: translate(-50%, -50%);
 	}
 }
-
+.btn-edit {
+	&::before {
+		background-image: url("../img/icons/iconEditing.svg");
+	}
+}
 .btn-del-big {
 	display: flex;
 	align-items: center;
@@ -407,12 +412,16 @@
 
 	&__input {
 		position: relative;
+
 		&::before {
 			content: "";
 			position: absolute;
 
 			top: 5px;
 			right: 0;
+		}
+		input {
+			padding: 8px 0;
 		}
 	}
 	&__list {
