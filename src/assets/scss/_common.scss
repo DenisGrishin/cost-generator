@@ -254,6 +254,7 @@
 		}
 	}
 }
+.butt-success,
 .butt-plus,
 .butt {
 	background-color: var(--bg);
@@ -271,7 +272,7 @@
 }
 .butt-plus {
 	position: relative;
-	padding-left: 24px;
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -286,6 +287,11 @@
 }
 .btn-success {
 	background-color: var(--c-green);
+	border-radius: 4px;
+	&:hover {
+		background-color: var(--c-hover-green);
+		border: none !important;
+	}
 }
 .butt-success {
 	background-color: var(--c-green);
@@ -295,6 +301,7 @@
 	@media (any-hover: hover) {
 		&:hover {
 			background-color: var(--c-hover-green);
+			border: none !important;
 		}
 	}
 }
@@ -407,6 +414,9 @@
 			top: 5px;
 			right: 0;
 		}
+	}
+	&__list {
+		margin-bottom: 0;
 	}
 	&__item {
 		display: flex;
