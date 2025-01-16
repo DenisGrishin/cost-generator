@@ -103,7 +103,7 @@
 
                   </li>
                   <li class="nav-item">
-                    <a href="./pages/page-price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
+                    <a href="./pages/price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
                       <p> Прайс-лист</p>
                     </a>
                   </li>
@@ -113,7 +113,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold p-2 _icon-pattern">
+                    <a href="./pages/templates.html" class="nav-link font-weight-bold p-2 _icon-pattern">
                       <p> Шаблоны</p>
                     </a>
                   </li>
@@ -200,7 +200,8 @@
 
 
             <button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
-              class="butt mt-4 butt-success" onclick="creatingSmeta()">Cоздать новую смету</button>
+              class="butt mt-4 butt-success _icon-plus d-flex align-items-center" onclick="creatingSmeta()">Cоздать
+              новую смету</button>
           </div>
         </div>
         <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden">
@@ -388,8 +389,8 @@
   <script src="../dist/js/adminlte.min.js?v=3.2.0"></script>
   <!-- AdminLTE for demo purposes -->
   <!-- <script src="./public/dist/js/demo.js"></script> -->
-  <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-  <script src="./public/dist/js/pages/dashboard.js"></script>
+
+  <!-- <script src="./public/dist/js/pages/dashboard.js"></script> -->
 
   <script type="module" src="./src/assets/js/main.js"></script>
 
@@ -444,16 +445,8 @@
 
 
 
-    // Setup the buttons for all transfers
-    // The "add files" button doesn't need to be setup because the config
-    // `clickable` has already been specified.
-    document.querySelector("#actions .start").onclick = function () {
-      myDropzone.enqueueFiles(myDropzone.getFilesWithStatus(Dropzone.ADDED))
-    }
-    document.querySelector("#actions .cancel").onclick = function () {
-      myDropzone.removeAllFiles(true)
-    }
-    // DropzoneJS Demo Code End
+
+
   </script>
 </body>
 

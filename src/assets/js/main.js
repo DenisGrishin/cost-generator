@@ -12,25 +12,6 @@ if (document.querySelector(".select2")) {
   });
 }
 
-const tabel = $("#example2").DataTable({
-  dom: "f",
-  paging: false,
-  searching: true,
-  ordering: true,
-  info: false,
-  autoWidth: false,
-  responsive: true,
-  language: {
-    search: "",
-    zeroRecords: "Совпадений не найдено",
-    emptyTable: "Таблица пустая",
-    searchPlaceholder: "Поиск",
-  },
-  columnDefs: [
-    { orderable: false, targets: [6, 7] }, // Отключить сортировку для 1-го и 3-го столбцов
-  ],
-});
-
 $("#addColumn").on("click", function () {
   // Динамическое добавление нового столбца
 });
@@ -294,29 +275,55 @@ function searchItems() {
     });
   });
 }
-function creatingItemPL(idStage) {
-  const idItem = generateRandomId();
-  let number = findMaxNumber();
 
-  tabel.row
-    .add([
-      `${++number}`,
-      "<span class='_mat-category'>Мат</span>",
-      "",
-      "",
-      "",
-      "",
-      "<td><button type='button' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
-      "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
-    ])
-    .draw();
+if (document.querySelector("#example2")) {
+  const tabel = $("#example2").DataTable({
+    dom: "f",
+    paging: false,
+    searching: true,
+    ordering: true,
+    info: false,
+    autoWidth: false,
+    responsive: true,
+    language: {
+      search: "",
+      zeroRecords: "Совпадений не найдено",
+      emptyTable: "Таблица пустая",
+      searchPlaceholder: "Поиск",
+    },
+    columnDefs: [
+      { orderable: false, targets: [6, 7] }, // Отключить сортировку для 1-го и 3-го столбцов
+    ],
+  });
+
+  function creatingItemPL(idStage) {
+    const idItem = generateRandomId();
+    let number = findMaxNumber();
+
+    tabel.row
+      .add([
+        `${++number}`,
+        "<span class='_mat-category'>Мат</span>",
+        "",
+        "",
+        "",
+        "",
+        "<td><button type='button' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
+        "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
+      ])
+      .draw();
+  }
+
+  function deleteItemPL(event) {
+    let target = event.target;
+    tabel.row($(target).parents(target)).remove().draw();
+  }
+
+  // создание элементов в прайс-листе
+  window.creatingItemPL = creatingItemPL;
+  // удаления в прайс-листе
+  window.deleteItemPL = deleteItemPL;
 }
-
-function deleteItemPL(event) {
-  let target = event.target;
-  tabel.row($(target).parents(target)).remove().draw();
-}
-
 function findMaxNumber() {
   const tr = document.querySelectorAll(`.price-list tbody tr`);
   // если путсая таблица
@@ -340,6 +347,3 @@ window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
 // поиск
 window.searchItems = searchItems;
-// создание элементов в прайс-листе
-window.creatingItemPL = creatingItemPL;
-window.deleteItemPL = deleteItemPL;

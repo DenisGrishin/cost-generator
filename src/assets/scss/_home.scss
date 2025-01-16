@@ -117,7 +117,7 @@ li.todo-list {
 
 	// .todo-list__item
 	&__wrapper {
-		max-width: 1060px;
+		// max-width: 1060px;
 	}
 	&__item {
 		display: flex;
@@ -129,8 +129,7 @@ li.todo-list {
 			margin-bottom: 32px;
 		}
 	}
-	&__wrapper {
-	}
+
 	// .todo-list__contetn
 	&__contetn {
 		display: flex;
@@ -161,7 +160,7 @@ li.todo-list {
 		padding: 0;
 	}
 	&__header-content {
-		max-width: 965px;
+		// max-width: 965px;
 		display: flex;
 		column-gap: 48px;
 		align-items: center;
@@ -204,6 +203,8 @@ li.todo-list {
 	}
 	&__del-btn {
 		flex: 0 1 10.466321%; /* 101/965 */
+		display: flex;
+		justify-content: flex-end;
 		&_small {
 			flex: 0 1 auto;
 		}
