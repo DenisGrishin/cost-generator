@@ -416,7 +416,11 @@
 		outline: none;
 		border-bottom-color: var(--c-black);
 	}
+	&_error {
+		border-bottom: 1px solid var(--c-red);
+	}
 }
+
 .search-items {
 	// height: 100%;
 	// height: 100%;

@@ -6,11 +6,11 @@ function generateRandomId() {
 export function creatingSmeta() {
   const listSmeta = document.querySelector("[data-smeta]");
 
-  let idSmeta = generateRandomId();
+  let idItem = generateRandomId();
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item   d-flex" data-item-id="${idSmeta}">
+      `  <li class="todo-list__item   d-flex" data-item-id="${idItem}">
   <div class="todo-list__wrapper">
     <div class="todo-list__contetn">
       <span class="handle  _icon-darag">
@@ -22,7 +22,7 @@ export function creatingSmeta() {
             <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta">
           </label>
           <div class="accordion__header-content">
-            <div class="accordion__name"> </div>
+            <div class="accordion__name" onclick='editTextInput(event)'><input placeholder="Введите текст" type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
             <div class="accordion__select ">
                 <label class="accordion__name-select">Статус</label>
               <div class="select-status">
@@ -36,7 +36,7 @@ export function creatingSmeta() {
               </div>
             </div>
             <div class="accordion__del-btn" >
-                  <button type="button" onclick="deleteItem('${idSmeta}')" class="btn-del-big"><span>Удалить</span></button>
+                  <button type="button" onclick="deleteItem('${idItem}')"  class="btn-del-big"><span>Удалить</span></button>
             </div>
           </div>
         </div>
@@ -56,7 +56,7 @@ export function creatingSmeta() {
       </div>
     </div>
     <div class="todo-list__footer footer-list">
-      <button type="button" class="butt-plus" onclick="creatingStages('${idSmeta}')" data-create-stage><span>Этап
+      <button type="button" class="butt-plus" onclick="creatingStages('${idItem}')" data-create-stage><span>Этап
           работ</span></button>
       <span class="footer-list__sum">Итого по смете: 0 р.</span>
     </div>
@@ -86,6 +86,10 @@ export function creatingSmeta() {
       },
     });
   }
+
+  focusInputItem(idItem);
+  handelKetDonw();
+
   showTooltipSmeta();
 }
 
@@ -94,23 +98,23 @@ export function creatingStages(idSmeta) {
 
   const listStages = parentSmeta.querySelector(`[data-stages]`);
 
-  const idStage = generateRandomId();
+  const idItem = generateRandomId();
 
   listStages.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item p-0 " data-item-id='${idStage}'>
+    `    <li class="todo-list__item p-0 " data-item-id='${idItem}'>
                       <div class="todo-list__contetn">
                         <span class="handle  _icon-darag">
                         </span>
-                        <div class="todo-list__accordion accordion card collapsed-card">
+                        <div class="todo-list__accordion accordion card ">
                           <!-- Начала Позиций  -->
 
                           <div class=" text-left accordion__header middle-title">
                             <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
 
                             <div class="accordion__header-content">
-                              <div class="accordion__name very-small-title accordion__name_small-text"></div>
-                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idStage}')" type="button" 
+                              <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)'><input  data  placeholder="Введите текст" type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idItem}')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
                           </div>
@@ -135,7 +139,7 @@ export function creatingStages(idSmeta) {
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
-                                <button type="button" class="butt-plus" onclick="creatingPosition('${idStage}')"
+                                <button type="button" class="butt-plus" onclick="creatingPosition('${idItem}')"
                                   data-create-position><span>Позиция</span></button>
                                 <span class="footer-list__sum">Итого: 0 р.</span>
                               </li>
@@ -153,29 +157,33 @@ export function creatingStages(idSmeta) {
     placeholder: "position-highlight",
     handle: ".handle",
   });
+
+  focusInputItem(idItem);
+  handelKetDonw();
 }
 
 export function creatingPosition(idStage) {
   const parentSmeta = document.querySelector(`[data-item-id='${idStage}']`);
 
   const listPosition = parentSmeta.querySelector("[data-position]");
+  let numerItem = findMaxNumber(parentSmeta);
+  const idItem = generateRandomId();
 
-  const idPosition = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
-    `<li class="list-accordion__item" data-item-id='${idPosition}'>
+    `<li class="list-accordion__item" data-item-id='${idItem}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
         <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
       </label></div>
-    <div>__</div>
-    <div>__</div>
-    <div class="list-accordion__name">__</div>
-    <div>__</div>
-    <div>__</div>
-    <div>__</div>
-    <div>__</div>
-    <div><button type="button" class="btn-del-small" onclick="deleteItem('${idPosition}')" ></button></div>
+    <div>${++numerItem}</div>
+    <div onclick='editTextInput(event)'></div>
+    <div class="list-accordion__name" onclick='editTextInput(event)'></div>
+    <div onclick='editTextInput(event)'></div>
+    <div onclick='editTextInput(event)'></div>
+    <div onclick='editTextInput(event)'></div>
+    <div></div>
+    <div><button type="button" class="btn-del-small" onclick="deleteItem('${idItem}')" ></button></div>
   </li>`
   );
 }
@@ -194,7 +202,7 @@ export function deleteSelectedItems() {
 
 export function deleteItem(id) {
   document.querySelector(`[data-item-id='${id}']`).remove();
-
+  itearaorNumber();
   showTooltipSmeta();
 }
 
@@ -228,4 +236,86 @@ export function searchItems() {
       }
     });
   });
+}
+
+export function saveTextInput(event) {
+  let target = event.target;
+  let value = target.value;
+  const parent = target.parentElement;
+
+  if (value) {
+    parent.innerText = value;
+    target.remove();
+  }
+}
+
+export function editTextInput(event) {
+  let target = event.currentTarget;
+  if (target.children.length !== 0) {
+    return;
+  }
+
+  createInputEdit(target);
+}
+
+function createInputEdit(parent) {
+  const parentText = parent.innerText;
+  parent.innerText = "";
+
+  parent.insertAdjacentHTML(
+    "beforeend",
+    `<input type="text" onblur="saveTextInput(event)" placeholder="Введите текст"   data-edit-input value="${parentText}"  class="input-default">`
+  );
+
+  if (document.querySelector(".accordion__name")) {
+    parent.children[0].focus();
+  }
+
+  handelKetDonw();
+}
+
+function handelKetDonw() {
+  const inputs = document.querySelectorAll("[data-edit-input]");
+  inputs.forEach((input) => {
+    input.addEventListener("keydown", (e) => {
+      if (e.key === "Enter") {
+        saveTextInput(e);
+      }
+    });
+  });
+}
+
+function focusInputItem(idItem) {
+  if (
+    document.querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
+  ) {
+    document
+      .querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
+      .focus();
+  }
+}
+function findMaxNumber(parentSmeta) {
+  const li = parentSmeta.querySelectorAll(`.list-accordion__body li`);
+  let max = 0;
+  // если путсая таблица
+  if (li.length === 0) {
+    return 0;
+  }
+
+  li.forEach((element) => {
+    if (0 < Number(element.children[2].innerText)) {
+      max = Number(element.children[2].innerText);
+    }
+  });
+
+  return max;
+}
+
+function itearaorNumber() {
+  const list = document.querySelectorAll(".list-accordion__body li");
+  let numberItem = 0;
+  for (let i = 0; i < list.length; i++) {
+    const element = list[i];
+    element.children[2].innerText = ++numberItem;
+  }
 }
