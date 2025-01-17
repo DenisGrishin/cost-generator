@@ -11,7 +11,8 @@
 		._icon-arrow-back,
 		._icon-imp-data,
 		._icon-plus,
-		._icon-template
+		._icon-template,
+		._icon-user
 	) {
 	&::before {
 		content: "";
@@ -20,12 +21,26 @@
 		display: inline-block;
 	}
 }
-:where(._icon-dashboard, ._icon-priceList, ._icon-client, ._icon-pattern, ._icon-folder, ._icon-plus, ._icon-template) {
+:where(
+		._icon-dashboard,
+		._icon-priceList,
+		._icon-client,
+		._icon-pattern,
+		._icon-folder,
+		._icon-plus,
+		._icon-template,
+		._icon-user
+	) {
 	&::before {
 		margin-right: 8px;
 		transform: translateY(3px);
 		width: 16px;
 		height: 16px;
+	}
+
+	.sidebar-collapse &::before {
+		margin-right: 0;
+		margin-left: 5px;
 	}
 }
 ._icon-sidebar-arrow {
@@ -120,6 +135,11 @@
 		background: url("../img/icons/iconPlusWhite.svg") 0 0 no-repeat;
 
 		transform: translate(0px, 0px);
+	}
+}
+._icon-user {
+	&::before {
+		background: url("../img/icons/iconUser.svg") 0 0 no-repeat;
 	}
 }
 ._icon-darag {

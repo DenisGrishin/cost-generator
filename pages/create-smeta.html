@@ -1,0 +1,420 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Tempusdominus Bootstrap 4 -->
+	<link rel="stylesheet" href="../public/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+	<!-- Select2 -->
+	<link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+	<link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+	<!-- iCheck -->
+	<link rel="stylesheet" href="../public/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<!-- JQVMap -->
+	<link rel="stylesheet" href="../public/plugins/jqvmap/jqvmap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="../public/plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	<!-- Daterange picker -->
+	<link rel="stylesheet" href="../public/plugins/daterangepicker/daterangepicker.css">
+	<!-- summernote -->
+	<link rel="stylesheet" href="../public//plugins/summernote/summernote-bs4.min.css">
+</head>
+
+<body class="sidebar-mini layout-fixed">
+
+
+
+	<div class="wrapper">
+
+		<!-- Начала главгый сайдбар -->
+		<aside class="main-sidebar sidebar-no-expand">
+
+
+			<!-- Sidebar -->
+			<div
+				class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
+				<div class="os-resize-observer-host observed">
+					<div class="os-resize-observer"></div>
+				</div>
+
+				<div class="os-padding">
+					<div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
+						<div class="os-content px-3">
+							<a class=" mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu" href="#" role="button"></a>
+							<!-- Sidebar user (optional) -->
+							<div class="user-panel mt-4  mb-4 d-flex align-items-center">
+								<div class="image">
+									<img src="../src/assets/img/avatar.png" class="img-rounded " alt="User Image">
+								</div>
+								<div class="info d-flex align-items-center">
+									<a href="#" class="d-block ">Мой профиль</a>
+								</div>
+							</div>
+
+							<!-- SidebarSearch Form -->
+							<div class="form-inline">
+								<div class="input-group" data-widget="sidebar-search">
+									<input class="form-control form-control-sidebar" type="search" placeholder="Поиск"
+										aria-label="Search">
+									<div class="input-group-append">
+										<button class="btn btn-sidebar _icon-search">
+
+										</button>
+									</div>
+								</div>
+								<div class="sidebar-search-results">
+									<div class="list-group"><a href="#" class="list-group-item">
+											<div class="search-title"><strong class="text-light"></strong>N<strong
+													class="text-light"></strong>o<strong class="text-light"></strong> <strong
+													class="text-light"></strong>e<strong class="text-light"></strong>l<strong
+													class="text-light"></strong>e<strong class="text-light"></strong>m<strong
+													class="text-light"></strong>e<strong class="text-light"></strong>n<strong
+													class="text-light"></strong>t<strong class="text-light"></strong> <strong
+													class="text-light"></strong>f<strong class="text-light"></strong>o<strong
+													class="text-light"></strong>u<strong class="text-light"></strong>n<strong
+													class="text-light"></strong>d<strong class="text-light"></strong>!<strong
+													class="text-light"></strong></div>
+											<div class="search-path"></div>
+										</a></div>
+								</div>
+							</div>
+
+							<nav class="mt-4">
+								<ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
+									data-accordion="false">
+
+
+									<li class="nav-item">
+										<a href="./index.html" class="nav-link p-2 _active-page font-weight-bold _icon-dashboard">
+											<p>Дашборд</p>
+										</a>
+
+									</li>
+									<li class="nav-item">
+										<a href="./price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
+											<p> Прайс-лист</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./clients.html" class="nav-link font-weight-bold p-2 _icon-client">
+											<p>Клиенты</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./templates.html" class="nav-link font-weight-bold p-2 _icon-pattern">
+											<p> Шаблоны</p>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<!-- Конец главгый сайдбар -->
+		<!-- Начала папки шаблонами -->
+		<aside class="control-sidebar  secondary-sidebar">
+			<div class="secondary-sidebar__bg" data-widget="control-sidebar"></div>
+
+			<div class="secondary-sidebar__wrapper  control-sidebar-content ">
+
+				<div class="os-padding p-3 overflow-auto">
+					<div class=" d-flex justify-content-between mb-3">
+						<span class="d-flex">
+							<button type="button" class="_icon-arrow-back"></button><span class="small-title ">Шаблоны
+								смет</span>
+						</span>
+						<button class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
+							data-controlsidebar-slide="true"></button>
+					</div>
+					<div class="search-items" data-search-items>
+						<div class="search-items__input _icon-search mb-3">
+							<input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
+						</div>
+						<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+							class="butt my-3 butt-success _icon-plus d-flex align-items-center"
+							onclick="creatingSmeta()">Cоздать
+							новую смету</button>
+						<ul class="search-items__list ">
+							<li class="search-items__item  _icon-folder ">
+								<span class="flex-fill "> Септики</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item">Редактировать</button>
+										<button type="button" class="dropdown-item">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="search-items__item  _icon-folder ">
+								<span class="flex-fill "> Канализация</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item">Редактировать</button>
+										<button type="button" class="dropdown-item">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="search-items__item  _icon-folder ">
+								<span class="flex-fill "> Фундамент</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item">Редактировать</button>
+										<button type="button" class="dropdown-item">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="search-items__item  _icon-folder ">
+								<span class="flex-fill "> Скважины</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item">Редактировать</button>
+										<button type="button" class="dropdown-item">Удалить</button>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</aside>
+		<!-- Конец папки шаблонами -->
+		<div class="content-wrapper p-4 ">
+			<h1 class="big-title">Создать смету</h1>
+			<div class="container-content">
+				<h2 class="middle-title mb-3">Информация</h2>
+				<div class="list-input">
+					<div class="list-input__item">
+						<label class="list-input__label">Клиент</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Клиент">
+								<option></option>
+								<option>Старк Санса Недовна</option>
+								<option>Старк Бран Недовна</option>
+								<option>Старк Джон Недовна</option>
+								<option>Старк Ария Недовна</option>
+								<option>Баратеон Станис Стеффович</option>
+
+							</select>
+						</div>
+						<button type="button" class="list-input__add-btn add-btn"></button>
+						<button type="button" class="list-input__butt-plus butt-plus">Создать клиента</button>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Менеджер</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Менеджер">
+								<option></option>
+								<option>Дмитрий</option>
+								<option>Наталья</option>
+								<option>Дмитрий(Митя)</option>
+							</select>
+						</div>
+						<button type="button" class="list-input__add-btn add-btn"></button>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Инженер</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Инженер">
+								<option></option>
+								<option>Биба</option>
+								<option>Боба</option>
+
+							</select>
+						</div>
+						<button type="button" class="list-input__add-btn add-btn"></button>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Дата</label>
+						<div class="list-input__wrapper-input list-input__wrapper-input_w-small">
+							<div class="input-group">
+								<input type="text" class=" daterangepicker-input " id="reservation">
+								<div class="_icon-calendar"></div>
+							</div>
+						</div>
+
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Название</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Название" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Координаты</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Координаты" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Комментарии</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Комментарии" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Статус</label>
+						<div class="list-input__wrapper-input list-input__wrapper-input_w-small">
+							<div class="select-status py-2">
+								<select class="select2  select2-hidden-accessible" name="Статус" data-select2-id="select-status"
+									tabindex="-1" aria-hidden="true">
+									<option value="Выполнено" class="select-status__completed">Выполнено</option>
+									<option selected value="В работе" class="select-status__in-progress">В работе</option>
+									<option value="Отменено" class="select-status__cancelled">Отменено</option>
+									<option value="Отложено" class="select-status__postponed">Отложено</option>
+								</select>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<ul class="todo-list" data-smeta data-widget="todo-list">
+
+
+			</ul>
+
+
+			<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+				class="butt my-4 butt-success">Добавить смету</button>
+
+
+
+
+
+			<div class="container-content">
+				<label class="very-small-title"> Комментарий к КП которого на самом деле больше нет</label>
+				<input type="text" class="input-default" name="комментарий">
+			</div>
+			<div class="tooltip-smeta container-content">
+				<div class="btn-group btn-dropdown ">
+					<button type="button" class="btn btn-success">Экспортировать</button>
+					<button type=" button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
+						aria-expanded="false">
+
+					</button>
+					<div class="dropdown-menu" role="menu">
+						<a class="dropdown-item" href="#">Пустая смета</a>
+						<a class="dropdown-item" href="#">Из шаблона</a>
+
+
+					</div>
+				</div>
+				<button class="butt">Обновить цены</button>
+				<button class="butt bg-gradient-danger" onclick="deleteSelectedItems()">Удалить выброное</button>
+			</div>
+		</div>
+
+	</div>
+
+
+	<!-- jQuery -->
+	<script src="../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../public/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Select2 -->
+	<script src="../public/plugins/select2/js/select2.full.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="../public/plugins/jquery-ui/jquery-ui.min.js"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+
+	<!-- Bootstrap4 Duallistbox -->
+	<script src="../public/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+	<script src="../public/plugins/moment/moment.min.js"></script>
+	<script src="../public/plugins/inputmask/jquery.inputmask.min.js"></script>
+	<script src="../public/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="../public/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+	<script src="../public/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+	<!-- JQVMap -->
+	<!-- <script src="./public/plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="./public/plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+	<!-- jQuery Knob Chart -->
+	<script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+	<!-- daterangepicker -->
+
+
+	<script src="../public/plugins/daterangepicker/daterangepicker.js"></script>
+
+	<!-- Tempusdominus Bootstrap 4 -->
+	<!-- overlayScrollbars -->
+	<!-- <script src="./public/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+
+	<!-- Summernote -->
+	<script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../dist/js/adminlte.min.js?v=3.2.0"></script>
+	<!-- AdminLTE for demo purposes -->
+	<!-- <script src="./public/dist/js/demo.js"></script> -->
+
+	<!-- <script src="./public/dist/js/pages/dashboard.js"></script> -->
+
+	<script type="module" src="../src/assets/js/main.js"></script>
+
+
+	<script>
+		$(function () {
+			//Initialize Select2 Elements
+
+			//Initialize Select2 Elements
+			$('.select2bs4').select2({
+				theme: 'bootstrap4'
+			})
+
+			//Datemask dd/mm/yyyy
+			$('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
+			//Datemask2 mm/dd/yyyy
+			$('.datemask2').inputmask('mm.dd.yyyy')
+			//Money Euro
+			$('[data-mask]').inputmask()
+
+
+
+
+
+
+
+
+
+		})
+
+
+
+
+	</script>
+</body>
+
+</html>

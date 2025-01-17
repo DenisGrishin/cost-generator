@@ -39,7 +39,7 @@
   <div class="wrapper">
 
     <!-- Начала главгый сайдбар -->
-    <aside class="main-sidebar">
+    <aside class="main-sidebar sidebar-no-expand">
 
 
       <!-- Sidebar -->
@@ -52,11 +52,11 @@
         <div class="os-padding">
           <div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
             <div class="os-content px-3">
-              <a class="pl-3 mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu" href="#" role="button"></a>
+              <a class="mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu" href="#" role="button"></a>
               <!-- Sidebar user (optional) -->
               <div class="user-panel mt-4  mb-4 d-flex align-items-center">
                 <div class="image">
-                  <img src="./src/assets/img/avatar.png" class="img-rounded " alt="User Image">
+                  <img src="/src/assets/img/avatar.png" class="img-rounded " alt="User Image">
                 </div>
                 <div class="info d-flex align-items-center">
                   <a href="#" class="d-block ">Мой профиль</a>
@@ -98,7 +98,7 @@
 
                   <li class="nav-item">
                     <a href="./index.html" class="nav-link p-2 _active-page font-weight-bold _icon-dashboard">
-                      Дашборд
+                      <p> Дашборд</p>
                     </a>
 
                   </li>
@@ -108,7 +108,7 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="#" class="nav-link font-weight-bold p-2 _icon-client">
+                    <a href="./pages/clients.html" class="nav-link font-weight-bold p-2 _icon-client">
                       <p>Клиенты</p>
                     </a>
                   </li>
@@ -186,7 +186,7 @@
                 </div>
               </li>
               <li class="search-items__item  _icon-folder ">
-                <span class="flex-fill "> Скважины</span> <span>12.12.2024</span>
+                <span class="flex-fill"> Скважины</span> <span>12.12.2024</span>
                 <div class="search-items__btn-dropdown dropdown-search">
                   <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
                   </button>
@@ -221,129 +221,21 @@
     </aside>
     <!-- Конец папки шаблонами -->
     <div class="content-wrapper p-4 tooltip-margin-bottom">
-      <h1 class="big-title">Создать смету</h1>
-      <div class="container-content">
-        <h2 class="middle-title mb-3">Информация</h2>
-        <div class="list-input">
-          <div class="list-input__item">
-            <label class="list-input__label">Клиент</label>
-            <div class="list-input__wrapper-input">
-              <select class="list-input__select  select2" name="Клиент">
-                <option></option>
-                <option>Старк Санса Недовна</option>
-                <option>Старк Бран Недовна</option>
-                <option>Старк Джон Недовна</option>
-                <option>Старк Ария Недовна</option>
-                <option>Баратеон Станис Стеффович</option>
+      <h1 class="big-title">Дашборд</h1>
 
-              </select>
-            </div>
-            <button type="button" class="list-input__add-btn add-btn"></button>
-            <button type="button" class="list-input__butt-plus butt-plus">Создать клиента</button>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Менеджер</label>
-            <div class="list-input__wrapper-input">
-              <select class="list-input__select  select2" name="Менеджер">
-                <option></option>
-                <option>Дмитрий</option>
-                <option>Наталья</option>
-                <option>Дмитрий(Митя)</option>
-              </select>
-            </div>
-            <button type="button" class="list-input__add-btn add-btn"></button>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Инженер</label>
-            <div class="list-input__wrapper-input">
-              <select class="list-input__select  select2" name="Инженер">
-                <option></option>
-                <option>Биба</option>
-                <option>Боба</option>
 
-              </select>
-            </div>
-            <button type="button" class="list-input__add-btn add-btn"></button>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Дата</label>
-            <div class="list-input__wrapper-input list-input__wrapper-input_w-small">
-              <div class="input-group">
-                <input type="text" class=" daterangepicker-input " id="reservation">
-                <div class="_icon-calendar"></div>
-              </div>
-            </div>
-
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Название</label>
-            <div class="list-input__wrapper-input">
-              <input autocomplete="off" class="input-default" name="Название" type="text">
-            </div>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Координаты</label>
-            <div class="list-input__wrapper-input">
-              <input autocomplete="off" class="input-default" name="Координаты" type="text">
-            </div>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Комментарии</label>
-            <div class="list-input__wrapper-input">
-              <input autocomplete="off" class="input-default" name="Комментарии" type="text">
-            </div>
-          </div>
-          <div class="list-input__item">
-            <label class="list-input__label">Статус</label>
-            <div class="list-input__wrapper-input list-input__wrapper-input_w-small">
-              <div class="select-status py-2">
-                <select class="select2  select2-hidden-accessible" name="Статус" data-select2-id="select-status"
-                  tabindex="-1" aria-hidden="true">
-                  <option value="Выполнено" class="select-status__completed">Выполнено</option>
-                  <option selected value="В работе" class="select-status__in-progress">В работе</option>
-                  <option value="Отменено" class="select-status__cancelled">Отменено</option>
-                  <option value="Отложено" class="select-status__postponed">Отложено</option>
-                </select>
-              </div>
-
-            </div>
-          </div>
-        </div>
+      <div class="d-flex justify-content-start">
+        <a href="./pages/create-smeta.html" type="button"
+          class="butt btn-success _icon-plus d-flex align-items-center">Создать</a>
       </div>
 
-      <ul class="todo-list" data-smeta data-widget="todo-list">
-
-
-      </ul>
-
-
-      <button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
-        class="butt my-4 butt-success">Добавить смету</button>
 
 
 
 
 
-      <div class="container-content">
-        <label class="very-small-title"> Комментарий к КП которого на самом деле больше нет</label>
-        <input type="text" class="input-default" name="комментарий">
-      </div>
-      <div class="tooltip-smeta container-content">
-        <div class="btn-group btn-dropdown ">
-          <button type="button" class="btn btn-success">Экспортировать</button>
-          <button type=" button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-
-          </button>
-          <div class="dropdown-menu" role="menu">
-            <a class="dropdown-item" href="#">Пустая смета</a>
-            <a class="dropdown-item" href="#">Из шаблона</a>
 
 
-          </div>
-        </div>
-        <button class="butt">Обновить цены</button>
-        <button class="butt bg-gradient-danger" onclick="deleteSelectedItems()">Удалить выброное</button>
-      </div>
     </div>
 
   </div>
@@ -395,59 +287,7 @@
   <script type="module" src="./src/assets/js/main.js"></script>
 
 
-  <script>
-    $(function () {
-      //Initialize Select2 Elements
 
-      //Initialize Select2 Elements
-      $('.select2bs4').select2({
-        theme: 'bootstrap4'
-      })
-
-      //Datemask dd/mm/yyyy
-      $('#datemask').inputmask('dd/mm/yyyy', { 'placeholder': 'dd/mm/yyyy' })
-      //Datemask2 mm/dd/yyyy
-      $('.datemask2').inputmask('mm.dd.yyyy')
-      //Money Euro
-      $('[data-mask]').inputmask()
-
-
-
-
-
-
-
-
-      //Bootstrap Duallistbox
-      $('.duallistbox').bootstrapDualListbox()
-
-
-
-
-      $("input[data-bootstrap-switch]").each(function () {
-        $(this).bootstrapSwitch('state', $(this).prop('checked'));
-      })
-
-    })
-    // BS-Stepper Init
-    document.addEventListener('DOMContentLoaded', function () {
-      window.stepper = new Stepper(document.querySelector('.bs-stepper'))
-    })
-
-
-
-    // Get the template HTML and remove it from the doumenthe template HTML and remove it from the doument
-    var previewNode = document.querySelector("#template")
-    previewNode.id = ""
-    var previewTemplate = previewNode.parentNode.innerHTML
-    previewNode.parentNode.removeChild(previewNode)
-
-
-
-
-
-
-  </script>
 </body>
 
 </html>
