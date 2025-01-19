@@ -22,7 +22,7 @@ export function creatingSmeta() {
             <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta">
           </label>
           <div class="accordion__header-content">
-            <div class="accordion__name" onclick='editTextInput(event)'><input placeholder="Введите текст" type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+            <div class="accordion__name" onclick='editTextInput(event)'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
             <div class="accordion__select ">
                 <label class="accordion__name-select">Статус</label>
               <div class="select-status">
@@ -88,7 +88,7 @@ export function creatingSmeta() {
   }
 
   focusInputItem(idItem);
-  handelKetDonw();
+  handelKeyDown();
 
   showTooltipSmeta();
 }
@@ -113,7 +113,7 @@ export function creatingStages(idSmeta) {
                             <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
 
                             <div class="accordion__header-content">
-                              <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)'><input  data  placeholder="Введите текст" type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+                              <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)'><input  type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
                               <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idItem}')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
@@ -159,7 +159,7 @@ export function creatingStages(idSmeta) {
   });
 
   focusInputItem(idItem);
-  handelKetDonw();
+  handelKeyDown();
 }
 
 export function creatingPosition(idStage) {
@@ -177,15 +177,17 @@ export function creatingPosition(idStage) {
         <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
       </label></div>
     <div>${++numerItem}</div>
-    <div onclick='editTextInput(event)'></div>
-    <div class="list-accordion__name" onclick='editTextInput(event)'></div>
-    <div onclick='editTextInput(event)'></div>
-    <div onclick='editTextInput(event)'></div>
-    <div onclick='editTextInput(event)'></div>
+    <div></div>
+    <div class="list-accordion__name" onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div></div>
     <div><button type="button" class="btn-del-small" onclick="deleteItem('${idItem}')" ></button></div>
   </li>`
   );
+
+  handelKeyDown();
 }
 
 export function deleteSelectedItems() {
@@ -264,17 +266,17 @@ function createInputEdit(parent) {
 
   parent.insertAdjacentHTML(
     "beforeend",
-    `<input type="text" onblur="saveTextInput(event)" placeholder="Введите текст"   data-edit-input value="${parentText}"  class="input-default">`
+    `<input type="text" onblur="saveTextInput(event)"   data-edit-input value="${parentText}"  class="input-default">`
   );
 
   if (document.querySelector(".accordion__name")) {
     parent.children[0].focus();
   }
 
-  handelKetDonw();
+  handelKeyDown();
 }
 
-function handelKetDonw() {
+function handelKeyDown() {
   const inputs = document.querySelectorAll("[data-edit-input]");
   inputs.forEach((input) => {
     input.addEventListener("keydown", (e) => {
@@ -310,7 +312,7 @@ function findMaxNumber(parentSmeta) {
 
   return max;
 }
-
+// ! поменять название фукции
 function itearaorNumber() {
   const list = document.querySelectorAll(".list-accordion__body li");
   let numberItem = 0;

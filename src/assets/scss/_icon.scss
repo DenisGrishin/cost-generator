@@ -12,7 +12,10 @@
 		._icon-imp-data,
 		._icon-plus,
 		._icon-template,
-		._icon-user
+		._icon-user,
+		._icon-file,
+		._icon-clipboard,
+		._icon-image
 	) {
 	&::before {
 		content: "";
@@ -29,7 +32,10 @@
 		._icon-folder,
 		._icon-plus,
 		._icon-template,
-		._icon-user
+		._icon-user,
+		._icon-file,
+		._icon-clipboard,
+		._icon-image
 	) {
 	&::before {
 		margin-right: 8px;
@@ -111,7 +117,21 @@
 		background-image: url("../img/icons/iconTemplate.svg");
 	}
 }
-
+._icon-file {
+	&::before {
+		background-image: url("../img/icons/iconFile.svg");
+	}
+}
+._icon-clipboard {
+	&::before {
+		background-image: url("../img/icons/iconClipboard.svg");
+	}
+}
+._icon-image {
+	&::before {
+		background-image: url("../img/icons/iconImage.svg");
+	}
+}
 ._icon-arrow-back {
 	margin-right: 8px;
 	&::before {
@@ -137,6 +157,7 @@
 		transform: translate(0px, 0px);
 	}
 }
+
 ._icon-user {
 	&::before {
 		background: url("../img/icons/iconUser.svg") 0 0 no-repeat;
