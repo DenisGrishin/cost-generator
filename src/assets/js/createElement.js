@@ -58,7 +58,7 @@ export function creatingSmeta() {
     <div class="todo-list__footer footer-list">
       <button type="button" class="butt-plus" onclick="creatingStages('${idItem}')" data-create-stage><span>Этап
           работ</span></button>
-      <span class="footer-list__sum">Итого по смете: 0 р.</span>
+      <span class="footer-list__sum">Итого по смете: <span data-sum-id="${idItem}">0</span> р.</span>
     </div>
     <div class="mt-3">
       <label class="very-small-title"> Комментарий</label>
@@ -133,26 +133,14 @@ export function creatingStages(idSmeta) {
                               </li>
                               <li class="list-accordion__body">
                                 <ul class="todo-list" data-position data-widget="todo-list">
-                               <li class="list-accordion__item" data-item-id="id-wdsa7x0fvm64msiq3">
-    <div class="handle _icon-darag"></div>
-    <div><label class="checkbox">
-        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
-      </label></div>
-    <div>1</div>
-    <div></div>
-    <div class="list-accordion__name" onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
-    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
-    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
-    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
-    <div></div>
-    <div><button type="button" class="btn-del-small" onclick="deleteItem('id-wdsa7x0fvm64msiq3')"></button></div>
-  </li>
+        
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
                                 <button type="button" class="butt-plus" onclick="creatingPosition('${idItem}')"
                                   data-create-position><span>Позиция</span></button>
-                                <span class="footer-list__sum">Итого: 0 р.</span>
+                                <span class="footer-list__sum">Итого:<span
+																		data-sum-id="${idItem}">0</span> р.</span>
                               </li>
                             </ul>
                           </div>
@@ -353,18 +341,20 @@ function createIterationNumber() {
 }
 
 function sumItemPosition(selectorDiv) {
-  const parent = selectorDiv.parentElement;
+  const positionLi = selectorDiv.parentElement;
 
-  const qty = parent.querySelector("[data-qty-position]");
-  const price = parent.querySelector("[data-price-position]");
-  const sum = parent.querySelector("[data-sum-position]");
+  const stageLi = selectorDiv.parentElement.closest(".todo-list__item");
+
+  const qty = positionLi.querySelector("[data-qty-position]");
+  const price = positionLi.querySelector("[data-price-position]");
+  const sum = positionLi.querySelector("[data-sum-position]");
   const input = selectorDiv.querySelector("input[data-edit-input]");
 
   if (input && typeof input.dataset.number !== "undefined") {
     input.addEventListener("blur", (e) => {
       if (qty.innerText === "" || price.innerText === "") {
         sum.innerText = 0;
-        sumItemStage();
+        sumStage(stageLi);
         return;
       }
 
@@ -376,7 +366,7 @@ function sumItemPosition(selectorDiv) {
           ).toFixed(2)
         );
 
-        sumItemStage();
+        sumStage(stageLi);
       }
     });
 
@@ -392,19 +382,39 @@ function formatterIntl(number) {
   return formatted.replace(",", ".");
 }
 
-function sumItemStage() {
-  const selectorSum = document.querySelector("[data-sum-id]");
+function sumStage(stageLi) {
+  const selectorSumStage = stageLi.querySelector("[data-sum-id]");
   let sum = 0;
 
-  if (selectorSum.dataset.sumId) {
+  if (selectorSumStage.dataset.sumId) {
     const sumPositions = document.querySelectorAll(
-      `[data-item-id="${selectorSum.dataset.sumId}"] .list-accordion__item [data-sum-position]`
+      `[data-item-id="${selectorSumStage.dataset.sumId}"] .list-accordion__item [data-sum-position]`
     );
 
     sumPositions.forEach((element) => {
       sum = sum + Number(element.innerText.replace(/\s+/g, ""));
     });
 
-    selectorSum.innerText = formatterIntl(sum);
+    selectorSumStage.innerText = formatterIntl(sum);
+    sumSmeta(stageLi);
   }
+}
+
+function sumSmeta(stageLi) {
+  const listSelectorSmeta = stageLi.closest("[data-smeta]");
+
+  const selectorLiSmeta =
+    listSelectorSmeta.querySelectorAll("[data-smeta] > li");
+
+  selectorLiSmeta.forEach((smeta) => {
+    const sumStage = smeta.querySelectorAll("[data-stages] > li [data-sum-id]");
+
+    let sum = 0;
+    sumStage.forEach((element) => {
+      sum += Number(element.innerText.replace(/\s+/g, ""));
+    });
+
+    smeta.querySelector(".todo-list__footer [data-sum-id]").innerText =
+      formatterIntl(sum);
+  });
 }
