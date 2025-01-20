@@ -372,20 +372,12 @@ function sumItemPosition(selectorDiv) {
     });
 
     input.addEventListener("input", (e) => {
-      let value = e.target.value;
-
-      input.value = validateNumber(value);
+      input.value = input.value.replace(/[^0-9.]/g, "");
     });
   }
 }
 
-function validateNumber(inputValue) {
-  const isValid = /^\d*\.?\d*$/.test(inputValue);
-  return isValid ? inputValue : inputValue.slice(0, -1);
-}
-
 function formatterIntl(number) {
   let formatter = new Intl.NumberFormat("ru");
-
   return formatter.format(number);
 }
