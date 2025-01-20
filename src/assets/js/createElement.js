@@ -193,7 +193,7 @@ export function creatingPosition(idStage) {
     <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextInput(event)'data-qty-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextInput(event)' data-price-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div data-sum-position></div>
+    <div data-sum-position>0</div>
     <div><button type="button" class="btn-del-small" onclick="deleteItem('${idItem}')" ></button></div>
   </li>`
   );
@@ -246,7 +246,8 @@ export function saveTextInput(event) {
   const parent = target.parentElement;
 
   if (value) {
-    parent.innerText = formatterIntl(value);
+    parent.innerText =
+      String(Number(value)) === value ? formatterIntl(value) : value;
     target.remove();
   }
 }
@@ -361,6 +362,12 @@ function sumItemPosition(selectorDiv) {
 
   if (input && typeof input.dataset.number !== "undefined") {
     input.addEventListener("blur", (e) => {
+      if (qty.innerText === "" || price.innerText === "") {
+        sum.innerText = 0;
+        sumItemStage();
+        return;
+      }
+
       if (qty.innerText && price.innerText) {
         sum.innerText = formatterIntl(
           (
@@ -368,6 +375,8 @@ function sumItemPosition(selectorDiv) {
             Number(price.innerText.replace(/\s+/g, ""))
           ).toFixed(2)
         );
+
+        sumItemStage();
       }
     });
 
@@ -378,6 +387,24 @@ function sumItemPosition(selectorDiv) {
 }
 
 function formatterIntl(number) {
-  let formatter = new Intl.NumberFormat("ru");
-  return formatter.format(number);
+  const formatted = new Intl.NumberFormat("ru").format(number);
+
+  return formatted.replace(",", ".");
+}
+
+function sumItemStage() {
+  const selectorSum = document.querySelector("[data-sum-id]");
+  let sum = 0;
+
+  if (selectorSum.dataset.sumId) {
+    const sumPositions = document.querySelectorAll(
+      `[data-item-id="${selectorSum.dataset.sumId}"] .list-accordion__item [data-sum-position]`
+    );
+
+    sumPositions.forEach((element) => {
+      sum = sum + Number(element.innerText.replace(/\s+/g, ""));
+    });
+
+    selectorSum.innerText = formatterIntl(sum);
+  }
 }
