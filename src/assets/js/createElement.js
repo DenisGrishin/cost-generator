@@ -87,7 +87,7 @@ export function creatingSmeta() {
     });
   }
 
-  focusInputItem(idItem);
+  autoFocusInput(idItem);
   handelKeyDown();
 }
 
@@ -169,7 +169,7 @@ export function creatingStages(idSmeta) {
     handle: ".handle",
   });
 
-  focusInputItem(idItem);
+  autoFocusInput(idItem);
   handelKeyDown();
 }
 
@@ -191,9 +191,9 @@ export function creatingPosition(idStage) {
     <div></div>
     <div class="list-accordion__name" onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div></div>
+    <div onclick='editTextInput(event)'data-qty-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextInput(event)' data-price-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div data-sum-position></div>
     <div><button type="button" class="btn-del-small" onclick="deleteItem('${idItem}')" ></button></div>
   </li>`
   );
@@ -246,27 +246,31 @@ export function saveTextInput(event) {
   const parent = target.parentElement;
 
   if (value) {
-    parent.innerText = value;
+    parent.innerText = formatterIntl(value);
     target.remove();
   }
 }
 
 export function editTextInput(event) {
   let target = event.currentTarget;
+
   if (target.children.length !== 0) {
+    sumItemPosition(target);
     return;
   }
 
   createInputEdit(target);
+  sumItemPosition(target);
 }
 
 function createInputEdit(parent) {
   const parentText = parent.innerText;
   parent.innerText = "";
+  const dataNumbers = Object.keys(parent.dataset)[0] ? "data-number" : "";
 
   parent.insertAdjacentHTML(
     "beforeend",
-    `<input type="text" onblur="saveTextInput(event)"   data-edit-input value="${parentText}"  class="input-default">`
+    `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
   );
 
   if (document.querySelector(".accordion__name")) {
@@ -275,7 +279,7 @@ function createInputEdit(parent) {
 
   handelKeyDown();
 }
-// ! название
+
 export function showBulkActionBar() {
   const checkboxs = document.querySelectorAll('[name="checkbox-smeta"]');
   const tooltipSmeta = document.querySelector(".bulkActionBar");
@@ -312,7 +316,7 @@ function handelKeyDown() {
   });
 }
 
-function focusInputItem(idItem) {
+function autoFocusInput(idItem) {
   if (
     document.querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
   ) {
@@ -345,4 +349,43 @@ function createIterationNumber() {
     const element = list[i];
     element.children[2].innerText = ++numberItem;
   }
+}
+
+function sumItemPosition(selectorDiv) {
+  const parent = selectorDiv.parentElement;
+
+  const qty = parent.querySelector("[data-qty-position]");
+  const price = parent.querySelector("[data-price-position]");
+  const sum = parent.querySelector("[data-sum-position]");
+  const input = selectorDiv.querySelector("input[data-edit-input]");
+
+  if (input && typeof input.dataset.number !== "undefined") {
+    input.addEventListener("blur", (e) => {
+      if (qty.innerText && price.innerText) {
+        sum.innerText = formatterIntl(
+          (
+            Number(qty.innerText.replace(/\s+/g, "")) *
+            Number(price.innerText.replace(/\s+/g, ""))
+          ).toFixed(2)
+        );
+      }
+    });
+
+    input.addEventListener("input", (e) => {
+      let value = e.target.value;
+
+      input.value = validateNumber(value);
+    });
+  }
+}
+
+function validateNumber(inputValue) {
+  const isValid = /^\d*\.?\d*$/.test(inputValue);
+  return isValid ? inputValue : inputValue.slice(0, -1);
+}
+
+function formatterIntl(number) {
+  let formatter = new Intl.NumberFormat("ru");
+
+  return formatter.format(number);
 }
