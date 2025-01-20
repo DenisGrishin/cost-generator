@@ -156,8 +156,8 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item ">Редактировать</button>
+										<button type="button" class="dropdown-item ">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -321,16 +321,13 @@
 				<input type="text" class="input-default" name="комментарий">
 			</div>
 			<div class="tooltip-smeta container-content">
-				<div class="btn-group btn-dropdown ">
-					<button type="button" class="btn btn-success">Экспортировать</button>
-					<button type=" button" class="btn btn-success dropdown-toggle" data-toggle="dropdown"
-						aria-expanded="false">
-
+				<div class="btn-group btn-dropdown  ">
+					<button type="button" class="butt-success dropdown-toggle d-flex align-items-center"
+						data-toggle="dropdown" aria-expanded="false">Экспортировать
 					</button>
-					<div class="dropdown-menu" role="menu">
-						<a class="dropdown-item" href="#">Пустая смета</a>
-						<a class="dropdown-item" href="#">Из шаблона</a>
-
+					<div class="dropdown-menu">
+						<a href="./create-template.html" class="dropdown-item _icon-template">Шаблон</a>
+						<button type="button" class="dropdown-item _icon-folder">Папку</button>
 
 					</div>
 				</div>
@@ -406,7 +403,7 @@
 									class="textarea-default"></textarea></div>
 						</div>
 						<div class="user-info__item">
-							<div class="user-info__label mb-0">Инженер</div>
+							<div class="user-info__label mb-0">Менеджер</div>
 							<div class="user-info__contetn">
 								<select class="list-input__select  select2" multiple="multiple" name="Менеджер">
 									<option></option>

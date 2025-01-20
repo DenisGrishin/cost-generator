@@ -108,12 +108,12 @@
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="./clients.html" class="nav-link font-weight-bold p-2 _icon-client">
+										<a href="./clients.html" class="nav-link _active-page font-weight-bold p-2 _icon-client">
 											<p>Клиенты</p>
 										</a>
 									</li>
 									<li class="nav-item">
-										<a href="templates.html" class="nav-link _active-page font-weight-bold p-2 _icon-pattern">
+										<a href="templates.html" class="nav-link  font-weight-bold p-2 _icon-pattern">
 											<p> Шаблоны</p>
 										</a>
 									</li>
@@ -130,24 +130,27 @@
 			<div class="bc">
 				<ul class="bc__list">
 					<li><a href="#">Клиенты</a></li>
-					<li><a href="#">Павлюшенков Игорь Игнатьевич</a></li>
+					<li>Павлюшенков Игорь Игнатьевич</li>
 				</ul>
 			</div>
 
 
-			<h1 class="big-title">Павлюшенков Игорь Игнатьевич</h1>
-
-			<div class="btn-group btn-dropdown mb-4">
-				<button type="button" class="btn btn-success _icon-plus d-flex align-items-center">Создать</button>
-				<button type=" button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-
-				</button>
-				<div class="dropdown-menu" role="menu">
-					<a href="./create-template.html" class="dropdown-item font-weight-bold _icon-template ">Шаблон</a>
-					<button type="button" class="dropdown-item font-weight-bold _icon-template">Папку</button>
-				</div>
+			<div class="d-flex align-items-center mb-4"><button type="button"
+					class="d-flex align-items-center _icon-arrow-back"></button>
+				<h1 class="big-title mb-0">Павлюшенков Игорь Игнатьевич</h1>
 			</div>
 
+
+			<div class="btn-group btn-dropdown mb-4">
+				<a href="#" class="butt-success dropdown-toggle _icon-plus d-flex align-items-center" data-toggle="dropdown"
+					aria-expanded="false">Создать
+				</a>
+				<div class="dropdown-menu">
+					<button type="button" class="dropdown-item _icon-file">Смету</button>
+					<button type="button" class="dropdown-item _icon-folder">Папку</button>
+					<button type="button" class="dropdown-item _icon-upload-file">Загрузить файл</button>
+				</div>
+			</div>
 			<div class="d-flex" style="column-gap: 24px;">
 				<div class="container-content" style='flex:0 1 66.337%'>
 					<div class="search-items" data-search-items>
@@ -432,10 +435,7 @@
 	<script src="../public/plugins/summernote/summernote-bs4.min.js"></script>
 	<!-- AdminLTE App -->
 	<script src="../dist/js/adminlte.min.js?v=3.2.0"></script>
-	<!-- AdminLTE for demo purposes -->
-	<!-- <script src="./public/dist/js/demo.js"></script> -->
-	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-	<script src="../public/dist/js/pages/dashboard.js"></script>
+
 
 	<script type="module" src="../src/assets/js/main.js"></script>
 

@@ -1,5 +1,6 @@
 import "../scss/index.scss";
 import {
+  checkedInput,
   creatingPosition,
   creatingSmeta,
   creatingStages,
@@ -143,6 +144,8 @@ if (document.querySelector("#example2")) {
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
+// чекбоксы
+window.checkedInput = checkedInput;
 // удаление элементов сметы
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;

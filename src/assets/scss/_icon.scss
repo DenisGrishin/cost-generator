@@ -15,7 +15,8 @@
 		._icon-user,
 		._icon-file,
 		._icon-clipboard,
-		._icon-image
+		._icon-image,
+		._icon-upload-file
 	) {
 	&::before {
 		content: "";
@@ -35,7 +36,8 @@
 		._icon-user,
 		._icon-file,
 		._icon-clipboard,
-		._icon-image
+		._icon-image,
+		._icon-upload-file
 	) {
 	&::before {
 		margin-right: 8px;
@@ -161,6 +163,16 @@
 ._icon-user {
 	&::before {
 		background: url("../img/icons/iconUser.svg") 0 0 no-repeat;
+	}
+}
+._icon-upload-file {
+	&::before {
+		background: url("../img/icons/iconUploadFile.svg") 0 0 no-repeat;
+	}
+}
+._icon-delete {
+	&::before {
+		background: url("../img/icons/IconTrasher.svg") 0 0 no-repeat;
 	}
 }
 ._icon-darag {

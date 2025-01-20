@@ -19,7 +19,7 @@ export function creatingSmeta() {
         <div class="text-left  accordion__header collapsed middle-title">
           <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
           <label class="accordion__checkbox checkbox">
-            <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta">
+            <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
           </label>
           <div class="accordion__header-content">
             <div class="accordion__name" onclick='editTextInput(event)'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
@@ -89,8 +89,6 @@ export function creatingSmeta() {
 
   focusInputItem(idItem);
   handelKeyDown();
-
-  showTooltipSmeta();
 }
 
 export function creatingStages(idSmeta) {
@@ -135,7 +133,20 @@ export function creatingStages(idSmeta) {
                               </li>
                               <li class="list-accordion__body">
                                 <ul class="todo-list" data-position data-widget="todo-list">
-                               
+                               <li class="list-accordion__item" data-item-id="id-wdsa7x0fvm64msiq3">
+    <div class="handle _icon-darag"></div>
+    <div><label class="checkbox">
+        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
+      </label></div>
+    <div>1</div>
+    <div></div>
+    <div class="list-accordion__name" onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
+    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
+    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
+    <div onclick="editTextInput(event)"><input type="text" data-edit-input="" onblur="saveTextInput(event)" class="input-default"></div>
+    <div></div>
+    <div><button type="button" class="btn-del-small" onclick="deleteItem('id-wdsa7x0fvm64msiq3')"></button></div>
+  </li>
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
@@ -174,7 +185,7 @@ export function creatingPosition(idStage) {
     `<li class="list-accordion__item" data-item-id='${idItem}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
+        <input  hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
@@ -204,7 +215,7 @@ export function deleteSelectedItems() {
 
 export function deleteItem(id) {
   document.querySelector(`[data-item-id='${id}']`).remove();
-  itearaorNumber();
+  iterationNumber();
   showTooltipSmeta();
 }
 
@@ -275,6 +286,26 @@ function createInputEdit(parent) {
 
   handelKeyDown();
 }
+// ! название
+export function checkedInput() {
+  const checkboxs = document.querySelectorAll('[name="checkbox-smeta"]');
+  const tooltipSmeta = document.querySelector(".tooltip-smeta");
+
+  let isChecked = false;
+  checkboxs.forEach((checkbox) => {
+    if (checkbox.checked) {
+      isChecked = checkbox.checked;
+    }
+
+    if (!isChecked) {
+      isChecked = checkbox.checked;
+    }
+  });
+
+  isChecked
+    ? tooltipSmeta.classList.add("_show-tooltipSmeta")
+    : tooltipSmeta.classList.remove("_show-tooltipSmeta");
+}
 
 function handelKeyDown() {
   const inputs = document.querySelectorAll("[data-edit-input]");
@@ -313,7 +344,7 @@ function findMaxNumber(parentSmeta) {
   return max;
 }
 // ! поменять название фукции
-function itearaorNumber() {
+function iterationNumber() {
   const list = document.querySelectorAll(".list-accordion__body li");
   let numberItem = 0;
   for (let i = 0; i < list.length; i++) {
