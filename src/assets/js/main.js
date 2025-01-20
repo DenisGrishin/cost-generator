@@ -9,6 +9,7 @@ import {
   editTextInput,
   saveTextInput,
 } from "./createElement";
+import { editPositionPriceList, saveEditPositionPriceList } from "./priceList";
 
 if (document.querySelector(".select2")) {
   $(".select2").select2({
@@ -78,7 +79,11 @@ function searchItems() {
     });
   });
 }
-
+function generateRandomId() {
+  return (
+    "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
+  );
+}
 if (document.querySelector("#example2")) {
   const tabel = $("#example2").DataTable({
     dom: "f",
@@ -88,19 +93,19 @@ if (document.querySelector("#example2")) {
     info: false,
     autoWidth: false,
     responsive: true,
+
     language: {
       search: "",
       zeroRecords: "Совпадений не найдено",
       emptyTable: "Таблица пустая",
       searchPlaceholder: "Поиск",
     },
-    columnDefs: [
-      { orderable: false, targets: [6, 7] }, // Отключить сортировку для 1-го и 3-го столбцов
-    ],
+    // columnDefs: [{ orderable: false, targets: [6, 7] }],
     rowId: function (a) {
       return generateRandomId();
     },
     columnDefs: [
+      { orderable: false, targets: [6, 7] },
       {
         targets: 0, // Первый столбец для нумерации
         orderable: true, // Отключаем сортировку для этого столбца
@@ -109,12 +114,13 @@ if (document.querySelector("#example2")) {
           return meta.row + 1; // Номер строки (индекс + 1)
         },
       },
+      { className: "_edit", targets: 3 },
+      { className: "_edit", targets: 4 },
+      { className: "_edit", targets: 5 },
     ],
   });
 
   function creatingItemPL(idStage) {
-    const idItem = generateRandomId();
-
     tabel.row
       .add([
         "",
@@ -123,7 +129,7 @@ if (document.querySelector("#example2")) {
         "",
         "",
         "",
-        "<td><button type='button' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
+        "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
         "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
       ])
       .draw();
@@ -154,3 +160,7 @@ window.searchItems = searchItems;
 
 window.saveTextInput = saveTextInput;
 window.editTextInput = editTextInput;
+
+// прайс лист
+window.editPositionPriceList = editPositionPriceList;
+window.saveEditPositionPriceList = saveEditPositionPriceList;

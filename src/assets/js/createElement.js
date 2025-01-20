@@ -1,16 +1,10 @@
-function generateRandomId() {
-  return (
-    "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
-  );
-}
 export function creatingSmeta() {
   const listSmeta = document.querySelector("[data-smeta]");
 
-  let idItem = generateRandomId();
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item   d-flex" data-item-id="${idItem}">
+      `  <li class="todo-list__item   d-flex" data-smeta-item>
   <div class="todo-list__wrapper">
     <div class="todo-list__contetn">
       <span class="handle  _icon-darag">
@@ -19,7 +13,7 @@ export function creatingSmeta() {
         <div class="text-left  accordion__header collapsed middle-title">
           <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
           <label class="accordion__checkbox checkbox">
-            <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
+            <input hidden data-chkc-smeta type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
           </label>
           <div class="accordion__header-content">
             <div class="accordion__name" onclick='editTextInput(event)'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
@@ -36,7 +30,7 @@ export function creatingSmeta() {
               </div>
             </div>
             <div class="accordion__del-btn" >
-                  <button type="button" onclick="deleteItem('${idItem}')"  class="btn-del-big"><span>Удалить</span></button>
+                  <button type="button" onclick="deleteItem(event,'data-smeta-item')"  class="btn-del-big"><span>Удалить</span></button>
             </div>
           </div>
         </div>
@@ -56,9 +50,9 @@ export function creatingSmeta() {
       </div>
     </div>
     <div class="todo-list__footer footer-list">
-      <button type="button" class="butt-plus" onclick="creatingStages('${idItem}')" data-create-stage><span>Этап
+      <button type="button" class="butt-plus" onclick="creatingStages(event)" data-create-stage><span>Этап
           работ</span></button>
-      <span class="footer-list__sum">Итого по смете: <span data-sum-id="${idItem}">0</span> р.</span>
+      <span class="footer-list__sum">Итого по смете: <span data-sum>0</span> р.</span>
     </div>
     <div class="mt-3">
       <label class="very-small-title"> Комментарий</label>
@@ -87,20 +81,17 @@ export function creatingSmeta() {
     });
   }
 
-  autoFocusInput(idItem);
+  // autoFocusInput(idItem);
   handelKeyDown();
 }
 
-export function creatingStages(idSmeta) {
-  const parentSmeta = document.querySelector(`[data-item-id='${idSmeta}']`);
+export function creatingStages(event) {
+  const smeta = event.target.closest("[data-smeta-item]");
+  const listStage = smeta.querySelector("[data-stages]");
 
-  const listStages = parentSmeta.querySelector(`[data-stages]`);
-
-  const idItem = generateRandomId();
-
-  listStages.insertAdjacentHTML(
+  listStage.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item p-0 " data-item-id='${idItem}'>
+    `    <li class="todo-list__item p-0 " data-stage-item>
                       <div class="todo-list__contetn">
                         <span class="handle  _icon-darag">
                         </span>
@@ -112,7 +103,7 @@ export function creatingStages(idSmeta) {
 
                             <div class="accordion__header-content">
                               <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)'><input  type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem('${idItem}')" type="button" 
+                              <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem(event,'data-stage-item')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
                           </div>
@@ -121,7 +112,7 @@ export function creatingStages(idSmeta) {
                               <li class=" list-accordion__head">
                                 <div></div>
                                 <div><label class="checkbox">
-                                    <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta">
+                                    <input hidden="" data-chkc-stage type="checkbox" class="checkbox__input" name="checkbox-smeta">
                                   </label></div>
                                 <div>№</div>
                                 <div>Арт.</div>
@@ -137,10 +128,10 @@ export function creatingStages(idSmeta) {
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
-                                <button type="button" class="butt-plus" onclick="creatingPosition('${idItem}')"
+                                <button type="button" class="butt-plus" onclick="creatingPosition(event)"
                                   data-create-position><span>Позиция</span></button>
                                 <span class="footer-list__sum">Итого:<span
-																		data-sum-id="${idItem}">0</span> р.</span>
+																		data-sum>0</span> р.</span>
                               </li>
                             </ul>
                           </div>
@@ -157,23 +148,23 @@ export function creatingStages(idSmeta) {
     handle: ".handle",
   });
 
-  autoFocusInput(idItem);
+  // autoFocusInput(idItem);
   handelKeyDown();
 }
 
-export function creatingPosition(idStage) {
-  const parentSmeta = document.querySelector(`[data-item-id='${idStage}']`);
+export function creatingPosition(event) {
+  const stage = event.target.closest("[data-stage-item]");
 
-  const listPosition = parentSmeta.querySelector("[data-position]");
-  let numerItem = findMaxNumber(parentSmeta);
-  const idItem = generateRandomId();
+  const listPosition = stage.querySelector("[data-position]");
+
+  let numerItem = findMaxNumber(listPosition);
 
   listPosition.insertAdjacentHTML(
     "beforeend",
-    `<li class="list-accordion__item" data-item-id='${idItem}'>
+    `<li class="list-accordion__item" data-position-item>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input  hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
+        <input  hidden="" data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
@@ -182,7 +173,7 @@ export function creatingPosition(idStage) {
     <div onclick='editTextInput(event)'data-qty-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextInput(event)' data-price-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div data-sum-position>0</div>
-    <div><button type="button" class="btn-del-small" onclick="deleteItem('${idItem}')" ></button></div>
+    <div><button type="button" class="btn-del-small" onclick="deleteItem(event,'data-position-item')" ></button></div>
   </li>`
   );
 
@@ -193,16 +184,26 @@ export function deleteSelectedItems() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
   checkboxes.forEach((checkbox) => {
-    if (checkbox.checked && checkbox.closest("[data-item-id]")) {
-      checkbox.closest("[data-item-id]").remove();
+    if (checkbox.checked) {
+      const dataCheck = checkbox.dataset;
+
+      if (Object.keys(dataCheck)[0] === "chkcSmeta") {
+        checkbox.closest("[data-smeta-item]").remove();
+      }
+      if (Object.keys(dataCheck)[0] === "chkcStage") {
+        checkbox.closest("[data-stage-item]").remove();
+      }
+      if (Object.keys(dataCheck)[0] === "chkcPosition") {
+        checkbox.closest("[data-position-item]").remove();
+      }
     }
   });
   showBulkActionBar();
   createIterationNumber();
 }
 
-export function deleteItem(id) {
-  document.querySelector(`[data-item-id='${id}']`).remove();
+export function deleteItem(event, dataSelector) {
+  event.currentTarget.closest(`[${dataSelector}]`).remove();
   createIterationNumber();
   showBulkActionBar();
 }
@@ -305,15 +306,15 @@ function handelKeyDown() {
   });
 }
 
-function autoFocusInput(idItem) {
-  if (
-    document.querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
-  ) {
-    document
-      .querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
-      .focus();
-  }
-}
+// function autoFocusInput(idItem) {
+//   if (
+//     document.querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
+//   ) {
+//     document
+//       .querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
+//       .focus();
+//   }
+// }
 function findMaxNumber(parentSmeta) {
   const li = parentSmeta.querySelectorAll(`.list-accordion__body li`);
   let max = 0;
@@ -330,7 +331,6 @@ function findMaxNumber(parentSmeta) {
 
   return max;
 }
-
 function createIterationNumber() {
   const list = document.querySelectorAll(".list-accordion__body li");
   let numberItem = 0;
@@ -383,21 +383,19 @@ function formatterIntl(number) {
 }
 
 function sumStage(stageLi) {
-  const selectorSumStage = stageLi.querySelector("[data-sum-id]");
+  const selectorSumStage = stageLi.querySelector("[data-sum]");
   let sum = 0;
 
-  if (selectorSumStage.dataset.sumId) {
-    const sumPositions = document.querySelectorAll(
-      `[data-item-id="${selectorSumStage.dataset.sumId}"] .list-accordion__item [data-sum-position]`
-    );
+  const sumlistPosition = stageLi.querySelectorAll(
+    `[data-position] > li [data-sum-position]`
+  );
 
-    sumPositions.forEach((element) => {
-      sum = sum + Number(element.innerText.replace(/\s+/g, ""));
-    });
+  sumlistPosition.forEach((element) => {
+    sum = sum + Number(element.innerText.replace(/\s+/g, ""));
+  });
 
-    selectorSumStage.innerText = formatterIntl(sum);
-    sumSmeta(stageLi);
-  }
+  selectorSumStage.innerText = formatterIntl(sum);
+  sumSmeta(stageLi);
 }
 
 function sumSmeta(stageLi) {
@@ -407,14 +405,14 @@ function sumSmeta(stageLi) {
     listSelectorSmeta.querySelectorAll("[data-smeta] > li");
 
   selectorLiSmeta.forEach((smeta) => {
-    const sumStage = smeta.querySelectorAll("[data-stages] > li [data-sum-id]");
+    const sumStage = smeta.querySelectorAll("[data-stages] > li [data-sum]");
 
     let sum = 0;
     sumStage.forEach((element) => {
       sum += Number(element.innerText.replace(/\s+/g, ""));
     });
 
-    smeta.querySelector(".todo-list__footer [data-sum-id]").innerText =
+    smeta.querySelector(".todo-list__footer [data-sum]").innerText =
       formatterIntl(sum);
   });
 }
