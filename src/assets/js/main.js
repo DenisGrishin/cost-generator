@@ -1,6 +1,6 @@
 import "../scss/index.scss";
 import {
-  checkedInput,
+  showBulkActionBar,
   creatingPosition,
   creatingSmeta,
   creatingStages,
@@ -145,7 +145,7 @@ window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
 // чекбоксы
-window.checkedInput = checkedInput;
+window.showBulkActionBar = showBulkActionBar;
 // удаление элементов сметы
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;

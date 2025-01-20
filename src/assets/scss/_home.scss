@@ -236,9 +236,10 @@ li.todo-list {
 		font-weight: 700;
 	}
 }
-.tooltip-smeta {
+.bulkActionBar {
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	column-gap: 16px;
 	position: fixed;
 	bottom: 0;
@@ -255,6 +256,6 @@ li.todo-list {
 		visibility: visible;
 	}
 }
-.tooltip-margin-bottom {
+.bulkActionBar-bottom {
 	margin-bottom: 70px;
 }

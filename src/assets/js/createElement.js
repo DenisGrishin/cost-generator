@@ -19,7 +19,7 @@ export function creatingSmeta() {
         <div class="text-left  accordion__header collapsed middle-title">
           <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
           <label class="accordion__checkbox checkbox">
-            <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
+            <input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
           </label>
           <div class="accordion__header-content">
             <div class="accordion__name" onclick='editTextInput(event)'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
@@ -136,7 +136,7 @@ export function creatingStages(idSmeta) {
                                <li class="list-accordion__item" data-item-id="id-wdsa7x0fvm64msiq3">
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
+        <input hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
       </label></div>
     <div>1</div>
     <div></div>
@@ -185,7 +185,7 @@ export function creatingPosition(idStage) {
     `<li class="list-accordion__item" data-item-id='${idItem}'>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input  hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="checkedInput()">
+        <input  hidden="" type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
@@ -209,25 +209,14 @@ export function deleteSelectedItems() {
       checkbox.closest("[data-item-id]").remove();
     }
   });
-
-  showTooltipSmeta();
+  showBulkActionBar();
+  createIterationNumber();
 }
 
 export function deleteItem(id) {
   document.querySelector(`[data-item-id='${id}']`).remove();
-  iterationNumber();
-  showTooltipSmeta();
-}
-
-function showTooltipSmeta() {
-  const listSmeta = document.querySelector("[data-smeta]");
-  const tooltipSmeta = document.querySelector(".tooltip-smeta");
-
-  if (listSmeta.children.length !== 0) {
-    tooltipSmeta.classList.add("_show-tooltipSmeta");
-  } else {
-    tooltipSmeta.classList.remove("_show-tooltipSmeta");
-  }
+  createIterationNumber();
+  showBulkActionBar();
 }
 
 export function searchItems() {
@@ -287,20 +276,25 @@ function createInputEdit(parent) {
   handelKeyDown();
 }
 // ! название
-export function checkedInput() {
+export function showBulkActionBar() {
   const checkboxs = document.querySelectorAll('[name="checkbox-smeta"]');
-  const tooltipSmeta = document.querySelector(".tooltip-smeta");
+  const tooltipSmeta = document.querySelector(".bulkActionBar");
+  const selectedCount = document.querySelector("[data-selected-count]");
+
+  let count = 0;
 
   let isChecked = false;
   checkboxs.forEach((checkbox) => {
     if (checkbox.checked) {
-      isChecked = checkbox.checked;
+      ++count;
     }
 
     if (!isChecked) {
       isChecked = checkbox.checked;
     }
   });
+
+  selectedCount.innerText = count;
 
   isChecked
     ? tooltipSmeta.classList.add("_show-tooltipSmeta")
@@ -343,8 +337,8 @@ function findMaxNumber(parentSmeta) {
 
   return max;
 }
-// ! поменять название фукции
-function iterationNumber() {
+
+function createIterationNumber() {
   const list = document.querySelectorAll(".list-accordion__body li");
   let numberItem = 0;
   for (let i = 0; i < list.length; i++) {
