@@ -11,7 +11,12 @@ import {
   chooseAllCheckbox,
   editTextSelect,
 } from "./createElement";
-import { editPositionPriceList, saveEditPositionPriceList } from "./priceList";
+import {
+  collectInputData,
+  editPositionPriceList,
+  saveEditPositionPriceList,
+  validateEmpty,
+} from "./priceList";
 
 if (document.querySelector(".select2")) {
   $(".select2").select2({
@@ -139,32 +144,32 @@ if (document.querySelector("#example2")) {
 
     const itemEdit = createModal.querySelectorAll(".user-info > div");
 
-    const arrData = Array.from(itemEdit).map((element) => {
-      const input = element.querySelector("._edit-input");
+    const arrData = collectInputData(itemEdit);
 
-      return input.value;
-    });
     const obgСategoryClass = {
       Мат: "_mat-category",
       Раб: "_rab-category",
       Мех: "_meh-category",
       Док: "_doc-category",
     };
+    let isError = validateEmpty(itemEdit);
 
-    tabel.row
-      .add([
-        "",
-        `<span class='${obgСategoryClass[arrData[0]]}'>${arrData[0]}</span>`,
-        "",
-        `${arrData[1]}`,
-        `${arrData[2]}`,
-        `${arrData[3]}`,
-        "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
-        "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
-      ])
-      .draw();
+    if (isError) {
+      tabel.row
+        .add([
+          "",
+          `<span class='${obgСategoryClass[arrData[0]]}'>${arrData[0]}</span>`,
+          "",
+          `${arrData[1]}`,
+          `${arrData[2]}`,
+          `${arrData[3]}`,
+          "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
+          "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
+        ])
+        .draw();
 
-    $("#modal-create-position").modal("hide");
+      $("#modal-create-position").modal("hide");
+    }
   }
 
   function deleteItemPL(event) {
@@ -172,10 +177,29 @@ if (document.querySelector("#example2")) {
     tabel.row($(target).parents(target)).remove().draw();
   }
 
+  function clearInputPL() {
+    const createModal = document.getElementById("modal-create-position");
+
+    const itemEdit = createModal.querySelectorAll(".user-info > div");
+
+    itemEdit.forEach((el, indx) => {
+      const input = el.querySelector("._edit-input");
+      if (indx === 0) {
+        $("[name='Категория']").val("").trigger("change");
+      } else if (indx === 2) {
+        $("[name='Единица измерения']").val("-").trigger("change");
+      } else {
+        input.classList.remove("_error");
+
+        input.value = "";
+      }
+    });
+  }
   // создание элементов в прайс-листе
   window.creatingItemPL = creatingItemPL;
   // удаления в прайс-листе
   window.deleteItemPL = deleteItemPL;
+  window.clearInputPL = clearInputPL;
 }
 
 // создание элементов сметы
