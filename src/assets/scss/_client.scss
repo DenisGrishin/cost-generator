@@ -1,5 +1,5 @@
-.user-info {
-	// .user-info__item
+.block-item {
+	// .block-item__item
 
 	&__item {
 		&:not(:last-child) {
@@ -7,16 +7,19 @@
 		}
 	}
 
-	// .user-info__label
+	// .block-item__label
 
 	&__label {
-		font-size: 14px;
+		font-size: 16px;
 		line-height: 1.35;
 		font-weight: 700;
 		margin-bottom: 8px;
+		.modal & {
+			font-size: 16px;
+		}
 	}
 
-	// .user-info__contetn
+	// .block-item__contetn
 
 	&__contetn {
 		display: flex;

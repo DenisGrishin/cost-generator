@@ -142,7 +142,7 @@ if (document.querySelector("#example2")) {
   function creatingItemPL() {
     const createModal = document.getElementById("modal-create-position");
 
-    const itemEdit = createModal.querySelectorAll(".user-info > div");
+    const itemEdit = createModal.querySelectorAll(".block-item > div");
 
     const arrData = collectInputData(itemEdit);
 
@@ -152,9 +152,9 @@ if (document.querySelector("#example2")) {
       Мех: "_meh-category",
       Док: "_doc-category",
     };
-    let isError = validateEmpty(itemEdit);
+    let isValidate = validateEmpty(itemEdit);
 
-    if (isError) {
+    if (isValidate) {
       tabel.row
         .add([
           "",
@@ -180,7 +180,7 @@ if (document.querySelector("#example2")) {
   function clearInputPL() {
     const createModal = document.getElementById("modal-create-position");
 
-    const itemEdit = createModal.querySelectorAll(".user-info > div");
+    const itemEdit = createModal.querySelectorAll(".block-item > div");
 
     itemEdit.forEach((el, indx) => {
       const input = el.querySelector("._edit-input");

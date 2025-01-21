@@ -10,7 +10,7 @@ export function editPositionPriceList(event) {
   const modal = document.querySelector("#modal-edit-position");
   modal.dataset.modalId = tr.id;
 
-  const itemEdit = modal.querySelectorAll(".user-info > div");
+  const itemEdit = modal.querySelectorAll(".block-item > div");
 
   itemEdit.forEach((element, indx) => {
     const input = element.querySelector("._edit-input");
@@ -36,12 +36,12 @@ export function saveEditPositionPriceList(event) {
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
   const modal = target.closest("[data-modal-id]");
   const itemPriceList = document.querySelectorAll(".price-list tbody tr");
-  const itemEdit = modal.querySelectorAll(".user-info > div");
+  const itemEdit = modal.querySelectorAll(".block-item > div");
 
   const arrData = collectInputData(itemEdit);
-  let isError = validateEmpty(itemEdit);
+  let isValidate = validateEmpty(itemEdit);
 
-  if (isError) {
+  if (isValidate) {
     itemPriceList.forEach((item) => {
       if (item.id === modalId) {
         item.querySelectorAll("._edit").forEach((item, indx) => {
@@ -61,39 +61,35 @@ export function saveEditPositionPriceList(event) {
 }
 
 export function validateEmpty(list) {
-  let isError = false;
+  let isValidate = false;
+
+  list.forEach((element) => {
+    const input = element.querySelector("._edit-input");
+    if (!input.value) {
+      input.classList.add("_error");
+    } else {
+      input.classList.remove("_error");
+    }
+  });
 
   for (let i = 0; i < list.length; i++) {
     const element = list[i];
     const input = element.querySelector("._edit-input");
 
-    if (input.className.includes("_error") && input.value) {
-      input.classList.remove("_error");
-      isError = true;
-      continue;
-    }
-
-    if (!input.className.includes("_error")) {
-      isError = true;
+    if (!input.value) {
+      isValidate = false;
       break;
     }
 
-    if (input.className.includes("_error")) {
-      isError = false;
-      break;
-    }
+    isValidate = true;
   }
 
-  return isError;
+  return isValidate;
 }
 
 export function collectInputData(list) {
   return Array.from(list).map((element) => {
     const input = element.querySelector("._edit-input");
-
-    if (!input.value) {
-      input.classList.add("_error");
-    }
     return input.value;
   });
 }
