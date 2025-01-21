@@ -193,7 +193,7 @@
               <td>метры</td>
               <td>10</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
-                  data-target="#modal-lg" class=" btn-edit"></button></td>
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
               <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
             </tr>
             <tr>
@@ -206,7 +206,7 @@
               <td>метры</td>
               <td>20</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
-                  data-target="#modal-lg" class=" btn-edit"></button></td>
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
               <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
             </tr>
             <tr>
@@ -218,7 +218,7 @@
               <td>метры</td>
               <td>40</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
-                  data-target="#modal-lg" class=" btn-edit"></button></td>
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
               <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
             </tr>
             <tr>
@@ -231,7 +231,7 @@
               <td>метры</td>
               <td>50</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
-                  data-target="#modal-lg" class=" btn-edit"></button></td>
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
               <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
             </tr>
 
@@ -298,7 +298,7 @@
 
   <script type="module" src="../src/assets/js/main.js"></script>
   <!-- Начало Модлаьно окно -->
-  <div class="modal fade" id="modal-lg" data-modal-id style="display: none;" aria-hidden="true">
+  <div class="modal fade" id="modal-edit-position" data-modal-id style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-custom">
         <div class="modal-custom__content">
@@ -306,38 +306,41 @@
           <div class="user-info">
             <div class="user-info__item">
               <div class="user-info__label">Категория:</div>
-              <select class="list-input__select  select2 select2-defualt _edit-blcok" name="Категория">
-                <option value=""></option>
-                <option value="Мат">Мат</option>
-                <option value="Раб">Раб</option>
-                <option value="Мех">Мех</option>
-                <option value="Док">Док</option>
-              </select>
+              <div class="select2_category">
+                <select class="list-input__select  select2  select2-defualt _edit-input " name="Категория">
+                  <option value=""></option>
+                  <option value="Мат">Мат</option>
+                  <option value="Раб">Раб</option>
+                  <option value="Мех">Мех</option>
+                  <option value="Док">Док</option>
+                </select>
+              </div>
             </div>
 
             <div class="user-info__item">
               <div class="user-info__label">Имя позиции:</div>
               <div class="user-info__contetn"><input autocomplete="off" type="text" name="Имя позиции"
-                  data-error="Ошибка" placeholder="Введите имя позиции" class="input-default _edit-blcok"></div>
+                  data-error="Ошибка" placeholder="Введите имя позиции" class="input-default _edit-input"></div>
             </div>
             <div class="user-info__item">
               <div class="user-info__label">Единица измерения:</div>
               <div class="user-info__contetn">
-                <!-- <input autocomplete="off" type="text" name="Единица измерения"
-                  data-error="Ошибка" placeholder="Введите ед. изм." class="input-default"> -->
-                <select class="list-input__select  select2 select2-defualt _edit-blcok" name="Единица измерения">
+
+
+                <select class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
                   <option value=""></option>
                   <option value="метры"> метры</option>
                   <option value="штуки">штуки</option>
                   <option value="комплекты">комплекты</option>
                 </select>
+
               </div>
             </div>
             <div class="user-info__item">
               <div class="user-info__label">Цена:</div>
               <div class="user-info__contetn">
                 <input autocomplete="off" type="text" name="Цена" data-error="Ошибка" placeholder="Введите цену"
-                  class="input-default _edit-blcok">
+                  class="input-default _edit-input">
               </div>
             </div>
 
@@ -345,8 +348,7 @@
           </div>
           <div class="d-flex mt-5 justify-content-between modal-custom__footer">
             <button type="button" data-dismiss="modal" class="butt">Отмена</button>
-            <button type="button" onclick="saveEditPositionPriceList(event)" data-dismiss="modal"
-              class="butt-success ">Сохранить</button>
+            <button type="button" onclick="saveEditPositionPriceList(event)" class="butt-success ">Сохранить</button>
           </div>
         </div>
       </div>

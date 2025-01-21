@@ -49,6 +49,9 @@
 		background-color: var(--bg);
 		border-radius: 8px;
 	}
+	&._error + .select2-container .select2-selection {
+		border-bottom: 1px solid var(--c-red) !important;
+	}
 }
 
 .select2-results__option--highlighted {
@@ -421,8 +424,11 @@
 		outline: none;
 		border-bottom-color: var(--c-black);
 	}
-	&_error {
+	&._error {
 		border-bottom: 1px solid var(--c-red);
+		&::placeholder {
+			color: var(--c-red);
+		}
 	}
 }
 

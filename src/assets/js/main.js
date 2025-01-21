@@ -137,12 +137,12 @@ if (document.querySelector("#example2")) {
     tabel.row
       .add([
         "",
-        "<span class='_mat-category'>Мат</span>",
         "",
         "",
         "",
         "",
-        "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-lg' class='btn-edit'></button></td>",
+        "",
+        "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
         "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
       ])
       .draw();
