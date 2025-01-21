@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Vite App</title>
+	<!-- Google Font: Source Sans Pro -->
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="../plugins/fontawesome-free/css/all.min.css">
+	<!-- Ionicons -->
+	<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+	<!-- Tempusdominus Bootstrap 4 -->
+	<link rel="stylesheet" href="../plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+	<!-- Select2 -->
+	<link rel="stylesheet" href="../plugins/select2/css/select2.min.css">
+	<link rel="stylesheet" href="../plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+	<!-- iCheck -->
+	<link rel="stylesheet" href="../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+	<!-- JQVMap -->
+	<link rel="stylesheet" href="../plugins/jqvmap/jqvmap.min.css">
+	<!-- Theme style -->
+	<link rel="stylesheet" href="../public/dist/css/adminlte.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="../plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	<!-- Daterange picker -->
+	<link rel="stylesheet" href="../plugins/daterangepicker/daterangepicker.css">
+	<!-- summernote -->
+	<link rel="stylesheet" href="../public//plugins/summernote/summernote-bs4.min.css">
+</head>
+
+<body class="sidebar-mini layout-fixed">
+
+
+
+	<div class="wrapper">
+
+		<!-- Начала главгый сайдбар -->
+		<aside class="main-sidebar sidebar-no-expand">
+
+
+			<!-- Sidebar -->
+			<div
+				class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
+				<div class="os-resize-observer-host observed">
+					<div class="os-resize-observer"></div>
+				</div>
+
+				<div class="os-padding">
+					<div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
+						<div class="os-content px-3">
+							<a class=" mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu" href="#" role="button"></a>
+							<!-- Sidebar user (optional) -->
+							<div class="user-panel mt-4  mb-4 d-flex align-items-center">
+								<div class="image">
+									<img src="../src/assets/img/avatar.png" class="img-rounded " alt="User Image">
+								</div>
+								<div class="info d-flex align-items-center">
+									<a href="#" class="d-block ">Мой профиль</a>
+								</div>
+							</div>
+
+							<!-- SidebarSearch Form -->
+							<div class="form-inline">
+								<div class="input-group" data-widget="sidebar-search">
+									<input class="form-control form-control-sidebar" type="search" placeholder="Поиск"
+										aria-label="Search">
+									<div class="input-group-append">
+										<button class="btn btn-sidebar _icon-search">
+
+										</button>
+									</div>
+								</div>
+								<div class="sidebar-search-results">
+									<div class="list-group"><a href="#" class="list-group-item">
+											<div class="search-title"><strong class="text-light"></strong>N<strong
+													class="text-light"></strong>o<strong class="text-light"></strong> <strong
+													class="text-light"></strong>e<strong class="text-light"></strong>l<strong
+													class="text-light"></strong>e<strong class="text-light"></strong>m<strong
+													class="text-light"></strong>e<strong class="text-light"></strong>n<strong
+													class="text-light"></strong>t<strong class="text-light"></strong> <strong
+													class="text-light"></strong>f<strong class="text-light"></strong>o<strong
+													class="text-light"></strong>u<strong class="text-light"></strong>n<strong
+													class="text-light"></strong>d<strong class="text-light"></strong>!<strong
+													class="text-light"></strong></div>
+											<div class="search-path"></div>
+										</a></div>
+								</div>
+							</div>
+
+							<nav class="mt-4">
+								<ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
+									data-accordion="false">
+
+
+									<li class="nav-item">
+										<a href="../index.html" class="nav-link p-2  font-weight-bold _icon-dashboard">
+											<p>Дашборд</p>
+										</a>
+
+									</li>
+									<li class="nav-item">
+										<a href="./price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
+											<p> Прайс-лист</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./clients.html" class="nav-link font-weight-bold p-2 _icon-client">
+											<p>Клиенты</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="templates.html" class="nav-link _active-page font-weight-bold p-2 _icon-pattern">
+											<p> Шаблоны</p>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<!-- Конец главгый сайдбар -->
+
+		<div class="content-wrapper p-4 tooltip-margin-bottom">
+			<div class="bc">
+				<ul class="bc__list">
+					<li><a href="#">Шаблоны</a></li>
+					<li><a href="#">Септики</a></li>
+					<li><a href="#">По количеству человек</a></li>
+				</ul>
+			</div>
+
+
+			<div class="d-flex align-items-center mb-4">
+				<button type="button" class="d-flex align-items-center _icon-arrow-back"></button>
+				<h1 class="big-title mb-0">По количеству человек</h1>
+			</div>
+
+
+			<div class="btn-group btn-dropdown mb-4">
+				<button type="button" class="butt-success dropdown-toggle _icon-plus d-flex align-items-center"
+					data-toggle="dropdown" aria-expanded="false">Создать
+				</button>
+				<div class="dropdown-menu">
+					<a href="./create-template.html" class="dropdown-item _icon-template">Шаблон</a>
+					<button type="button" class="dropdown-item _icon-folder">Папку</button>
+
+				</div>
+			</div>
+			<div class="container-content">
+				<div class="search-items" data-search-items>
+					<div class="search-items__input _icon-search mb-3">
+						<input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
+					</div>
+
+					<ul class="search-items__list ">
+						<li class="search-items__item  _icon-template ">
+							<span class="flex-fill "> Септики</span> <span>12.12.2024</span>
+							<div class="search-items__btn-dropdown dropdown-search">
+								<button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+								</button>
+								<div class="dropdown-menu " x-placement="bottom-start">
+									<button type="button" class="dropdown-item">Редактировать</button>
+									<button type="button" class="dropdown-item">Удалить</button>
+								</div>
+							</div>
+						</li>
+						<li class="search-items__item  _icon-template ">
+							<span class="flex-fill "> Канализация</span> <span>12.12.2024</span>
+							<div class="search-items__btn-dropdown dropdown-search">
+								<button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+								</button>
+								<div class="dropdown-menu " x-placement="bottom-start">
+									<button type="button" class="dropdown-item">Редактировать</button>
+									<button type="button" class="dropdown-item">Удалить</button>
+								</div>
+							</div>
+						</li>
+						<li class="search-items__item  _icon-template ">
+							<span class="flex-fill "> Фундамент</span> <span>12.12.2024</span>
+							<div class="search-items__btn-dropdown dropdown-search">
+								<button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+								</button>
+								<div class="dropdown-menu " x-placement="bottom-start">
+									<button type="button" class="dropdown-item">Редактировать</button>
+									<button type="button" class="dropdown-item">Удалить</button>
+								</div>
+							</div>
+						</li>
+						<li class="search-items__item  _icon-template ">
+							<span class="flex-fill "> Скважины</span> <span>12.12.2024</span>
+							<div class="search-items__btn-dropdown dropdown-search">
+								<button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+								</button>
+								<div class="dropdown-menu " x-placement="bottom-start">
+									<button type="button" class="dropdown-item">Редактировать</button>
+									<button type="button" class="dropdown-item">Удалить</button>
+								</div>
+							</div>
+						</li>
+					</ul>
+
+
+
+				</div>
+
+			</div>
+
+
+
+
+
+		</div>
+
+	</div>
+
+
+	<!-- jQuery -->
+	<script src="../plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="../plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Select2 -->
+	<script src="../plugins/select2/js/select2.full.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="../plugins/jquery-ui/jquery-ui.min.js"></script>
+	<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+	<script>
+		$.widget.bridge('uibutton', $.ui.button)
+	</script>
+	<!-- Bootstrap4 Duallistbox -->
+	<script src="../plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+
+	<script src="../plugins/moment/moment.min.js"></script>
+	<script src="../plugins/inputmask/jquery.inputmask.min.js"></script>
+	<script src="../plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+	<script src="../plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+	<script src="../plugins/bs-stepper/js/bs-stepper.min.js"></script>
+	<!-- JQVMap -->
+	<!-- <script src="./plugins/jqvmap/jquery.vmap.min.js"></script>
+  <script src="./plugins/jqvmap/maps/jquery.vmap.usa.js"></script> -->
+	<!-- jQuery Knob Chart -->
+	<script src="../plugins/jquery-knob/jquery.knob.min.js"></script>
+	<!-- daterangepicker -->
+
+
+	<script src="../plugins/daterangepicker/daterangepicker.js"></script>
+
+	<!-- Tempusdominus Bootstrap 4 -->
+	<!-- overlayScrollbars -->
+	<!-- <script src="./plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js"></script> -->
+
+	<!-- Summernote -->
+	<script src="../plugins/summernote/summernote-bs4.min.js"></script>
+	<!-- AdminLTE App -->
+	<script src="../dist/js/adminlte.min.js?v=3.2.0"></script>
+	<!-- AdminLTE for demo purposes -->
+	<!-- <script src="./public/dist/js/demo.js"></script> -->
+	<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+	<script src="../public/dist/js/pages/dashboard.js"></script>
+
+	<script type="module" src="../src/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

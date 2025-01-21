@@ -1,0 +1,25 @@
+.user-info {
+	// .user-info__item
+
+	&__item {
+		&:not(:last-child) {
+			margin-bottom: 24px;
+		}
+	}
+
+	// .user-info__label
+
+	&__label {
+		font-size: 14px;
+		line-height: 1.35;
+		font-weight: 700;
+		margin-bottom: 8px;
+	}
+
+	// .user-info__contetn
+
+	&__contetn {
+		display: flex;
+		column-gap: 8px;
+	}
+}

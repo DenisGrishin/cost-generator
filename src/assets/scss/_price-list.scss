@@ -116,3 +116,82 @@
 	background-color: var(--bg-doc-category);
 }
 // 2.264151%; /* 24/1060 */
+.select2_category {
+	& .select2 {
+		width: 100%;
+	}
+	& .select2-selection {
+		padding: 0;
+	}
+	& .select2-selection__rendered {
+		display: inline-block;
+		padding-left: 6px !important;
+	}
+}
+.select2-results__options {
+	&[id*="select2-Категория"] {
+		li {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
+
+			line-height: 1.2;
+			height: 28px;
+			border-radius: 4px;
+		}
+		& li:nth-child(1) {
+			background-color: var(--bg-mar-category) !important;
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-mar-category) !important;
+				border-radius: 4px;
+			}
+		}
+		& li:nth-child(2) {
+			background-color: var(--bg-rab-category) !important;
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-rab-category) !important;
+				border-radius: 4px;
+			}
+		}
+		& li:nth-child(3) {
+			background-color: var(--bg-meh-category);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-meh-category) !important;
+				border-radius: 4px;
+			}
+		}
+		& li:nth-child(4) {
+			background-color: var(--bg-doc-category);
+			&.select2-results__option--highlighted {
+				background-color: var(--bg-doc-category) !important;
+				border-radius: 4px;
+			}
+		}
+	}
+}
+
+.select2-selection__rendered[id*="select2-Категория"] {
+	display: inline-block;
+
+	& .select2-selection__clear {
+		display: none;
+	}
+	border-radius: 4px;
+	&[title*="Мат"] {
+		background-color: var(--bg-mar-category) !important;
+	}
+	&[title*="Раб"] {
+		background-color: var(--bg-rab-category) !important;
+	}
+	&[title*="Мех"] {
+		background-color: var(--bg-meh-category) !important;
+	}
+	&[title*="Док"] {
+		background-color: var(--bg-doc-category) !important;
+	}
+}
+.select2-selection__rendered[id*="select2-Единица измерения"] {
+	& .select2-selection__clear {
+		display: none;
+	}
+}
