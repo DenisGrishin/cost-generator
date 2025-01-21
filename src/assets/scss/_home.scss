@@ -178,7 +178,7 @@ li.todo-list {
 	&__head,
 	&__item {
 		display: grid;
-		grid-template-columns: 1.606426% 1.606426% 2.710843% 5.02008% 44.678715% 5.62249% 4.819277% 8.433735% 8.032129% 1.606426%;
+		grid-template-columns: 1.606426% 1.606426% 2.710843% 5.02008% 44.678715% 5.62249% 4.819277% 8.433735% 8.032129% auto;
 		column-gap: 16px;
 		text-wrap: nowrap;
 		background-color: var(--c-white) !important;
@@ -195,6 +195,23 @@ li.todo-list {
 
 		& input {
 			padding: 0;
+		}
+		& div:last-child {
+			display: flex;
+			justify-content: flex-end;
+		}
+
+		& .select2-selection {
+			padding: 0;
+			font-size: 14px;
+		}
+
+		& .select2-selection__rendered {
+			padding: 0;
+		}
+
+		& .select2-container--default .select2-selection--single {
+			height: auto;
 		}
 	}
 	&__head {

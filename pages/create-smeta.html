@@ -324,21 +324,21 @@
 											<label class="accordion__name-select">Статус</label>
 											<div class="select-status">
 												<select class="select2 select2-hidden-accessible" name="Статус" style="width: 100%;"
-													data-select2-id="select-status-" tabindex="-1" aria-hidden="true">
+													tabindex="-1" aria-hidden="true" data-select2-id="93">
 													<option value="Выполнено" class="select-status__completed">Выполнено</option>
 													<option selected="" value="В работе" class="select-status__in-progress"
-														data-select2-id="45">В работе</option>
+														data-select2-id="95">В работе</option>
 													<option value="Отменено" class="select-status__cancelled">Отменено</option>
 													<option value="Отложено" class="select-status__postponed">Отложено</option>
 												</select><span class="select2 select2-container select2-container--default"
-													dir="ltr" data-select2-id="44" style="width: 100%;"><span class="selection"><span
+													dir="ltr" data-select2-id="94" style="width: 100%;"><span class="selection"><span
 															class="select2-selection select2-selection--single" role="combobox"
 															aria-haspopup="true" aria-expanded="false" tabindex="-1"
-															aria-disabled="false" aria-labelledby="select2-Статус-f3-container"><span
-																class="select2-selection__rendered" id="select2-Статус-f3-container"
+															aria-disabled="false" aria-labelledby="select2-Статус-dw-container"><span
+																class="select2-selection__rendered" id="select2-Статус-dw-container"
 																role="textbox" aria-readonly="true" title="В работе"><span
 																	class="select2-selection__clear" title="Remove all items"
-																	data-select2-id="46">×</span>В работе</span><span
+																	data-select2-id="96">×</span>В работе</span><span
 																class="select2-selection__arrow" role="presentation"><b
 																	role="presentation"></b></span></span></span><span
 														class="dropdown-wrapper" aria-hidden="true"></span></span>
@@ -360,7 +360,7 @@
 
 										<li class="todo-list__item p-0 " data-stage-item="">
 											<div class="todo-list__contetn">
-												<span class="handle _icon-darag ui-sortable-handle">
+												<span class="handle _icon-darag">
 												</span>
 												<div class="todo-list__accordion accordion card ">
 													<!-- Начала Позиций  -->
@@ -411,145 +411,21 @@
 																			<input type="text" data-edit-input=""
 																				onblur="saveTextInput(event)" class="input-default">
 																		</div>
-																		<div onclick="editTextInput(event)"><input type="text"
-																				data-edit-input="" onblur="saveTextInput(event)"
-																				class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-qty-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-price-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div data-sum-position="">0</div>
-																		<div><button type="button" class="btn-del-small"
-																				onclick="deleteItem(event,'data-position-item')"></button>
+																		<div onclick="editTextSelect(event)">
+																			<select onblur="saveTextInput(event)"
+																				class="list-input__select select2 select2-defualt _edit-input select2-hidden-accessible"
+																				name="Единица измерения">
+																				<option value="-">-</option>
+																				<option value="сотка">сотка</option>
+																				<option value="м²">м²</option>
+																				<option value="м³">м³</option>
+																				<option value="м.">м.</option>
+																				<option value="усл.">усл.</option>
+																				<option value="ед.">ед.</option>
+																				<option value="п.м.">п.м.</option>
+																				<option value="шт.">шт.</option>
+																			</select>
 																		</div>
-																	</li>
-																	<li class="list-accordion__item" data-position-item="">
-																		<div class="handle _icon-darag"></div>
-																		<div><label class="checkbox">
-																				<input hidden="" data-chkc-position="" type="checkbox"
-																					class="checkbox__input" name="checkbox-smeta"
-																					onchange="showBulkActionBar()">
-																			</label></div>
-																		<div>2</div>
-																		<div></div>
-																		<div class="list-accordion__name" onclick="editTextInput(event)">
-																			<input type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default">
-																		</div>
-																		<div onclick="editTextInput(event)"><input type="text"
-																				data-edit-input="" onblur="saveTextInput(event)"
-																				class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-qty-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-price-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div data-sum-position="">0</div>
-																		<div><button type="button" class="btn-del-small"
-																				onclick="deleteItem(event,'data-position-item')"></button>
-																		</div>
-																	</li>
-																</ul>
-															</li>
-															<li class="list-accordion__footer footer-list">
-																<button type="button" class="butt-plus"
-																	onclick="creatingPosition(event)"
-																	data-create-position=""><span>Позиция</span></button>
-																<span class="footer-list__sum">Итого:<span data-sum="">0</span>
-																	р.</span>
-															</li>
-														</ul>
-													</div>
-													<!-- Конец Позиций -->
-												</div>
-											</div>
-										</li>
-										<li class="todo-list__item p-0 " data-stage-item="">
-											<div class="todo-list__contetn">
-												<span class="handle _icon-darag">
-												</span>
-												<div class="todo-list__accordion accordion card ">
-													<!-- Начала Позиций  -->
-
-													<div class=" text-left accordion__header middle-title">
-														<button type="button" class="accordion__btn" data-animation-speed="0"
-															data-card-widget="collapse"></button>
-
-														<div class="accordion__header-content">
-															<div class="accordion__name very-small-title accordion__name_small-text"
-																onclick="editTextInput(event)"><input type="text" data-edit-input=""
-																	onblur="saveTextInput(event)" class="input-default"></div>
-															<div class="accordion__del-btn accordion__del-btn_small"><button
-																	onclick="deleteItem(event,'data-stage-item')" type="button"
-																	class=" btn-del-small"></button></div>
-														</div>
-													</div>
-													<div class="accordion__body card-body ">
-														<ul class=" accordion__list list-accordion">
-															<li class=" list-accordion__head">
-																<div></div>
-																<div><label class="checkbox">
-																		<input hidden="" type="checkbox" class="checkbox__input"
-																			onchange="chooseAllCheckbox(event)">
-																	</label></div>
-																<div>№</div>
-																<div>Арт.</div>
-																<div>Наименование работ</div>
-																<div>Ед.
-																	изм.</div><span>Кол-во.</span><span>Цена р.</span>
-																<div>Сумма р.</div>
-																<div></div>
-															</li>
-															<li class="list-accordion__body">
-																<ul class="todo-list ui-sortable" data-position=""
-																	data-widget="todo-list">
-
-																	<li class="list-accordion__item" data-position-item="">
-																		<div class="handle _icon-darag"></div>
-																		<div><label class="checkbox">
-																				<input hidden="" data-chkc-position="" type="checkbox"
-																					class="checkbox__input" name="checkbox-smeta"
-																					onchange="showBulkActionBar()">
-																			</label></div>
-																		<div>1</div>
-																		<div></div>
-																		<div class="list-accordion__name" onclick="editTextInput(event)">
-																			<input type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default">
-																		</div>
-																		<div onclick="editTextInput(event)"><input type="text"
-																				data-edit-input="" onblur="saveTextInput(event)"
-																				class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-qty-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div onclick="editTextInput(event)" data-price-position=""><input
-																				data-number="" type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default"></div>
-																		<div data-sum-position="">0</div>
-																		<div><button type="button" class="btn-del-small"
-																				onclick="deleteItem(event,'data-position-item')"></button>
-																		</div>
-																	</li>
-																	<li class="list-accordion__item" data-position-item="">
-																		<div class="handle _icon-darag"></div>
-																		<div><label class="checkbox">
-																				<input hidden="" data-chkc-position="" type="checkbox"
-																					class="checkbox__input" name="checkbox-smeta"
-																					onchange="showBulkActionBar()">
-																			</label></div>
-																		<div>2</div>
-																		<div></div>
-																		<div class="list-accordion__name" onclick="editTextInput(event)">
-																			<input type="text" data-edit-input=""
-																				onblur="saveTextInput(event)" class="input-default">
-																		</div>
-																		<div onclick="editTextInput(event)"><input type="text"
-																				data-edit-input="" onblur="saveTextInput(event)"
-																				class="input-default"></div>
 																		<div onclick="editTextInput(event)" data-qty-position=""><input
 																				data-number="" type="text" data-edit-input=""
 																				onblur="saveTextInput(event)" class="input-default"></div>

@@ -112,7 +112,8 @@ export function creatingStages(event) {
                               <li class=" list-accordion__head">
                                 <div></div>
                                 <div><label class="checkbox">
-                                    <input hidden="" data-chkc-all type="checkbox" class="checkbox__input" name="checkbox-smeta">
+                                    	<input hidden="" onchange="chooseAllCheckbox(event)"
+																			type="checkbox" class="checkbox__input">
                                   </label></div>
                                 <div>№</div>
                                 <div>Арт.</div>
@@ -169,7 +170,19 @@ export function creatingPosition(event) {
     <div>${++numerItem}</div>
     <div></div>
     <div class="list-accordion__name" onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextSelect(event)'>
+                <select onblur="saveTextInput(event)" class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
+                <option value="-">-</option>
+                  <option value="сотка">сотка</option>
+                  <option value="м²">м²</option>
+                  <option value="м³">м³</option>
+                  <option value="м.">м.</option>
+                  <option value="усл.">усл.</option>
+                  <option value="ед.">ед.</option>
+                  <option value="п.м.">п.м.</option>
+                  <option value="шт.">шт.</option>
+                </select>
+                </div>
     <div onclick='editTextInput(event)'data-qty-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextInput(event)' data-price-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div data-sum-position>0</div>
@@ -177,6 +190,7 @@ export function creatingPosition(event) {
   </li>`
   );
 
+  inintSelect2();
   handelKeyDown();
 }
 
@@ -331,10 +345,6 @@ function createInputEdit(parent) {
     `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
   );
 
-  if (document.querySelector(".accordion__name")) {
-    parent.children[0].focus();
-  }
-
   handelKeyDown();
 }
 
@@ -487,4 +497,64 @@ export function chooseAllCheckbox(event) {
   });
 
   showBulkActionBar();
+}
+
+export function editTextSelect(event) {
+  let target = event.currentTarget;
+
+  if (target.children.length !== 0) {
+    sumItemPosition(target);
+    return;
+  }
+
+  createSelectEdit(target);
+}
+function createSelectEdit(parent) {
+  const parentText = parent.innerText;
+
+  parent.innerText = "";
+
+  parent.insertAdjacentHTML(
+    "beforeend",
+    `<select onblur="saveTextInput(event)" value='сотка' class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
+                <option value="-">-</option>
+                  <option value="сотка">сотка</option>
+                  <option value="м²">м²</option>
+                  <option value="м³">м³</option>
+                  <option value="м.">м.</option>
+                  <option value="усл.">усл.</option>
+                  <option value="ед.">ед.</option>
+                  <option value="п.м.">п.м.</option>
+                  <option value="шт.">шт.</option>
+                </select>`
+  );
+  inintSelect2();
+  $("[name='Единица измерения']").val(parentText).trigger("change");
+}
+
+function changeSelected() {
+  // Событие при изменении значения
+  $("[name='Единица измерения']").on("select2:selecting", function (e) {
+    setTimeout(() => {
+      saveTextInput(e);
+    }, 1);
+  });
+}
+changeSelected();
+
+function inintSelect2() {
+  $(".select2").select2({
+    placeholder: "",
+    allowClear: true,
+    width: "resolve",
+    minimumResultsForSearch: Infinity,
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
+    },
+  });
+
+  // Событие при изменении значения
+  changeSelected();
 }

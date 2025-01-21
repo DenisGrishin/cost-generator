@@ -9,6 +9,7 @@ import {
   editTextInput,
   saveTextInput,
   chooseAllCheckbox,
+  editTextSelect,
 } from "./createElement";
 import { editPositionPriceList, saveEditPositionPriceList } from "./priceList";
 
@@ -17,7 +18,6 @@ if (document.querySelector(".select2")) {
     placeholder: "",
     allowClear: true,
     width: "resolve",
-
     language: {
       noResults: function () {
         return "Ничего не найдено";
@@ -164,6 +164,8 @@ if (document.querySelector("#example2")) {
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
+window.editTextSelect = editTextSelect;
+
 // чекбоксы
 window.showBulkActionBar = showBulkActionBar;
 window.chooseAllCheckbox = chooseAllCheckbox;
