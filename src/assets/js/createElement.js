@@ -112,7 +112,7 @@ export function creatingStages(event) {
                               <li class=" list-accordion__head">
                                 <div></div>
                                 <div><label class="checkbox">
-                                    <input hidden="" data-chkc-stage type="checkbox" class="checkbox__input" name="checkbox-smeta">
+                                    <input hidden="" data-chkc-all type="checkbox" class="checkbox__input" name="checkbox-smeta">
                                   </label></div>
                                 <div>№</div>
                                 <div>Арт.</div>
@@ -190,35 +190,9 @@ export function deleteSelectedItems() {
       if (Object.keys(dataCheck)[0] === "chkcSmeta") {
         checkbox.closest("[data-smeta-item]").remove();
       }
-      if (Object.keys(dataCheck)[0] === "chkcStage") {
-        checkbox.closest("[data-stage-item]").remove();
-      }
+
       if (Object.keys(dataCheck)[0] === "chkcPosition") {
-        // let sumPosition = 0;
-        // const dataPositionItem = checkbox.closest("[data-position]");
-        // const stageSum = checkbox
-        //   .closest("[data-stage-item]")
-        //   .querySelector("[data-sum]");
-        // const listPositionItem = dataPositionItem.querySelector(
-        //   "[data-position-item]"
-        // );
-        // const smetaSum = checkbox
-        //   .closest("[data-smeta-item]")
-        //   .querySelector(".todo-list__wrapper > .footer-list  [data-sum]");
-        // debugger;
-        // sumPosition = Number(
-        //   listPositionItem
-        //     .querySelector("[data-sum-position]")
-        //     .innerText.replace(/\s+/g, "")
-        // );
-
-        // stageSum.innerText =
-        //   Number(stageSum.innerText.replace(/\s+/g, "")) - sumPosition;
-
-        // smetaSum.innerText =
-        //   Number(smetaSum.innerText.replace(/\s+/g, "")) - sumPosition;
-
-        chekedSum(checkbox.closest("[data-position-item]"));
+        selectSubtractPosition(checkbox.closest("[data-position-item]"));
         checkbox.closest("[data-position-item]").remove();
       }
     }
@@ -227,7 +201,7 @@ export function deleteSelectedItems() {
   createIterationNumber();
 }
 
-function chekedSum(positionItem) {
+function selectSubtractPosition(positionItem) {
   const dataPositionItem = positionItem;
   const stageSum = positionItem
     .closest("[data-stage-item]")
@@ -500,4 +474,17 @@ function sumSmeta(stageLi) {
     smeta.querySelector(".todo-list__footer [data-sum]").innerText =
       formatterIntl(sum);
   });
+}
+export function chooseAllCheckbox(event) {
+  const target = event.target;
+  const isChecked = event.currentTarget.checked;
+
+  const stageItem = target.closest(".list-accordion");
+  const checkboxs = stageItem.querySelectorAll("[data-chkc-position]");
+
+  checkboxs.forEach((element) => {
+    element.checked = isChecked;
+  });
+
+  showBulkActionBar();
 }

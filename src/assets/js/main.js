@@ -8,6 +8,7 @@ import {
   deleteSelectedItems,
   editTextInput,
   saveTextInput,
+  chooseAllCheckbox,
 } from "./createElement";
 import { editPositionPriceList, saveEditPositionPriceList } from "./priceList";
 
@@ -165,6 +166,8 @@ window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
 // чекбоксы
 window.showBulkActionBar = showBulkActionBar;
+window.chooseAllCheckbox = chooseAllCheckbox;
+
 // удаление элементов сметы
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
