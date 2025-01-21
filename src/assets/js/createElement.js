@@ -345,6 +345,10 @@ function createInputEdit(parent) {
     `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
   );
 
+  if (parent.querySelector("[data-edit-input]")) {
+    parent.querySelector("[data-edit-input]").focus();
+  }
+
   handelKeyDown();
 }
 
