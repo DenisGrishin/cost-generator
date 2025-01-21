@@ -194,12 +194,56 @@ export function deleteSelectedItems() {
         checkbox.closest("[data-stage-item]").remove();
       }
       if (Object.keys(dataCheck)[0] === "chkcPosition") {
+        // let sumPosition = 0;
+        // const dataPositionItem = checkbox.closest("[data-position]");
+        // const stageSum = checkbox
+        //   .closest("[data-stage-item]")
+        //   .querySelector("[data-sum]");
+        // const listPositionItem = dataPositionItem.querySelector(
+        //   "[data-position-item]"
+        // );
+        // const smetaSum = checkbox
+        //   .closest("[data-smeta-item]")
+        //   .querySelector(".todo-list__wrapper > .footer-list  [data-sum]");
+        // debugger;
+        // sumPosition = Number(
+        //   listPositionItem
+        //     .querySelector("[data-sum-position]")
+        //     .innerText.replace(/\s+/g, "")
+        // );
+
+        // stageSum.innerText =
+        //   Number(stageSum.innerText.replace(/\s+/g, "")) - sumPosition;
+
+        // smetaSum.innerText =
+        //   Number(smetaSum.innerText.replace(/\s+/g, "")) - sumPosition;
+
+        chekedSum(checkbox.closest("[data-position-item]"));
         checkbox.closest("[data-position-item]").remove();
       }
     }
   });
   showBulkActionBar();
   createIterationNumber();
+}
+
+function chekedSum(positionItem) {
+  const dataPositionItem = positionItem;
+  const stageSum = positionItem
+    .closest("[data-stage-item]")
+    .querySelector("[data-sum]");
+
+  const smetaSum = positionItem
+    .closest("[data-smeta-item]")
+    .querySelector(".todo-list__wrapper > .footer-list  [data-sum]");
+
+  stageSum.innerText =
+    +stageSum.innerText -
+    dataPositionItem.querySelector("[data-sum-position]").innerText;
+
+  smetaSum.innerText =
+    smetaSum.innerText -
+    dataPositionItem.querySelector("[data-sum-position]").innerText;
 }
 
 export function deleteItem(event, dataSelector) {
@@ -237,6 +281,7 @@ function subtractSmetaSum(selector, currentSum) {
   sum = sum - Number(currentSum.replace(/\s+/g, ""));
   sumSmeta.innerText = formatterIntl(sum);
 }
+
 function subtractStageSum(selector) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumStages = selector.querySelectorAll("[data-sum]");
@@ -355,15 +400,6 @@ function handelKeyDown() {
   });
 }
 
-// function autoFocusInput(idItem) {
-//   if (
-//     document.querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
-//   ) {
-//     document
-//       .querySelector(`[data-item-id='${idItem}'] input[data-edit-input]`)
-//       .focus();
-//   }
-// }
 function findMaxNumber(parentSmeta) {
   const li = parentSmeta.querySelectorAll(`.list-accordion__body li`);
   let max = 0;
