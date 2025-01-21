@@ -14,11 +14,23 @@ export function editPositionPriceList(event) {
   const itemEdit = document.querySelectorAll(".user-info > div");
 
   itemEdit.forEach((element, indx) => {
-    const input = element.querySelector("input");
-    input.value = arrData[indx];
+    const input = element.querySelector("._edit-blcok");
+
+    if (indx === 0) {
+      $("[name='Категория']").val(arrData[indx]).trigger("change");
+    } else if (indx === 2) {
+      $("[name='Единица измерения']").val(arrData[indx]).trigger("change");
+    } else {
+      input.value = arrData[indx];
+    }
   });
 }
-
+const obgСategoryClass = {
+  Мат: "_mat-category",
+  Раб: "_rab-category",
+  Мех: "_meh-category",
+  Док: "_doc-category",
+};
 export function saveEditPositionPriceList(event) {
   const target = event.target;
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
@@ -29,14 +41,20 @@ export function saveEditPositionPriceList(event) {
   const arrData = [];
 
   itemEdit.forEach((element, indx) => {
-    const input = element.querySelector("input");
+    const input = element.querySelector("._edit-blcok");
 
     arrData.push(input.value);
   });
   itemPriceList.forEach((item) => {
     if (item.id === modalId) {
       item.querySelectorAll("._edit").forEach((item, indx) => {
-        item.innerText = arrData[indx];
+        if (indx === 0) {
+          item.innerHTML = `<span class='${obgСategoryClass[arrData[indx]]}'>${
+            arrData[indx]
+          }</span>`;
+        } else {
+          item.innerText = arrData[indx];
+        }
       });
     }
   });

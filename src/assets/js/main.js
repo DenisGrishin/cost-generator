@@ -16,7 +16,6 @@ if (document.querySelector(".select2")) {
     placeholder: "",
     allowClear: true,
     width: "resolve",
-    selectionCssClass: "custom-xxx",
 
     language: {
       noResults: function () {
@@ -25,6 +24,19 @@ if (document.querySelector(".select2")) {
     },
   });
 }
+$(document).ready(function () {
+  $(".select2-defualt").select2({
+    minimumResultsForSearch: Infinity, // Отключаем поиск
+    placeholder: "",
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
+    },
+  });
+});
 
 $("#addColumn").on("click", function () {
   // Динамическое добавление нового столбца
@@ -114,6 +126,7 @@ if (document.querySelector("#example2")) {
           return meta.row + 1; // Номер строки (индекс + 1)
         },
       },
+      { className: "_edit", targets: 1 },
       { className: "_edit", targets: 3 },
       { className: "_edit", targets: 4 },
       { className: "_edit", targets: 5 },
