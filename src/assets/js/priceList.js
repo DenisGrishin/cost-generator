@@ -31,6 +31,7 @@ const obgСategoryClass = {
   Мех: "_meh-category",
   Док: "_doc-category",
 };
+
 export function saveEditPositionPriceList(event) {
   const target = event.target;
   const modalId = target.closest("[data-modal-id]").dataset.modalId;

@@ -203,9 +203,58 @@ export function deleteSelectedItems() {
 }
 
 export function deleteItem(event, dataSelector) {
+  if (dataSelector === "data-stage-item") {
+    subtractStageSum(event.currentTarget.closest(`[${dataSelector}]`));
+  }
+  if (dataSelector === "data-position-item") {
+    subtractPositionSum(event.currentTarget.closest(`[${dataSelector}]`));
+  }
   event.currentTarget.closest(`[${dataSelector}]`).remove();
+
   createIterationNumber();
   showBulkActionBar();
+}
+
+function subtractPositionSum(selector) {
+  const sumPosition = selector.querySelector("[data-sum-position]");
+  const parentStage = selector.closest("[data-stage-item]");
+  const sumStage = parentStage.querySelector(".footer-list  [data-sum]");
+
+  subtractSmetaSum(selector, sumPosition.innerText);
+
+  sumStage.innerText =
+    Number(sumStage.innerText.replace(/\s+/g, "")) -
+    Number(sumPosition.innerText.replace(/\s+/g, ""));
+}
+
+function subtractSmetaSum(selector, currentSum) {
+  const smetaItem = selector.closest("[data-smeta-item]");
+  const sumSmeta = smetaItem.querySelector(
+    ".todo-list__wrapper > .footer-list  [data-sum]"
+  );
+
+  let sum = Number(sumSmeta.innerText.replace(/\s+/g, ""));
+  sum = sum - Number(currentSum.replace(/\s+/g, ""));
+  sumSmeta.innerText = formatterIntl(sum);
+}
+function subtractStageSum(selector) {
+  const smetaItem = selector.closest("[data-smeta-item]");
+  const sumStages = selector.querySelectorAll("[data-sum]");
+  const sumSmeta = smetaItem.querySelector(
+    ".todo-list__wrapper > .footer-list  [data-sum]"
+  );
+
+  const listSumStage = Array.from(sumStages).map((el) => {
+    return Number(el.innerText.replace(/\s+/g, ""));
+  });
+
+  let sum = Number(sumSmeta.innerText.replace(/\s+/g, ""));
+
+  listSumStage.forEach((el) => {
+    sum -= el;
+  });
+
+  sumSmeta.innerText = formatterIntl(sum);
 }
 
 export function searchItems() {
