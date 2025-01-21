@@ -540,7 +540,9 @@ function changeSelected() {
     }, 1);
   });
 }
-changeSelected();
+if (document.querySelector("[data-smeta-item]")) {
+  changeSelected();
+}
 
 function inintSelect2() {
   $(".select2").select2({

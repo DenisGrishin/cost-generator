@@ -134,19 +134,37 @@ if (document.querySelector("#example2")) {
     ],
   });
 
-  function creatingItemPL(idStage) {
+  function creatingItemPL() {
+    const createModal = document.getElementById("modal-create-position");
+
+    const itemEdit = createModal.querySelectorAll(".user-info > div");
+
+    const arrData = Array.from(itemEdit).map((element) => {
+      const input = element.querySelector("._edit-input");
+
+      return input.value;
+    });
+    const obgСategoryClass = {
+      Мат: "_mat-category",
+      Раб: "_rab-category",
+      Мех: "_meh-category",
+      Док: "_doc-category",
+    };
+
     tabel.row
       .add([
         "",
+        `<span class='${obgСategoryClass[arrData[0]]}'>${arrData[0]}</span>`,
         "",
-        "",
-        "",
-        "",
-        "",
+        `${arrData[1]}`,
+        `${arrData[2]}`,
+        `${arrData[3]}`,
         "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
         "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
       ])
       .draw();
+
+    $("#modal-create-position").modal("hide");
   }
 
   function deleteItemPL(event) {

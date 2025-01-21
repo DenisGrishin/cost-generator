@@ -240,7 +240,8 @@
 
         </table>
 
-        <button type="button" class="butt-plus  mt-3" onclick="creatingItemPL()"><span>Позиция</span></button>
+        <button type="button" class="butt-plus  mt-3" data-toggle="modal"
+          data-target="#modal-create-position"><span>Позиция</span></button>
 
       </div>
 
@@ -297,7 +298,73 @@
 
 
   <script type="module" src="../src/assets/js/main.js"></script>
-  <!-- Начало Модлаьно окно -->
+  <!-- Начало  Модлаьно  окно создание -->
+  <div class="modal fade" id="modal-create-position" data-modal-id style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modal-custom">
+        <div class="modal-custom__content">
+          <div class="modal-custom__title middle-title mb-3">Создание позиции</div>
+          <div class="user-info">
+            <div class="user-info__item">
+              <div class="user-info__label">Категория:</div>
+              <div class="select2_category">
+                <select class="list-input__select  select2  select2-defualt _edit-input " name="Категория">
+                  <option value=""></option>
+                  <option value="Мат">Мат</option>
+                  <option value="Раб">Раб</option>
+                  <option value="Мех">Мех</option>
+                  <option value="Док">Док</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="user-info__item">
+              <div class="user-info__label">Имя позиции:</div>
+              <div class="user-info__contetn"><input autocomplete="off" type="text" name="Имя позиции"
+                  data-error="Ошибка" placeholder="Введите имя позиции" class="input-default _edit-input"></div>
+            </div>
+            <div class="user-info__item">
+              <div class="user-info__label">Единица измерения:</div>
+              <div class="user-info__contetn">
+
+
+                <select class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
+                  <option value="-">-</option>
+                  <option value="сотка">сотка</option>
+                  <option value="м²">м²</option>
+                  <option value="м³">м³</option>
+                  <option value="м.">м.</option>
+                  <option value="усл.">усл.</option>
+                  <option value="ед.">ед.</option>
+                  <option value="п.м.">п.м.</option>
+                  <option value="шт.">шт.</option>
+
+                </select>
+
+              </div>
+            </div>
+            <div class="user-info__item">
+              <div class="user-info__label">Цена:</div>
+              <div class="user-info__contetn">
+                <input autocomplete="off" type="text" name="Цена" data-error="Ошибка" placeholder="Введите цену"
+                  class="input-default _edit-input">
+              </div>
+            </div>
+
+
+          </div>
+          <div class="d-flex mt-5 justify-content-between modal-custom__footer">
+            <button type="button" data-dismiss="modal" class="butt">Отмена</button>
+            <button type="button" onclick="creatingItemPL(event)" class="butt-success ">Сохранить</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Конец Модлаьно окно создание-->
+  <!-- Начало  Модлаьно  окно редактирование -->
   <div class="modal fade" id="modal-edit-position" data-modal-id style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-custom">
@@ -362,7 +429,7 @@
     </div>
 
   </div>
-  <!-- Конец Модлаьно окно -->
+  <!-- Конец Модлаьно окно редактирование-->
 </body>
 
 </html>
