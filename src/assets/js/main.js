@@ -1,4 +1,5 @@
 import "../scss/index.scss";
+import { getCurrentDataClient, saveEditClient } from "./clients";
 import {
   showBulkActionBar,
   creatingPosition,
@@ -224,3 +225,6 @@ window.editTextInput = editTextInput;
 // прайс лист
 window.editPositionPriceList = editPositionPriceList;
 window.saveEditPositionPriceList = saveEditPositionPriceList;
+// клиент
+window.getCurrentDataClient = getCurrentDataClient;
+window.saveEditClient = saveEditClient;

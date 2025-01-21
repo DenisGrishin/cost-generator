@@ -88,6 +88,7 @@ export function validateEmpty(list) {
 }
 
 export function collectInputData(list) {
+  debugger;
   return Array.from(list).map((element) => {
     const input = element.querySelector("._edit-input");
     return input.value;
