@@ -13,7 +13,7 @@
 		._icon-plus,
 		._icon-template,
 		._icon-user,
-		._icon-file,
+		._icon-smeta,
 		._icon-clipboard,
 		._icon-image,
 		._icon-upload-file
@@ -34,7 +34,7 @@
 		._icon-plus,
 		._icon-template,
 		._icon-user,
-		._icon-file,
+		._icon-smeta,
 		._icon-clipboard,
 		._icon-image,
 		._icon-upload-file
@@ -119,7 +119,7 @@
 		background-image: url("../img/icons/iconTemplate.svg");
 	}
 }
-._icon-file {
+._icon-smeta {
 	&::before {
 		background-image: url("../img/icons/iconFile.svg");
 	}
@@ -141,6 +141,39 @@
 
 		width: 24px;
 		height: 24px;
+	}
+}
+._icon-arrow-gray {
+	&::before,
+	&::after {
+		content: "";
+		width: 20px;
+		height: 20px;
+		position: absolute;
+		top: 50%;
+		transform: translate(0px, -50%);
+		right: 8px;
+		transition: all 0.3s ease 0s;
+	}
+	&::after {
+		background: url("../img/icons/ArrowBlackRight.svg") 0 0 no-repeat;
+		opacity: 0;
+		visibility: hidden;
+	}
+	&::before {
+		background-image: url(../img/icons/ArrowGreyRight.svg);
+	}
+	@media (any-hover: hover) {
+		&:hover {
+			&::after {
+				opacity: 1;
+				visibility: visible;
+			}
+			&::before {
+				opacity: 0;
+				visibility: hidden;
+			}
+		}
 	}
 }
 ._icon-imp-data {
