@@ -1,3 +1,5 @@
+import { generateRandomId } from "./main";
+
 export function creatingSmeta() {
   const listSmeta = document.querySelector("[data-smeta]");
 
@@ -159,7 +161,7 @@ export function creatingPosition(event) {
   const listPosition = stage.querySelector("[data-position]");
 
   let numerItem = findMaxNumber(listPosition);
-
+  let id = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
     `<li class="list-accordion__item" data-position-item>
@@ -171,7 +173,7 @@ export function creatingPosition(event) {
     <div></div>
     <div class="list-accordion__name" onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
     <div onclick='editTextSelect(event)'>
-                <select onblur="saveTextInput(event)" class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
+                <select onblur="saveTextInput(event)" class="list-input__select   select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
                   <option value="сотка">сотка</option>
                   <option value="м²">м²</option>
@@ -190,7 +192,7 @@ export function creatingPosition(event) {
   </li>`
   );
 
-  inintSelect2();
+  inintSelect2(id);
   handelKeyDown();
 }
 
@@ -524,14 +526,15 @@ export function editTextSelect(event) {
 
   createSelectEdit(target);
 }
+
 function createSelectEdit(parent) {
   const parentText = parent.innerText;
 
   parent.innerText = "";
-
+  const id = generateRandomId();
   parent.insertAdjacentHTML(
     "beforeend",
-    `<select onblur="saveTextInput(event)" value='сотка' class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
+    `<select onblur="saveTextInput(event)" value='сотка'  class="list-input__select  select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
                   <option value="сотка">сотка</option>
                   <option value="м²">м²</option>
@@ -543,13 +546,15 @@ function createSelectEdit(parent) {
                   <option value="шт.">шт.</option>
                 </select>`
   );
-  inintSelect2();
-  $("[name='Единица измерения']").val(parentText).trigger("change");
+  inintSelect2(id);
+  changeSelected(parent.children[0].name);
+  $(`[data-select='${id}']`).val(parentText).trigger("change");
+  parent.dataset.selectId = parent.children[0].name;
 }
 
-function changeSelected() {
+function changeSelected(id) {
   // Событие при изменении значения
-  $("[name='Единица измерения']").on("select2:selecting", function (e) {
+  $(`[data-select='${id}']`).on("select2:selecting", function (e) {
     setTimeout(() => {
       saveTextInput(e);
     }, 1);
@@ -559,7 +564,7 @@ if (document.querySelector("[data-smeta-item]")) {
   changeSelected();
 }
 
-function inintSelect2() {
+function inintSelect2(id) {
   $(".select2").select2({
     placeholder: "",
     allowClear: true,
@@ -571,7 +576,6 @@ function inintSelect2() {
       },
     },
   });
-
   // Событие при изменении значения
-  changeSelected();
+  changeSelected(id);
 }
