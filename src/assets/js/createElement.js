@@ -554,10 +554,8 @@ function createSelectEdit(parent) {
 
 function changeSelected(id) {
   // Событие при изменении значения
-  $(`[data-select='${id}']`).on("select2:selecting", function (e) {
-    setTimeout(() => {
-      saveTextInput(e);
-    }, 1);
+  $(`[data-select='${id}']`).on("select2:close", function (e) {
+    saveTextInput(e);
   });
 }
 if (document.querySelector("[data-smeta-item]")) {
