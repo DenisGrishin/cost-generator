@@ -50,6 +50,8 @@ $("#addColumn").on("click", function () {
 });
 
 //Date range picker
+if (document.querySelector("#reservation")) {
+}
 $("#reservation").daterangepicker({
   singleDatePicker: true,
   autoApply: true,
@@ -103,8 +105,8 @@ export function generateRandomId() {
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
   );
 }
-if (document.querySelector("#example2")) {
-  const tabel = $("#example2").DataTable({
+if (document.querySelector("#tablePriceList")) {
+  const tabel = $("#tablePriceList").DataTable({
     dom: "f",
     paging: false,
     searching: true,
@@ -112,7 +114,6 @@ if (document.querySelector("#example2")) {
     info: false,
     autoWidth: false,
     responsive: true,
-
     language: {
       search: "",
       zeroRecords: "Совпадений не найдено",
