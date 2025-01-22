@@ -225,13 +225,23 @@ function selectSubtractPosition(positionItem) {
     .closest("[data-smeta-item]")
     .querySelector(".todo-list__wrapper > .footer-list  [data-sum]");
 
-  stageSum.innerText =
-    +stageSum.innerText -
-    dataPositionItem.querySelector("[data-sum-position]").innerText;
+  stageSum.innerText = formatterIntl(
+    Number(stageSum.innerText.replace(/\s+/g, "")) -
+      Number(
+        dataPositionItem
+          .querySelector("[data-sum-position]")
+          .innerText.replace(/\s+/g, "")
+      )
+  );
 
-  smetaSum.innerText =
-    smetaSum.innerText -
-    dataPositionItem.querySelector("[data-sum-position]").innerText;
+  smetaSum.innerText = formatterIntl(
+    Number(smetaSum.innerText.replace(/\s+/g, "")) -
+      Number(
+        dataPositionItem
+          .querySelector("[data-sum-position]")
+          .innerText.replace(/\s+/g, "")
+      )
+  );
 }
 
 export function deleteItem(event, dataSelector) {
@@ -254,9 +264,10 @@ function subtractPositionSum(selector) {
 
   subtractSmetaSum(selector, sumPosition.innerText);
 
-  sumStage.innerText =
+  sumStage.innerText = formatterIntl(
     Number(sumStage.innerText.replace(/\s+/g, "")) -
-    Number(sumPosition.innerText.replace(/\s+/g, ""));
+      Number(sumPosition.innerText.replace(/\s+/g, ""))
+  );
 }
 
 function subtractSmetaSum(selector, currentSum) {
