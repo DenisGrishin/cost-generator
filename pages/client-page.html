@@ -385,7 +385,7 @@
 					</div>
 
 					<button type="button" class="butt btn-success" data-toggle="modal" onclick="getCurrentDataClient()"
-						data-target="#modal-edit-client">Редактировать
+						data-target="#modal-client">Редактировать
 						клиента</button>
 				</div>
 
@@ -440,7 +440,7 @@
 
 	<script type="module" src="../src/assets/js/main.js"></script>
 
-	<div class="modal fade" id="modal-edit-client" style="display: none;">
+	<div class="modal fade" id="modal-client" style="display: none;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content modal-custom">
 				<form class="modal-custom__content">
@@ -451,17 +451,17 @@
 						<div class="block-item__item">
 							<div class="block-item__label">Ф.И.О</div>
 							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
-									data-error="Ошибка" placeholder="Введите Ф.И.О" class="input-default _edit-input"></div>
+									placeholder="Введите Ф.И.О" class="input-default _validate _edit-input"></div>
 						</div>
 						<div class="block-item__item">
 							<div class="block-item__label">Адрес</div>
 							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Адрес"
-									data-error="Ошибка" placeholder="Введите Адрес" class="input-default _edit-input"></div>
+									placeholder="Введите Адрес" class="input-default _validate _edit-input"></div>
 						</div>
 						<div class="block-item__item">
 							<div class="block-item__label">Координаты</div>
 							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Координаты"
-									data-error="Ошибка" placeholder="Введите координаты" class="input-default _edit-input"></div>
+									placeholder="Введите координаты" class="input-default _edit-input"></div>
 						</div>
 						<div class="block-item__item">
 							<div class="block-item__label">Комментарии</div>
@@ -494,7 +494,7 @@
 					</div>
 					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
 						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
-						<button type="button" class="butt-success " onclick="saveEditClient()">Создать клиента</button>
+						<button type="button" class="butt-success " onclick="saveEditClient()">Редактировать клиента</button>
 					</div>
 				</form>
 			</div>

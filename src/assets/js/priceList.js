@@ -36,9 +36,10 @@ export function saveEditPositionPriceList(event) {
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
   const modal = target.closest("[data-modal-id]");
   const itemPriceList = document.querySelectorAll(".price-list tbody tr");
-  const itemEdit = modal.querySelectorAll(".block-item > div");
+  const itemEdit = modal.querySelectorAll("._edit-input");
 
   const arrData = collectInputData(itemEdit);
+
   let isValidate = validateEmpty(itemEdit);
 
   if (isValidate) {
@@ -64,19 +65,17 @@ export function validateEmpty(list) {
   let isValidate = false;
 
   list.forEach((element) => {
-    const input = element.querySelector("._edit-input");
-    if (!input.value) {
-      input.classList.add("_error");
+    if (!element.value && element.matches("._validate")) {
+      element.classList.add("_error");
     } else {
-      input.classList.remove("_error");
+      element.classList.remove("_error");
     }
   });
 
   for (let i = 0; i < list.length; i++) {
     const element = list[i];
-    const input = element.querySelector("._edit-input");
 
-    if (!input.value) {
+    if (!element.value && element.matches("._validate")) {
       isValidate = false;
       break;
     }
@@ -88,9 +87,7 @@ export function validateEmpty(list) {
 }
 
 export function collectInputData(list) {
-  debugger;
   return Array.from(list).map((element) => {
-    const input = element.querySelector("._edit-input");
-    return input.value;
+    return element.value;
   });
 }

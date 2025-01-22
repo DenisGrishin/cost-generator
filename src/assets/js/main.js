@@ -143,7 +143,7 @@ if (document.querySelector("#example2")) {
   function creatingItemPL() {
     const createModal = document.getElementById("modal-create-position");
 
-    const itemEdit = createModal.querySelectorAll(".block-item > div");
+    const itemEdit = createModal.querySelectorAll("._edit-input");
 
     const arrData = collectInputData(itemEdit);
 

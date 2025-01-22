@@ -1,9 +1,15 @@
+import { validateEmpty } from "./priceList";
+
 export function getCurrentDataClient() {
   const currentClientData = document.querySelectorAll(
     ".block-item__item .block-item__contetn"
   );
-  const modal = document.querySelector("#modal-edit-client");
-  const editClientData = modal.querySelectorAll("._edit-input");
+  const modal = document.querySelector("#modal-client");
+  const editClientInput = modal.querySelectorAll("._edit-input");
+
+  editClientInput.forEach((element) => {
+    element.classList.remove("_error");
+  });
 
   const collectClient = Array.from(currentClientData).map((el) => {
     if (el.querySelector(".block-item__list")) {
@@ -13,7 +19,7 @@ export function getCurrentDataClient() {
     return el.innerText;
   });
 
-  editClientData.forEach((element, indx) => {
+  editClientInput.forEach((element, indx) => {
     if (element.matches(".select2")) {
       const nameSelect = element.name;
       $(`[name='${nameSelect}']`).val(collectClient[indx]).trigger("change");
@@ -24,7 +30,7 @@ export function getCurrentDataClient() {
 }
 
 export function saveEditClient() {
-  const modal = document.querySelector("#modal-edit-client");
+  const modal = document.querySelector("#modal-client");
   const editClientData = modal.querySelectorAll("._edit-input");
   const currentClientData = document.querySelectorAll(
     "#static .block-item__item .block-item__contetn"
@@ -39,22 +45,25 @@ export function saveEditClient() {
     return el.value;
   });
 
-  currentClientData.forEach((element, indx) => {
-    if (element.querySelector(".block-item__list")) {
-      element.querySelector(".block-item__list").remove();
-      сreatingList(element, collectClient[indx]);
-    } else {
-      element.innerText = collectClient[indx];
-    }
-  });
+  let isValidate = validateEmpty(editClientData);
 
-  $("#modal-edit-client").modal("hide");
+  if (isValidate) {
+    currentClientData.forEach((element, indx) => {
+      if (element.querySelector(".block-item__list")) {
+        element.querySelector(".block-item__list").remove();
+        сreatingList(element, collectClient[indx]);
+      } else {
+        element.innerText = collectClient[indx];
+      }
+    });
+
+    $("#modal-client").modal("hide");
+  }
 }
 
 function сreatingList(element, data) {
   const ul = document.createElement("ul");
   ul.classList.add("block-item__list");
-
   data.forEach((element) => {
     const li = document.createElement("li");
     li.innerText = element;
