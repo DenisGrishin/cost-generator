@@ -18,6 +18,7 @@ import {
   saveEditPositionPriceList,
   validateEmpty,
 } from "./priceList";
+import { changeRole } from "./users";
 
 if (document.querySelector(".select2")) {
   $(".select2").select2({
@@ -52,33 +53,6 @@ $("#addColumn").on("click", function () {
 //Date range picker
 if (document.querySelector("#reservation")) {
 }
-$("#reservation").daterangepicker({
-  singleDatePicker: true,
-  autoApply: true,
-
-  minYear: 1901,
-  maxYear: parseInt(moment().format("YYYY"), 10),
-  locale: {
-    format: "DD.MM.YYYY",
-    separator: " - ",
-    daysOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
-    monthNames: [
-      "Январь",
-      "Февраль",
-      "Март",
-      "Апрель",
-      "Май",
-      "Июнь",
-      "Июль",
-      "Август",
-      "Сентябрь",
-      "Октябрь",
-      "Ноябрь",
-      "Декабрь",
-    ],
-    firstDay: 1,
-  },
-});
 
 function searchItems() {
   const blcok = document.querySelectorAll("[data-search-items]");
@@ -105,42 +79,85 @@ export function generateRandomId() {
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
   );
 }
-if (document.querySelector("#tablePriceList")) {
-  const tabel = $("#tablePriceList").DataTable({
-    dom: "f",
-    paging: false,
-    searching: true,
-    ordering: true,
-    info: false,
-    autoWidth: false,
-    responsive: true,
-    language: {
-      search: "",
-      zeroRecords: "Совпадений не найдено",
-      emptyTable: "Таблица пустая",
-      searchPlaceholder: "Поиск",
-    },
-    // columnDefs: [{ orderable: false, targets: [6, 7] }],
-    rowId: function (a) {
-      return generateRandomId();
-    },
-    columnDefs: [
-      { orderable: false, targets: [6, 7] },
-      {
-        targets: 0, // Первый столбец для нумерации
-        orderable: true, // Отключаем сортировку для этого столбца
-        searchable: false, // Отключаем поиск для этого столбца
-        render: function (data, type, row, meta) {
-          return meta.row + 1; // Номер строки (индекс + 1)
+if (document.querySelector("#tableUser")) {
+  if (!$.fn.DataTable.isDataTable("#tableUser")) {
+    $("#tableUser").DataTable({
+      dom: "f",
+      paging: true,
+      pageLength: 25,
+      searching: true,
+      ordering: true,
+      info: false,
+      autoWidth: false,
+      responsive: true,
+      rowId: function (a) {
+        return generateRandomId();
+      },
+      columnDefs: [
+        { className: "_edit", targets: 0 },
+        { className: "_edit", targets: 2 },
+        { className: "_edit", targets: 3 },
+      ],
+      language: {
+        search: "",
+        zeroRecords: "Совпадений не найдено",
+        emptyTable: "Таблица пустая",
+        searchPlaceholder: "Поиск",
+        paginate: {
+          first: "Первая",
+          previous: " ",
+          next: " ",
+          last: "Последняя",
         },
       },
-      { className: "_edit", targets: 1 },
-      { className: "_edit", targets: 3 },
-      { className: "_edit", targets: 4 },
-      { className: "_edit", targets: 5 },
-    ],
-  });
-
+    });
+  }
+}
+if (document.querySelector("#tablePriceList")) {
+  var tabel;
+  if (!$.fn.DataTable.isDataTable("#tablePriceList")) {
+    tabel = $("#tablePriceList").DataTable({
+      dom: "ftp",
+      paging: true,
+      pageLength: 25,
+      searching: true,
+      ordering: true,
+      info: false,
+      autoWidth: false,
+      responsive: true,
+      language: {
+        search: "",
+        zeroRecords: "Совпадений не найдено",
+        emptyTable: "Таблица пустая",
+        searchPlaceholder: "Поиск",
+        paginate: {
+          first: "Первая",
+          previous: " ",
+          next: " ",
+          last: "Последняя",
+        },
+      },
+      // columnDefs: [{ orderable: false, targets: [6, 7] }],
+      rowId: function (a) {
+        return generateRandomId();
+      },
+      columnDefs: [
+        { orderable: false, targets: [6, 7] },
+        {
+          targets: 0, // Первый столбец для нумерации
+          orderable: true, // Отключаем сортировку для этого столбца
+          searchable: false, // Отключаем поиск для этого столбца
+          render: function (data, type, row, meta) {
+            return meta.row + 1; // Номер строки (индекс + 1)
+          },
+        },
+        { className: "_edit", targets: 1 },
+        { className: "_edit", targets: 3 },
+        { className: "_edit", targets: 4 },
+        { className: "_edit", targets: 5 },
+      ],
+    });
+  }
   function creatingItemPL() {
     const createModal = document.getElementById("modal-create-position");
 
@@ -229,3 +246,5 @@ window.saveEditPositionPriceList = saveEditPositionPriceList;
 // клиент
 window.getCurrentDataClient = getCurrentDataClient;
 window.saveEditClient = saveEditClient;
+// юезеры
+window.changeRole = changeRole;

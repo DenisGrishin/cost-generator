@@ -14,9 +14,10 @@ export function editPositionPriceList(event) {
 
   itemEdit.forEach((element, indx) => {
     const input = element.querySelector("._edit-input");
-    if (indx === 0) {
+
+    if (input.tagName === "SELECT" && indx === 0) {
       $("[name='Категория']").val(arrData[indx]).trigger("change");
-    } else if (indx === 2) {
+    } else if (input.tagName === "SELECT" && indx === 2) {
       $("[name='Единица измерения']").val(arrData[indx]).trigger("change");
     } else {
       input.classList.remove("_error");

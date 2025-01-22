@@ -195,3 +195,53 @@
 		display: none;
 	}
 }
+.dataTables_paginate {
+	margin-top: 16px;
+	display: flex;
+	justify-content: center;
+	& a {
+		color: var(--c-black);
+		@media (any-hover: hover) {
+			&:hover {
+				color: var(--c-black);
+				background-color: var(--bg);
+			}
+		}
+		&:focus {
+			box-shadow: none;
+		}
+	}
+	& .next a,
+	& .previous a {
+		display: flex;
+		&::before {
+			content: "";
+			background: url("../img/icons/ArrowBlackRight.svg") 0 0 no-repeat;
+			width: 20px;
+			height: 20px;
+			display: inline-block;
+			transform: rotate(-180deg);
+		}
+	}
+	& .previous a {
+		display: flex;
+		&::before {
+			transform: rotate(-180deg);
+		}
+	}
+	& .next a {
+		&::before {
+			transform: rotate(0deg);
+		}
+	}
+	& .page-item.active .page-link {
+		background-color: var(--c-green);
+		border-color: transparent;
+	}
+	.page-link {
+		border-color: var(--c-gray-2);
+	}
+	.pagination {
+		margin-bottom: 0;
+	}
+}

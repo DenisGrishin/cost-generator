@@ -129,6 +129,11 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="./users-page.html" class="nav-link   font-weight-bold p-2 _icon-user">
+                      <p> Пользователи </p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="./file-storage.html" class="nav-link font-weight-bold p-2 _icon-folder">
                       <p> Файловое хранилище </p>
                     </a>
@@ -164,7 +169,8 @@
 
 
       <div class="container-content">
-
+        <button type="button" class="butt-plus  mb-3" data-toggle="modal" data-target="#modal-create-position"
+          onclick="clearInputPL()"><span>Позиция</span></button>
         <table id="tablePriceList" class="price-list">
           <thead>
             <tr>
@@ -239,14 +245,762 @@
                   data-target="#modal-edit-position" class=" btn-edit"></button></td>
               <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
             </tr>
+            <tr>
 
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_mat-category">Мат</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Доски струганые половые</td>
+              <td>м.</td>
+              <td>10</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0">
+              </td>
+              <td><span class="_rab-category">Раб</span></td>
+              <td class="">01132</td>
+              <td class="sorting_1">Монтаж теплого пола</td>
+              <td>м.</td>
+              <td>20</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_meh-category">Мех</span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Циклевальная машина</td>
+              <td>м.</td>
+              <td>40</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
+            <tr>
+              <td class="dtr-control" tabindex="0"></td>
+              <td><span class="_doc-category">
+                  Док
+                </span></td>
+              <td class="">01232</td>
+              <td class="sorting_1">Грузовая газель</td>
+              <td>м.</td>
+              <td>50</td>
+              <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
+                  data-target="#modal-edit-position" class=" btn-edit"></button></td>
+              <td><button type=" button" onclick="deleteItemPL(event)" class=" btn-del-small"></button></td>
+            </tr>
 
           </tbody>
 
         </table>
 
-        <button type="button" class="butt-plus  mt-3" data-toggle="modal" data-target="#modal-create-position"
-          onclick="clearInputPL()"><span>Позиция</span></button>
+
 
       </div>
 
