@@ -146,7 +146,7 @@
 					aria-expanded="false">Создать
 				</a>
 				<div class="dropdown-menu">
-					<button type="button" class="dropdown-item _icon-file">Смету</button>
+					<button type="button" class="dropdown-item _icon-smeta">Смету</button>
 					<button type="button" class="dropdown-item _icon-folder">Папку</button>
 					<button type="button" class="dropdown-item _icon-upload-file">Загрузить файл</button>
 				</div>
@@ -154,7 +154,7 @@
 			<div class="d-flex" style="column-gap: 24px;">
 				<div class="container-content" style='flex:0 1 66.337%'>
 					<div class="search-items" data-search-items>
-						<div class="search-items__input _icon-search mb-3">
+						<div class="search-items__input search-block _icon-search mb-3">
 							<input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
 						</div>
 
@@ -195,7 +195,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item  _icon-file ">
+							<li class="search-items__item  _icon-smeta ">
 								<span class="flex-fill "> Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -208,7 +208,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item  _icon-file ">
+							<li class="search-items__item  _icon-smeta ">
 								<span class="flex-fill "> Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -221,7 +221,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item  _icon-file ">
+							<li class="search-items__item  _icon-smeta ">
 								<span class="flex-fill ">Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -234,7 +234,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item  _icon-file ">
+							<li class="search-items__item  _icon-smeta ">
 								<span class="flex-fill "> Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -247,7 +247,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item _icon-file ">
+							<li class="search-items__item _icon-smeta ">
 								<span class="flex-fill "> Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -260,7 +260,7 @@
 									</div>
 								</div>
 							</li>
-							<li class="search-items__item  _icon-file ">
+							<li class="search-items__item  _icon-smeta ">
 								<span class="flex-fill "> Предварительная смета на монтаж инженерных коммуникаций №
 									15/11/2024—1</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
@@ -341,51 +341,52 @@
 
 				</div>
 				<div class="container-content h-100" style='flex:0 1 33.333%'>
-					<div class="user-info">
+					<div class="block-item" id="static">
 
-						<div class="user-info__item">
-							<div class="user-info__label">Ф.И.О</div>
-							<div class="user-info__contetn">Газманов Олег Николаевич</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Ф.И.О</div>
+							<div class="block-item__contetn">Газманов Олег Николаевич</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Адрес</div>
-							<div class="user-info__contetn">Троицк, 2-я Вишневая улица, д. 5</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Адрес</div>
+							<div class="block-item__contetn">Троицк, 2-я Вишневая улица, д. 5</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Координаты</div>
-							<div class="user-info__contetn">37.204851, 57.656954</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Координаты</div>
+							<div class="block-item__contetn">37.204851, 57.656954</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Комментарии</div>
-							<div class="user-info__contetn">Человек вроде добрый, но совершенно невменяемый, когда выпимши.
+						<div class="block-item__item">
+							<div class="block-item__label">Комментарии</div>
+							<div class="block-item__contetn">Человек вроде добрый, но совершенно невменяемый, когда выпимши.
 								Однажды соседка видела, как он гонялся голый с топором за участковым, а тот отстреливался из
 								табельного оружия и выстрелом убил колхозного гуся.</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label mb-0">Инженер</div>
-							<div class="user-info__contetn">
-								<select class="list-input__select  select2" multiple="multiple" name="Менеджер">
-									<option></option>
-									<option>Дмитрий</option>
-									<option>Наталья</option>
-									<option>Дмитрий(Митя)</option>
-								</select>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Менеджер</div>
+							<div class="block-item__contetn">
 
+								<ul class="block-item__list">
+									<li>Дмитрий</li>
+									<li>Наталья</li>
+									<li>Дмитрий(Митя)</li>
+								</ul>
 							</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label mb-0">Инженер</div>
-							<div class="user-info__contetn">
-								<select class="list-input__select  select2" multiple="multiple" name="Инженер">
-									<option></option>
-									<option>Биба</option>
-									<option>Боба</option>
-								</select>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Инженер</div>
+							<div class="block-item__contetn">
+								<ul class="block-item__list">
+									<li>Биба</li>
+									<li>Боба</li>
 
+								</ul>
 							</div>
 						</div>
 					</div>
 
+					<button type="button" class="butt btn-success" data-toggle="modal" onclick="getCurrentDataClient()"
+						data-target="#modal-client">Редактировать
+						клиента</button>
 				</div>
 
 
@@ -439,7 +440,68 @@
 
 	<script type="module" src="../src/assets/js/main.js"></script>
 
+	<div class="modal fade" id="modal-client" style="display: none;">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<form class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Редактировать
+						клиента</div>
+					<div class="block-item">
 
+						<div class="block-item__item">
+							<div class="block-item__label">Ф.И.О</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите Ф.И.О" class="input-default _validate _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Адрес</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Адрес"
+									placeholder="Введите Адрес" class="input-default _validate _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Координаты</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Координаты"
+									placeholder="Введите координаты" class="input-default _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Комментарии</div>
+							<div class="block-item__contetn"><textarea name="Комментарии" placeholder="Введите комментарии "
+									class="textarea-default _edit-input"></textarea></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Менеджер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Менеджер">
+									<option></option>
+									<option value="Дмитрий">Дмитрий</option>
+									<option value="Наталья">Наталья</option>
+									<option value="Дмитрий(Митя)">Дмитрий(Митя)</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Инженер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Инженер">
+									<option></option>
+									<option value="Биба">Биба</option>
+									<option value="Боба">Боба</option>
+								</select>
+
+							</div>
+						</div>
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" class="butt-success " onclick="saveEditClient()">Редактировать клиента</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
 
 </body>
 

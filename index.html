@@ -117,6 +117,11 @@
                       <p> Шаблоны</p>
                     </a>
                   </li>
+                  <li class="nav-item">
+                    <a href="./pages/file-storage.html" class="nav-link font-weight-bold p-2 _icon-folder">
+                      <p> Файловое хранилище </p>
+                    </a>
+                  </li>
                 </ul>
               </nav>
             </div>
@@ -125,110 +130,216 @@
       </div>
     </aside>
     <!-- Конец главгый сайдбар -->
-    <!-- Начала папки шаблонами -->
-    <aside class="control-sidebar control-sidebar-dark secondary-sidebar">
 
-      <div
-        class="p-3 control-sidebar-content os-host os-theme-light os-host-resize-disabled os-host-scrollbar-horizontal-hidden os-host-transition os-host-overflow os-host-overflow-y"
-        style="height: 538px;">
-        <div class="os-resize-observer-host observed">
-          <div class="os-resize-observer"></div>
-        </div>
-        <div class="os-size-auto-observer observed">
-          <div class="os-resize-observer"></div>
-        </div>
-        <div class="os-content-glue"></div>
-        <div class="os-padding p-3">
-          <div class=" d-flex justify-content-between mb-3">
-            <span class="d-flex">
-              <button type="button" class="_icon-arrow-back"></button><span class="small-title ">Шаблоны смет</span>
-            </span>
-            <button class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
-              data-controlsidebar-slide="true"></button>
-          </div>
-          <div class="search-items" data-search-items>
-            <div class="search-items__input _icon-search mb-3">
-              <input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
-            </div>
-
-            <ul class="search-items__list ">
-              <li class="search-items__item  _icon-folder ">
-                <span class="flex-fill "> Септики</span> <span>12.12.2024</span>
-                <div class="search-items__btn-dropdown dropdown-search">
-                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
-                  </button>
-                  <div class="dropdown-menu " x-placement="bottom-start">
-                    <button type="button" class="dropdown-item">что-то тут </button>
-                    <button type="button" class="dropdown-item">что-то тут</button>
-                  </div>
-                </div>
-              </li>
-              <li class="search-items__item  _icon-folder ">
-                <span class="flex-fill "> Канализация</span> <span>12.12.2024</span>
-                <div class="search-items__btn-dropdown dropdown-search">
-                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
-                  </button>
-                  <div class="dropdown-menu " x-placement="bottom-start">
-                    <button type="button" class="dropdown-item">что-то тут </button>
-                    <button type="button" class="dropdown-item">что-то тут</button>
-                  </div>
-                </div>
-              </li>
-              <li class="search-items__item  _icon-folder ">
-                <span class="flex-fill "> Фундамент</span> <span>12.12.2024</span>
-                <div class="search-items__btn-dropdown dropdown-search">
-                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
-                  </button>
-                  <div class="dropdown-menu " x-placement="bottom-start">
-                    <button type="button" class="dropdown-item">что-то тут </button>
-                    <button type="button" class="dropdown-item">что-то тут</button>
-                  </div>
-                </div>
-              </li>
-              <li class="search-items__item  _icon-folder ">
-                <span class="flex-fill"> Скважины</span> <span>12.12.2024</span>
-                <div class="search-items__btn-dropdown dropdown-search">
-                  <button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
-                  </button>
-                  <div class="dropdown-menu " x-placement="bottom-start">
-                    <button type="button" class="dropdown-item">что-то тут </button>
-                    <button type="button" class="dropdown-item">что-то тут</button>
-                  </div>
-                </div>
-              </li>
-            </ul>
-
-
-            <button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
-              class="butt mt-4 butt-success _icon-plus d-flex align-items-center" onclick="creatingSmeta()">Cоздать
-              новую смету</button>
-          </div>
-        </div>
-        <div class="os-scrollbar os-scrollbar-horizontal os-scrollbar-unusable os-scrollbar-auto-hidden">
-          <div class="os-scrollbar-track">
-            <div class="os-scrollbar-handle">
-
-            </div>
-          </div>
-        </div>
-        <div class="os-scrollbar os-scrollbar-vertical os-scrollbar-auto-hidden">
-          <div class="os-scrollbar-track">
-            <div class="os-scrollbar-handle"></div>
-          </div>
-        </div>
-        <div class="os-scrollbar-corner"></div>
-      </div>
-    </aside>
-    <!-- Конец папки шаблонами -->
     <div class="content-wrapper p-4 tooltip-margin-bottom">
       <h1 class="big-title">Дашборд</h1>
 
 
       <div class="d-flex justify-content-start">
-        <a href="./pages/create-smeta.html" type="button"
-          class="butt btn-success _icon-plus d-flex align-items-center">Создать</a>
-      </div>
 
+
+
+      </div>
+      <div class="container-content">
+        <div class=" search-block _icon-search ">
+          <input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
+        </div>
+      </div>
+      <div class="dashboard">
+        <div class="dashboard__top mb-4">
+          <div class="container-content">
+            <div class="middle-title">Привет, Имя менеджера!</div>
+            <div class="very-small-title">manager@sewera.ru</div>
+            <a href="./pages/create-smeta.html"
+              class="butt btn-success _icon-plus d-flex align-items-center">Создать</a>
+          </div>
+          <div class="container-content">
+            <div class="dashboard__status-info-smeta status-info-smeta">
+
+              <ul class="status-info-smeta__item">
+                <li>Смет в работе: <span class="font-weight-bold">5</span></li>
+                <li>На сумму: <span class="font-weight-bold">2 255 676 р.</span></li>
+              </ul>
+              <ul class="status-info-smeta__item">
+                <li>Смет отложено: <span class="font-weight-bold">3</span></li>
+                <li>На сумму: <span class="font-weight-bold">1 255 676 р.</span></li>
+              </ul>
+            </div>
+
+          </div>
+
+        </div>
+
+        <div class="container-content">
+          <div class="middle-title mb-3">Вы недавно работали</div>
+
+          <ul class="dashboard__list-client">
+            <li class="accordion  card collapsed-card">
+              <div class="accordion__header accordion__header_small-cg collapsed ">
+                <button type="button" class="accordion__btn accordion__btn_small " data-animation-speed="0"
+                  data-card-widget="collapse"></button>
+
+                <div class="accordion__header-content font-weight-bold">
+
+                  Павлюшенков Игорь Игнатьевич
+
+                </div>
+                <a href="#" class="_icon-arrow-gray "></a>
+              </div>
+
+
+
+              <div class="accordion__body card-body">
+                <ul class="list-dashboard">
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _completed">Выполнено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _inProgress">В работе</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _cancelled">Отменено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _postponed">Отложено</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+
+            </li>
+            <li class="accordion  card collapsed-card">
+              <div class="accordion__header accordion__header_small-cg collapsed ">
+                <button type="button" class="accordion__btn accordion__btn_small " data-animation-speed="0"
+                  data-card-widget="collapse"></button>
+
+                <div class="accordion__header-content font-weight-bold">
+
+                  Павлюшенков Игорь Игнатьевич
+
+                </div>
+                <a href="#" class="_icon-arrow-gray "></a>
+              </div>
+
+
+
+              <div class="accordion__body card-body">
+                <ul class="list-dashboard">
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _completed">Выполнено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _inProgress">В работе</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _cancelled">Отменено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _postponed">Отложено</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+
+            </li>
+            <li class="accordion  card collapsed-card">
+              <div class="accordion__header accordion__header_small-cg collapsed ">
+                <button type="button" class="accordion__btn accordion__btn_small " data-animation-speed="0"
+                  data-card-widget="collapse"></button>
+
+                <div class="accordion__header-content font-weight-bold">
+
+                  Павлюшенков Игорь Игнатьевич
+
+                </div>
+                <a href="#" class="_icon-arrow-gray "></a>
+              </div>
+
+
+
+              <div class="accordion__body card-body">
+                <ul class="list-dashboard">
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _completed">Выполнено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _inProgress">В работе</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _cancelled">Отменено</span>
+                    </a>
+                  </li>
+                  <li class="list-dashboard__item">
+                    <a class="list-dashboard__link" href="#">
+                      <span class="list-dashboard__name">Предварительная смета на монтаж инженерных коммуникаций №
+                        15/11/2024—1</span>
+                      <span class="list-dashboard__date">22.12.2024</span>
+                      <span class="list-dashboard__status _postponed">Отложено</span>
+                    </a>
+                  </li>
+                </ul>
+              </div>
+
+
+            </li>
+          </ul>
+          <button class="butt mt-3" type="button">Загрузить еще клиентов</button>
+        </div>
+      </div>
 
 
 

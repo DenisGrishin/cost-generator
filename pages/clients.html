@@ -130,7 +130,7 @@
 
 
 			<button type="button" class=" mb-4 butt-success _icon-plus d-flex align-items-center" data-toggle="modal"
-				data-target="#modal-lg">Создать
+				data-target="#modal-client">Создать
 				клиента</button>
 
 
@@ -138,7 +138,7 @@
 
 			<div class="container-content">
 				<div class="search-items" data-search-items>
-					<div class="search-items__input _icon-search mb-3">
+					<div class="search-items__input search-block _icon-search mb-3">
 						<input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
 					</div>
 
@@ -250,52 +250,53 @@
 
 	<script type="module" src="../src/assets/js/main.js"></script>
 
-	<div class="modal fade" id="modal-lg" style="display: none;" aria-hidden="true">
+	<div class="modal fade" id="modal-client" style="display: none;">
 		<div class="modal-dialog modal-lg">
 			<div class="modal-content modal-custom">
 				<form class="modal-custom__content">
-					<div class="modal-custom__title middle-title mb-3">Создание клиента</div>
-					<div class="user-info">
+					<div class="modal-custom__title middle-title mb-3">Создание
+						клиента</div>
+					<div class="block-item">
 
-						<div class="user-info__item">
-							<div class="user-info__label">Ф.И.О</div>
-							<div class="user-info__contetn"><input autocomplete="off" type="text" name="Имя"
-									data-error="Ошибка" placeholder="Введите Ф.И.О" class="input-default"></div>
+						<div class="block-item__item">
+							<div class="block-item__label">Ф.И.О</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите Ф.И.О" class="input-default _validate _edit-input"></div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Адрес</div>
-							<div class="user-info__contetn"><input autocomplete="off" type="text" name="Адрес"
-									data-error="Ошибка" placeholder="Введите Адрес" class="input-default"></div>
+						<div class="block-item__item">
+							<div class="block-item__label">Адрес</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Адрес"
+									placeholder="Введите Адрес" class="input-default _validate _edit-input"></div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Координаты</div>
-							<div class="user-info__contetn"><input autocomplete="off" type="text" name="Координаты"
-									data-error="Ошибка" placeholder="Введите координаты" class="input-default"></div>
+						<div class="block-item__item">
+							<div class="block-item__label">Координаты</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Координаты"
+									placeholder="Введите координаты" class="input-default _edit-input"></div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label">Комментарии</div>
-							<div class="user-info__contetn"><textarea name="Комментарии" placeholder="Введите комментарии "
-									class="textarea-default"></textarea></div>
+						<div class="block-item__item">
+							<div class="block-item__label">Комментарии</div>
+							<div class="block-item__contetn"><textarea name="Комментарии" placeholder="Введите комментарии "
+									class="textarea-default _edit-input"></textarea></div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label mb-0">Менеджер</div>
-							<div class="user-info__contetn">
-								<select class="list-input__select  select2" multiple="multiple" name="Менеджер">
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Менеджер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Менеджер">
 									<option></option>
-									<option>Дмитрий</option>
-									<option>Наталья</option>
-									<option>Дмитрий(Митя)</option>
+									<option value="Дмитрий">Дмитрий</option>
+									<option value="Наталья">Наталья</option>
+									<option value="Дмитрий(Митя)">Дмитрий(Митя)</option>
 								</select>
 
 							</div>
 						</div>
-						<div class="user-info__item">
-							<div class="user-info__label mb-0">Инженер</div>
-							<div class="user-info__contetn">
-								<select class="list-input__select  select2" multiple="multiple" name="Инженер">
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Инженер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Инженер">
 									<option></option>
-									<option>Биба</option>
-									<option>Боба</option>
+									<option value="Биба">Биба</option>
+									<option value="Боба">Боба</option>
 								</select>
 
 							</div>
@@ -303,13 +304,12 @@
 					</div>
 					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
 						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
-						<button type="submit" class="butt-success ">Создать клиента</button>
+						<button type="button" class="butt-success" onclick="saveEditClient()">Создать клиента</button>
 					</div>
 				</form>
 			</div>
 
 		</div>
-
 	</div>
 
 </body>

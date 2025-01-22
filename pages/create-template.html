@@ -158,10 +158,9 @@
 								<option>Старк Джон Недовна</option>
 								<option>Старк Ария Недовна</option>
 								<option>Баратеон Станис Стеффович</option>
-
 							</select>
 						</div>
-						<button type="button" class="list-input__add-btn add-btn"></button>
+
 						<button type="button" class="list-input__butt-plus butt-plus">Создать категорию</button>
 					</div>
 
@@ -169,7 +168,7 @@
 			</div>
 
 			<ul class="todo-list" data-smeta data-widget="todo-list">
-				<li class="todo-list__item   d-flex" data-item-id="${idSmeta}">
+				<li class="todo-list__item   d-flex" data-smeta-item>
 					<div class="todo-list__wrapper">
 						<div class="todo-list__contetn">
 							<span class="handle  _icon-darag">
@@ -179,15 +178,18 @@
 									<button type="button" class="accordion__btn" data-animation-speed="0"
 										data-card-widget="collapse"></button>
 									<label class="accordion__checkbox checkbox">
-										<input hidden type="checkbox" class="checkbox__input" name="checkbox-smeta">
+										<input hidden data-chkc-smeta type="checkbox" class="checkbox__input"
+											name="checkbox-smeta" onchange="showBulkActionBar()">
 									</label>
 									<div class="accordion__header-content">
-										<div class="accordion__name"> </div>
+										<div class="accordion__name" onclick='editTextInput(event)'><input type="text"
+												data-edit-input onblur="saveTextInput(event)" class="input-default"></div>
 										<div class="accordion__select ">
 											<label class="accordion__name-select">Статус</label>
-											<div class="select-status py-2">
+											<div class="select-status">
 												<select class="select2  select2-hidden-accessible" name="Статус"
-													data-select2-id="select-status" tabindex="-1" aria-hidden="true">
+													style="width: 100%;" data-select2-id="select-status-" tabindex="-1"
+													aria-hidden="true">
 													<option value="Выполнено" class="select-status__completed">Выполнено</option>
 													<option selected value="В работе" class="select-status__in-progress">В работе
 													</option>
@@ -196,8 +198,8 @@
 												</select>
 											</div>
 										</div>
-										<div class="accordion__del-btn ">
-											<button type="button" onclick="deleteItem('${idSmeta}')"
+										<div class="accordion__del-btn">
+											<button type="button" onclick="deleteItem(event,'data-smeta-item')"
 												class="btn-del-big"><span>Удалить</span></button>
 										</div>
 									</div>
@@ -218,10 +220,10 @@
 							</div>
 						</div>
 						<div class="todo-list__footer footer-list">
-							<button type="button" class="butt-plus" onclick="creatingStages('${idSmeta}')"
+							<button type="button" class="butt-plus" onclick="creatingStages(event)"
 								data-create-stage><span>Этап
 									работ</span></button>
-							<span class="footer-list__sum">Итого по смете: 0 р.</span>
+							<span class="footer-list__sum">Итого по смете: <span data-sum>0</span> р.</span>
 						</div>
 						<div class="mt-3">
 							<label class="very-small-title"> Комментарий</label>
@@ -230,7 +232,6 @@
 
 					</div>
 				</li>
-
 			</ul>
 
 

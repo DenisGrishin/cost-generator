@@ -190,7 +190,7 @@
               <td><span class="_mat-category">Мат</span></td>
               <td class="">01232</td>
               <td class="sorting_1">Доски струганые половые</td>
-              <td>метры</td>
+              <td>м.</td>
               <td>10</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
                   data-target="#modal-edit-position" class=" btn-edit"></button></td>
@@ -203,7 +203,7 @@
               <td><span class="_rab-category">Раб</span></td>
               <td class="">01132</td>
               <td class="sorting_1">Монтаж теплого пола</td>
-              <td>метры</td>
+              <td>м.</td>
               <td>20</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
                   data-target="#modal-edit-position" class=" btn-edit"></button></td>
@@ -215,7 +215,7 @@
               <td><span class="_meh-category">Мех</span></td>
               <td class="">01232</td>
               <td class="sorting_1">Циклевальная машина</td>
-              <td>метры</td>
+              <td>м.</td>
               <td>40</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
                   data-target="#modal-edit-position" class=" btn-edit"></button></td>
@@ -228,7 +228,7 @@
                 </span></td>
               <td class="">01232</td>
               <td class="sorting_1">Грузовая газель</td>
-              <td>метры</td>
+              <td>м.</td>
               <td>50</td>
               <td><button type=" button" onclick='editPositionPriceList(event)' data-toggle="modal"
                   data-target="#modal-edit-position" class=" btn-edit"></button></td>
@@ -240,7 +240,8 @@
 
         </table>
 
-        <button type="button" class="butt-plus  mt-3" onclick="creatingItemPL()"><span>Позиция</span></button>
+        <button type="button" class="butt-plus  mt-3" data-toggle="modal" data-target="#modal-create-position"
+          onclick="clearInputPL()"><span>Позиция</span></button>
 
       </div>
 
@@ -297,17 +298,17 @@
 
 
   <script type="module" src="../src/assets/js/main.js"></script>
-  <!-- Начало Модлаьно окно -->
-  <div class="modal fade" id="modal-edit-position" data-modal-id style="display: none;" aria-hidden="true">
+  <!-- Начало  Модлаьно  окно создание -->
+  <div class="modal fade" id="modal-create-position" style="display: none;" aria-hidden="true">
     <div class="modal-dialog modal-lg">
       <div class="modal-content modal-custom">
         <div class="modal-custom__content">
-          <div class="modal-custom__title middle-title mb-3">Редактирование позиции</div>
-          <div class="user-info">
-            <div class="user-info__item">
-              <div class="user-info__label">Категория:</div>
+          <div class="modal-custom__title middle-title mb-3">Создание позиции</div>
+          <div class="block-item">
+            <div class="block-item__item">
+              <div class="block-item__label">Категория:</div>
               <div class="select2_category">
-                <select class="list-input__select  select2  select2-defualt _edit-input " name="Категория">
+                <select class="list-input__select  select2  select2-defualt _edit-input _validate" name="Категория">
                   <option value=""></option>
                   <option value="Мат">Мат</option>
                   <option value="Раб">Раб</option>
@@ -317,30 +318,103 @@
               </div>
             </div>
 
-            <div class="user-info__item">
-              <div class="user-info__label">Имя позиции:</div>
-              <div class="user-info__contetn"><input autocomplete="off" type="text" name="Имя позиции"
-                  data-error="Ошибка" placeholder="Введите имя позиции" class="input-default _edit-input"></div>
+            <div class="block-item__item">
+              <div class="block-item__label">Имя позиции:</div>
+              <div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя позиции"
+                  placeholder="Введите имя позиции" class="input-default _edit-input _validate"></div>
             </div>
-            <div class="user-info__item">
-              <div class="user-info__label">Единица измерения:</div>
-              <div class="user-info__contetn">
+            <div class="block-item__item">
+              <div class="block-item__label">Единица измерения:</div>
+              <div class="block-item__contetn">
 
 
                 <select class="list-input__select  select2 select2-defualt _edit-input" name="Единица измерения">
-                  <option value=""></option>
-                  <option value="метры"> метры</option>
-                  <option value="штуки">штуки</option>
-                  <option value="комплекты">комплекты</option>
+                  <option value="-">-</option>
+                  <option value="сотка">сотка</option>
+                  <option value="м²">м²</option>
+                  <option value="м³">м³</option>
+                  <option value="м.">м.</option>
+                  <option value="усл.">усл.</option>
+                  <option value="ед.">ед.</option>
+                  <option value="п.м.">п.м.</option>
+                  <option value="шт.">шт.</option>
+
                 </select>
 
               </div>
             </div>
-            <div class="user-info__item">
-              <div class="user-info__label">Цена:</div>
-              <div class="user-info__contetn">
-                <input autocomplete="off" type="text" name="Цена" data-error="Ошибка" placeholder="Введите цену"
-                  class="input-default _edit-input">
+            <div class="block-item__item">
+              <div class="block-item__label">Цена:</div>
+              <div class="block-item__contetn">
+                <input autocomplete="off" type="text" name="Цена" placeholder="Введите цену"
+                  class="input-default _edit-input _validate">
+              </div>
+            </div>
+
+
+          </div>
+          <div class="d-flex mt-5 justify-content-between modal-custom__footer">
+            <button type="button" data-dismiss="modal" class="butt">Отмена</button>
+            <button type="button" onclick="creatingItemPL(event)" class="butt-success ">Сохранить</button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <!-- Конец Модлаьно окно создание-->
+  <!-- Начало  Модлаьно  окно редактирование -->
+  <div class="modal fade" id="modal-edit-position" data-modal-id style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content modal-custom">
+        <div class="modal-custom__content">
+          <div class="modal-custom__title middle-title mb-3">Редактирование позиции</div>
+          <div class="block-item">
+            <div class="block-item__item">
+              <div class="block-item__label">Категория:</div>
+              <div class="select2_category">
+                <select class="list-input__select  select2  select2-defualt _edit-input _validate" name="Категория">
+                  <option value=""></option>
+                  <option value="Мат">Мат</option>
+                  <option value="Раб">Раб</option>
+                  <option value="Мех">Мех</option>
+                  <option value="Док">Док</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="block-item__item">
+              <div class="block-item__label">Имя позиции:</div>
+              <div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя позиции"
+                  placeholder="Введите имя позиции" class="input-default _edit-input _validate"></div>
+            </div>
+            <div class="block-item__item">
+              <div class="block-item__label">Единица измерения:</div>
+              <div class="block-item__contetn">
+
+
+                <select class="list-input__select  select2 select2-defualt _edit-input _validate"
+                  name="Единица измерения">
+                  <option value="-">-</option>
+                  <option value="сотка">сотка</option>
+                  <option value="м²">м²</option>
+                  <option value="м³">м³</option>
+                  <option value="м.">м.</option>
+                  <option value="усл.">усл.</option>
+                  <option value="ед.">ед.</option>
+                  <option value="п.м.">п.м.</option>
+                  <option value="шт.">шт.</option>
+
+                </select>
+
+              </div>
+            </div>
+            <div class="block-item__item">
+              <div class="block-item__label">Цена:</div>
+              <div class="block-item__contetn">
+                <input autocomplete="off" type="text" name="Цена" placeholder="Введите цену"
+                  class="input-default _edit-input _validate">
               </div>
             </div>
 
@@ -356,7 +430,7 @@
     </div>
 
   </div>
-  <!-- Конец Модлаьно окно -->
+  <!-- Конец Модлаьно окно редактирование-->
 </body>
 
 </html>

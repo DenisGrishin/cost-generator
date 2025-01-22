@@ -1,4 +1,5 @@
 import "../scss/index.scss";
+import { getCurrentDataClient, saveEditClient } from "./clients";
 import {
   showBulkActionBar,
   creatingPosition,
@@ -8,15 +9,21 @@ import {
   deleteSelectedItems,
   editTextInput,
   saveTextInput,
+  chooseAllCheckbox,
+  editTextSelect,
 } from "./createElement";
-import { editPositionPriceList, saveEditPositionPriceList } from "./priceList";
+import {
+  collectInputData,
+  editPositionPriceList,
+  saveEditPositionPriceList,
+  validateEmpty,
+} from "./priceList";
 
 if (document.querySelector(".select2")) {
   $(".select2").select2({
     placeholder: "",
     allowClear: true,
     width: "resolve",
-
     language: {
       noResults: function () {
         return "Ничего не найдено";
@@ -91,7 +98,7 @@ function searchItems() {
     });
   });
 }
-function generateRandomId() {
+export function generateRandomId() {
   return (
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
   );
@@ -133,19 +140,37 @@ if (document.querySelector("#example2")) {
     ],
   });
 
-  function creatingItemPL(idStage) {
-    tabel.row
-      .add([
-        "",
-        "",
-        "",
-        "",
-        "",
-        "",
-        "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
-        "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
-      ])
-      .draw();
+  function creatingItemPL() {
+    const createModal = document.getElementById("modal-create-position");
+
+    const itemEdit = createModal.querySelectorAll("._edit-input");
+
+    const arrData = collectInputData(itemEdit);
+
+    const obgСategoryClass = {
+      Мат: "_mat-category",
+      Раб: "_rab-category",
+      Мех: "_meh-category",
+      Док: "_doc-category",
+    };
+    let isValidate = validateEmpty(itemEdit);
+
+    if (isValidate) {
+      tabel.row
+        .add([
+          "",
+          `<span class='${obgСategoryClass[arrData[0]]}'>${arrData[0]}</span>`,
+          "",
+          `${arrData[1]}`,
+          `${arrData[2]}`,
+          `${arrData[3]}`,
+          "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
+          "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
+        ])
+        .draw();
+
+      $("#modal-create-position").modal("hide");
+    }
   }
 
   function deleteItemPL(event) {
@@ -153,18 +178,41 @@ if (document.querySelector("#example2")) {
     tabel.row($(target).parents(target)).remove().draw();
   }
 
+  function clearInputPL() {
+    const createModal = document.getElementById("modal-create-position");
+
+    const itemEdit = createModal.querySelectorAll(".block-item > div");
+
+    itemEdit.forEach((el, indx) => {
+      const input = el.querySelector("._edit-input");
+      if (indx === 0) {
+        $("[name='Категория']").val("").trigger("change");
+      } else if (indx === 2) {
+        $("[name='Единица измерения']").val("-").trigger("change");
+      } else {
+        input.classList.remove("_error");
+
+        input.value = "";
+      }
+    });
+  }
   // создание элементов в прайс-листе
   window.creatingItemPL = creatingItemPL;
   // удаления в прайс-листе
   window.deleteItemPL = deleteItemPL;
+  window.clearInputPL = clearInputPL;
 }
 
 // создание элементов сметы
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
+window.editTextSelect = editTextSelect;
+
 // чекбоксы
 window.showBulkActionBar = showBulkActionBar;
+window.chooseAllCheckbox = chooseAllCheckbox;
+
 // удаление элементов сметы
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
@@ -177,3 +225,6 @@ window.editTextInput = editTextInput;
 // прайс лист
 window.editPositionPriceList = editPositionPriceList;
 window.saveEditPositionPriceList = saveEditPositionPriceList;
+// клиент
+window.getCurrentDataClient = getCurrentDataClient;
+window.saveEditClient = saveEditClient;
