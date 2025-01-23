@@ -32,23 +32,22 @@ if (document.querySelector(".select2")) {
     },
   });
 }
-$(document).ready(function () {
-  $(".select2-defualt").select2({
-    minimumResultsForSearch: Infinity, // Отключаем поиск
-    placeholder: "",
-    allowClear: true,
-    width: "resolve",
-    language: {
-      noResults: function () {
-        return "Ничего не найдено";
-      },
-    },
-  });
-});
 
-$("#addColumn").on("click", function () {
-  // Динамическое добавление нового столбца
-});
+if (document.querySelector(".select2-defualt")) {
+  $(document).ready(function () {
+    $(".select2-defualt").select2({
+      minimumResultsForSearch: Infinity, // Отключаем поиск
+      placeholder: "",
+      allowClear: true,
+      width: "resolve",
+      language: {
+        noResults: function () {
+          return "Ничего не найдено";
+        },
+      },
+    });
+  });
+}
 
 //Date range picker
 if (document.querySelector("#reservation")) {
