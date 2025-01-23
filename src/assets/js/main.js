@@ -51,6 +51,33 @@ if (document.querySelector(".select2-defualt")) {
 
 //Date range picker
 if (document.querySelector("#reservation")) {
+  $("#reservation").daterangepicker({
+    singleDatePicker: true,
+    autoApply: true,
+
+    minYear: 1901,
+    maxYear: parseInt(moment().format("YYYY"), 10),
+    locale: {
+      format: "DD.MM.YYYY",
+      separator: " - ",
+      daysOfWeek: ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"],
+      monthNames: [
+        "Январь",
+        "Февраль",
+        "Март",
+        "Апрель",
+        "Май",
+        "Июнь",
+        "Июль",
+        "Август",
+        "Сентябрь",
+        "Октябрь",
+        "Ноябрь",
+        "Декабрь",
+      ],
+      firstDay: 1,
+    },
+  });
 }
 
 function searchItems() {
