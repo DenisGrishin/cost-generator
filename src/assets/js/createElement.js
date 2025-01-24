@@ -384,10 +384,17 @@ export function showBulkActionBar() {
   });
 
   selectedCount.innerText = count;
-
-  isChecked
-    ? tooltipSmeta.classList.add("_show-tooltipSmeta")
-    : tooltipSmeta.classList.remove("_show-tooltipSmeta");
+  if (isChecked) {
+    tooltipSmeta.classList.add("_show-tooltipSmeta");
+    document
+      .querySelector(".content-wrapper")
+      .classList.add("bulkActionBar-bottom");
+  } else {
+    tooltipSmeta.classList.remove("_show-tooltipSmeta");
+    document
+      .querySelector(".content-wrapper")
+      .classList.remove("bulkActionBar-bottom");
+  }
 }
 
 function handelKeyDown() {

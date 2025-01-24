@@ -85,9 +85,15 @@
 			border-bottom: 1px solid var(--c-gray-2);
 			border-radius: 0 !important;
 			padding: 8.5px 0 !important;
-			height: 37px;
+			height: 41px;
+			line-height: 1.5;
 			&:focus {
 				border-bottom: 1px solid var(--c-black);
+			}
+			&::placeholder {
+				font-size: 16px;
+				opacity: 0.5;
+				color: var(--c-black);
 			}
 		}
 	}

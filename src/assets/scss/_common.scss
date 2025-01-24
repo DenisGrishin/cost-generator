@@ -424,6 +424,11 @@
 		outline: none;
 		border-bottom-color: var(--c-black);
 	}
+
+	&::placeholder {
+		opacity: 0.5;
+		color: var(--c-black);
+	}
 	&._error {
 		border-bottom: 1px solid var(--c-red);
 		&::placeholder {
