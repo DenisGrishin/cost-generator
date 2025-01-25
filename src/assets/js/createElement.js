@@ -54,7 +54,7 @@ export function creatingSmeta() {
     <div class="todo-list__footer footer-list">
       <button type="button" class="butt-plus" onclick="creatingStages(event)" data-create-stage><span>Этап
           работ</span></button>
-      <span class="footer-list__sum">Итого по смете: <span data-sum>0</span> р.</span>
+      <span class="footer-list__sum">Итого по смете: <span data-sum data-name='Итого по смете'>0</span> р.</span>
     </div>
     <div class="mt-3">
       <label class="very-small-title"> Комментарий</label>
@@ -134,7 +134,7 @@ export function creatingStages(event) {
                                 <button type="button" class="butt-plus" onclick="creatingPosition(event)"
                                   data-create-position><span>Позиция</span></button>
                                 <span class="footer-list__sum">Итого:<span
-																		data-sum>0</span> р.</span>
+																		data-sum data-name='Итого по этапа'>0</span> р.</span>
                               </li>
                             </ul>
                           </div>
@@ -167,11 +167,11 @@ export function creatingPosition(event) {
     `<li class="list-accordion__item" data-position-item>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input  hidden="" data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
+        <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
-    <div class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
+    <div data-name='Наименование работ' class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
     <input type="text"  onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input  class="input-default">
       <ul class="list-accordion__search search-position">
       <li onclick="saveTextSearchList(event)">Скважины</li>
@@ -186,7 +186,7 @@ export function creatingPosition(event) {
 			<li onclick="saveTextSearchList(event)">Единица</li>
     	</ul>
     </div>
-    <div onclick='editTextSelect(event)'>
+    <div onclick='editTextSelect(event)' data-name='Ед. изм.'>
                 <select onblur="saveTextInput(event)" class="list-input__select   select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
                   <option value="сотка">сотка</option>
@@ -199,9 +199,9 @@ export function creatingPosition(event) {
                   <option value="шт.">шт.</option>
                 </select>
                 </div>
-    <div onclick='editTextInput(event)'data-qty-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div onclick='editTextInput(event)' data-price-position><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
-    <div data-sum-position>0</div>
+    <div onclick='editTextInput(event)'data-qty-position data-name='Кол-во.'><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div onclick='editTextInput(event)' data-price-position data-name='Цена р.'><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div data-sum-position data-name='Сумма р.'>0</div>
     <div><button type="button" class="btn-del-small" onclick="deleteItem(event,'data-position-item')" ></button></div>
   </li>`
   );
@@ -354,7 +354,7 @@ export function searchItems() {
     }
   });
 }
-
+// События на onblur, чтобы схранить данные с инпута в текст
 export function saveTextInput(event) {
   setTimeout(() => {
     let target = event.target;
@@ -516,6 +516,7 @@ function sumItemPosition(selectorDiv) {
           ).toFixed(2)
         );
 
+        createingHiddentInput(sum.innerText, sum);
         sumStage(stageLi);
       }
     });
@@ -546,6 +547,7 @@ function sumStage(stageLi) {
   });
 
   selectorSumStage.innerText = formatterIntl(sum);
+  createingHiddentInput(sum, selectorSumStage);
   sumSmeta(stageLi);
 }
 // считает сумму cметы
@@ -565,6 +567,11 @@ function sumSmeta(stageLi) {
 
     smeta.querySelector(".todo-list__footer [data-sum]").innerText =
       formatterIntl(sum);
+
+    createingHiddentInput(
+      sum,
+      smeta.querySelector(".todo-list__footer [data-sum]")
+    );
   });
 }
 export function chooseAllCheckbox(event) {
@@ -662,13 +669,16 @@ export function saveTextSearchList(event) {
   const parent = target.closest(".list-accordion__name");
 
   parent.innerText = textDropDownItem;
+  createingHiddentInput(textDropDownItem, parent);
   event.stopPropagation();
 }
 
 /* Функция которая создает скрытый input */
 function createingHiddentInput(value, parent) {
+  const name = parent.dataset.name;
   const inputHidden = document.createElement("input");
   inputHidden.setAttribute("type", "hidden");
   inputHidden.value = value;
+  inputHidden.name = name;
   parent.append(inputHidden);
 }
