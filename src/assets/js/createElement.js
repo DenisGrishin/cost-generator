@@ -363,20 +363,22 @@ export function saveTextInput(event) {
     if (target.closest("[data-search-items]") && value) {
       parent.innerText =
         String(Number(value)) === value ? formatterIntl(value) : value;
+      createingHiddentInput(value, parent);
       return;
     }
 
     if (value) {
       parent.innerText =
         String(Number(value)) === value ? formatterIntl(value) : value;
+      createingHiddentInput(value, parent);
     }
   }, 100);
 }
-
+// События на onclick, чтобы создать input
 export function editTextInput(event) {
   let target = event.currentTarget;
 
-  if (target.children.length !== 0) {
+  if (target.querySelector("[data-edit-input]")) {
     sumItemPosition(target);
     return;
   }
@@ -487,30 +489,30 @@ function createIterationNumber() {
     element.children[2].innerText = ++numberItem;
   }
 }
-
+//  Считает сумму в этапе от позиции
 function sumItemPosition(selectorDiv) {
   const positionLi = selectorDiv.parentElement;
 
   const stageLi = selectorDiv.parentElement.closest(".todo-list__item");
 
-  const qty = positionLi.querySelector("[data-qty-position]");
-  const price = positionLi.querySelector("[data-price-position]");
+  const qty = positionLi.querySelector("[data-qty-position] input");
+  const price = positionLi.querySelector("[data-price-position] input");
   const sum = positionLi.querySelector("[data-sum-position]");
   const input = selectorDiv.querySelector("input[data-edit-input]");
 
   if (input && typeof input.dataset.number !== "undefined") {
     input.addEventListener("blur", (e) => {
-      if (qty.innerText === "" || price.innerText === "") {
+      if (qty.value === "" || price.value === "") {
         sum.innerText = 0;
         sumStage(stageLi);
         return;
       }
 
-      if (qty.innerText && price.innerText) {
+      if (qty.value && price.value) {
         sum.innerText = formatterIntl(
           (
-            Number(qty.innerText.replace(/\s+/g, "")) *
-            Number(price.innerText.replace(/\s+/g, ""))
+            Number(qty.value.replace(/\s+/g, "")) *
+            Number(price.value.replace(/\s+/g, ""))
           ).toFixed(2)
         );
 
@@ -530,6 +532,7 @@ function formatterIntl(number) {
   return formatted.replace(",", ".");
 }
 
+// считает сумму этапа
 function sumStage(stageLi) {
   const selectorSumStage = stageLi.querySelector("[data-sum]");
   let sum = 0;
@@ -545,7 +548,7 @@ function sumStage(stageLi) {
   selectorSumStage.innerText = formatterIntl(sum);
   sumSmeta(stageLi);
 }
-
+// считает сумму cметы
 function sumSmeta(stageLi) {
   const listSelectorSmeta = stageLi.closest("[data-smeta]");
 
@@ -581,8 +584,7 @@ export function chooseAllCheckbox(event) {
 export function editTextSelect(event) {
   let target = event.currentTarget;
 
-  if (target.children.length !== 0) {
-    sumItemPosition(target);
+  if (target.querySelector("[data-select]")) {
     return;
   }
 
@@ -664,5 +666,9 @@ export function saveTextSearchList(event) {
 }
 
 /* Функция которая создает скрытый input */
-
-function createingHiddentInput(params) {}
+function createingHiddentInput(value, parent) {
+  const inputHidden = document.createElement("input");
+  inputHidden.setAttribute("type", "hidden");
+  inputHidden.value = value;
+  parent.append(inputHidden);
+}
