@@ -41,7 +41,7 @@ export function creatingSmeta() {
 
         <div class="accordion__body card-body">
           <!-- Этапы работы -->
-          <ul class="todo-list  overflow-hidden mt-3" data-stages data-widget="todo-list">
+          <ul class="todo-list   mt-3" data-stages data-widget="todo-list">
 
           </ul>
   
@@ -171,7 +171,21 @@ export function creatingPosition(event) {
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
-    <div class="list-accordion__name" onclick='editTextInput(event)'><input   type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+    <div class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
+    <input type="text"  onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input  class="input-default">
+      <ul class="list-accordion__search search-position">
+      <li onclick="saveTextSearchList(event)">Скважины</li>
+      <li onclick="saveTextSearchList(event)">Септики</li>
+      <li onclick="saveTextSearchList(event)">Баратеон</li>
+      <li onclick="saveTextSearchList(event)">Николаев</li>
+      <li onclick="saveTextSearchList(event)">Единица</li>
+			<li onclick="saveTextSearchList(event)">Скважины</li>
+			<li onclick="saveTextSearchList(event)">Септики</li>
+			<li onclick="saveTextSearchList(event)">Баратеон</li>
+			<li onclick="saveTextSearchList(event)">Николаев</li>
+			<li onclick="saveTextSearchList(event)">Единица</li>
+    	</ul>
+    </div>
     <div onclick='editTextSelect(event)'>
                 <select onblur="saveTextInput(event)" class="list-input__select   select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
@@ -309,31 +323,54 @@ export function searchItems() {
   blcok.forEach((element) => {
     const input = element.querySelector("[data-search-items] input");
 
-    const ul = element.querySelector(".search-items__list");
-    const li = ul.querySelectorAll("li");
+    if (input && input.value) {
+      const ul = element.querySelector("[data-search-items] > ul");
+      const li = ul.querySelectorAll("li");
+      const filter = input.value.toLowerCase();
 
-    const filter = input.value.toLowerCase();
+      li.forEach((item) => {
+        if (item.textContent.toLowerCase().includes(filter)) {
+          item.style.display = "";
 
-    li.forEach((item) => {
-      if (item.textContent.toLowerCase().includes(filter)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
+          if (document.querySelector("._not-found")) {
+            document.querySelector("._not-found").remove();
+          }
+        } else if (item.matches("._not-found")) {
+        } else {
+          item.style.display = "none";
+        }
+      });
+
+      const IsNotFoundLi = Array.from(li).every((li) => {
+        if (li.style.display === "none") return true;
+      });
+
+      if (IsNotFoundLi) {
+        const li = document.createElement("li");
+        li.classList.add("_not-found");
+        li.innerText = "Ничего не найдено";
+        ul.append(li);
       }
-    });
+    }
   });
 }
 
 export function saveTextInput(event) {
-  let target = event.target;
-  let value = target.value;
-  const parent = target.parentElement;
+  setTimeout(() => {
+    let target = event.target;
+    let value = target.value;
+    const parent = target.parentElement;
+    if (target.closest("[data-search-items]") && value) {
+      parent.innerText =
+        String(Number(value)) === value ? formatterIntl(value) : value;
+      return;
+    }
 
-  if (value) {
-    parent.innerText =
-      String(Number(value)) === value ? formatterIntl(value) : value;
-    target.remove();
-  }
+    if (value) {
+      parent.innerText =
+        String(Number(value)) === value ? formatterIntl(value) : value;
+    }
+  }, 100);
 }
 
 export function editTextInput(event) {
@@ -352,14 +389,32 @@ function createInputEdit(parent) {
   const parentText = parent.innerText;
   parent.innerText = "";
   const dataNumbers = Object.keys(parent.dataset)[0] ? "data-number" : "";
+  if (parent.matches(".list-accordion__name")) {
+    parent.insertAdjacentHTML(
+      "beforeend",
+      `<input type="text" onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input value="${parentText}"  class="input-default">
+      <ul class="list-accordion__search search-position">
+      <li onclick="saveTextSearchList(event)">Скважины</li>
+      <li onclick="saveTextSearchList(event)">Септики</li>
+      <li onclick="saveTextSearchList(event)">Баратеон</li>
+      <li onclick="saveTextSearchList(event)">Николаев</li>
+      <li onclick="saveTextSearchList(event)">Единица</li>
+			<li onclick="saveTextSearchList(event)">Скважины</li>
+			<li onclick="saveTextSearchList(event)">Септики</li>
+			<li onclick="saveTextSearchList(event)">Баратеон</li>
+			<li onclick="saveTextSearchList(event)">Николаев</li>
+			<li onclick="saveTextSearchList(event)">Единица</li>
+    	</ul>`
+    );
+  } else {
+    parent.insertAdjacentHTML(
+      "beforeend",
+      `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
+    );
 
-  parent.insertAdjacentHTML(
-    "beforeend",
-    `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
-  );
-
-  if (parent.querySelector("[data-edit-input]")) {
-    parent.querySelector("[data-edit-input]").focus();
+    if (parent.querySelector("[data-edit-input]")) {
+      parent.querySelector("[data-edit-input]").focus();
+    }
   }
 
   handelKeyDown();
@@ -416,8 +471,8 @@ function findMaxNumber(parentSmeta) {
     return 0;
   }
 
-  li.forEach((element) => {
-    if (0 < Number(element.children[2].innerText)) {
+  li.forEach((element, indx) => {
+    if (indx === 0 && 0 < Number(element.children[2].innerText)) {
       max = Number(element.children[2].innerText);
     }
   });
@@ -584,3 +639,30 @@ function inintSelect2(id) {
   // Событие при изменении значения
   changeSelected(id);
 }
+export function showDropDown(event) {
+  const target = event.target;
+  const dropDown = target
+    .closest(".list-accordion__name")
+    .querySelector(".search-position");
+
+  if (target.value.length == 0) {
+    dropDown.classList.remove("_show");
+    return;
+  }
+
+  searchItems();
+  dropDown.classList.add("_show");
+}
+export function saveTextSearchList(event) {
+  let target = event.target;
+  const textDropDownItem = target.innerText;
+
+  const parent = target.closest(".list-accordion__name");
+
+  parent.innerText = textDropDownItem;
+  event.stopPropagation();
+}
+
+/* Функция которая создает скрытый input */
+
+function createingHiddentInput(params) {}

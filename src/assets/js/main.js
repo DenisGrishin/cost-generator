@@ -11,6 +11,8 @@ import {
   saveTextInput,
   chooseAllCheckbox,
   editTextSelect,
+  showDropDown,
+  saveTextSearchList,
 } from "./createElement";
 import {
   collectInputData,
@@ -252,7 +254,8 @@ window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
 window.editTextSelect = editTextSelect;
-
+window.showDropDown = showDropDown;
+window.saveTextSearchList = saveTextSearchList;
 // чекбоксы
 window.showBulkActionBar = showBulkActionBar;
 window.chooseAllCheckbox = chooseAllCheckbox;
