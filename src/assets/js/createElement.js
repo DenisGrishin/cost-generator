@@ -662,6 +662,7 @@ export function showDropDown(event) {
   searchItems();
   dropDown.classList.add("_show");
 }
+
 export function saveTextSearchList(event) {
   let target = event.target;
   const textDropDownItem = target.innerText;
