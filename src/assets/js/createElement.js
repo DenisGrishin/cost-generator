@@ -18,7 +18,7 @@ export function creatingSmeta() {
             <input hidden data-chkc-smeta type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
           </label>
           <div class="accordion__header-content">
-            <div class="accordion__name" onclick='editTextInput(event)'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+            <div class="accordion__name" onclick='editTextInput(event)' data-name='Наименование сметы'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
             <div class="accordion__select ">
                 <label class="accordion__name-select">Статус</label>
               <div class="select-status">
@@ -104,7 +104,7 @@ export function creatingStages(event) {
                             <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
 
                             <div class="accordion__header-content">
-                              <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)'><input  type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
+                              <div class="accordion__name very-small-title accordion__name_small-text" onclick='editTextInput(event)' data-name='Наименование этапа'><input  type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
                               <div class="accordion__del-btn accordion__del-btn_small"><button onclick="deleteItem(event,'data-stage-item')" type="button" 
                                   class=" btn-del-small"></button></div>
                             </div>
