@@ -466,15 +466,16 @@ function handelKeyDown() {
 }
 
 function findMaxNumber(parentSmeta) {
-  const li = parentSmeta.querySelectorAll(`.list-accordion__body li`);
+  const li = parentSmeta.querySelectorAll(`[data-position]  > li`);
   let max = 0;
+
   // если путсая таблица
   if (li.length === 0) {
     return 0;
   }
 
   li.forEach((element, indx) => {
-    if (indx === 0 && 0 < Number(element.children[2].innerText)) {
+    if (max < Number(element.children[2].innerText)) {
       max = Number(element.children[2].innerText);
     }
   });
@@ -482,7 +483,7 @@ function findMaxNumber(parentSmeta) {
   return max;
 }
 function createIterationNumber() {
-  const list = document.querySelectorAll(".list-accordion__body li");
+  const list = document.querySelectorAll("[data-position] > li");
   let numberItem = 0;
   for (let i = 0; i < list.length; i++) {
     const element = list[i];
