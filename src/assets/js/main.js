@@ -13,7 +13,6 @@ import {
   editTextSelect,
   showDropDown,
   saveTextSearchList,
-  searchItems,
   hiddenDropDown,
 } from "./createElement";
 import {
@@ -230,7 +229,50 @@ if (document.querySelector("#tablePriceList")) {
   window.deleteItemPL = deleteItemPL;
   window.clearInputPL = clearInputPL;
 }
+// поиск по списку, события onkeyup
+export function searchItems(event) {
+  let target = event.target;
+  const parentSearchSelector = target.closest("[data-search-items]");
 
+  const input = target;
+  const ul = parentSearchSelector.querySelector("[data-search-items] > ul");
+  const li = ul.querySelectorAll("li");
+  const filter = input.value.toLowerCase();
+  if (filter === "") {
+    li.forEach((it) => {
+      if (it.matches("._not-found")) {
+        it.remove();
+      }
+
+      it.style.display = "";
+    });
+  }
+  if (input && input.value) {
+    li.forEach((item) => {
+      if (item.textContent.toLowerCase().includes(filter)) {
+        item.style.display = "";
+
+        if (document.querySelector("._not-found")) {
+          document.querySelector("._not-found").remove();
+        }
+      } else if (item.matches("._not-found")) {
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    const IsNotFoundLi = Array.from(li).every((li) => {
+      if (li.style.display === "none") return true;
+    });
+
+    if (IsNotFoundLi) {
+      const li = document.createElement("li");
+      li.classList.add("_not-found");
+      li.innerText = "Ничего не найдено";
+      ul.append(li);
+    }
+  }
+}
 // создание элементов сметы
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
