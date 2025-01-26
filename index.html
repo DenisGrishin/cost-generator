@@ -100,8 +100,21 @@
 
       </div>
       <div class="container-content">
-        <div class=" search-block _icon-search ">
-          <input type="text" onkeyup="searchItems()" placeholder="Поиск" class=" input-default">
+        <div class=" search-block _icon-search" data-search-items>
+          <input type="text" onkeyup="showDropDown(event)" onblur="hiddenDropDown(event)" placeholder="Поиск"
+            class=" input-default">
+          <ul class="search-position">
+            <li>Скважины</li>
+            <li>Септики</li>
+            <li>Баратеон</li>
+            <li>Николаев</li>
+            <li>Единица</li>
+            <li>Скважины</li>
+            <li>Септики</li>
+            <li>Баратеон</li>
+            <li>Николаев</li>
+            <li>Единица</li>
+          </ul>
         </div>
       </div>
       <div class="dashboard">

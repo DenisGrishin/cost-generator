@@ -1,5 +1,5 @@
 import { generateRandomId } from "./main";
-
+// создание сметы, события onclick
 export function creatingSmeta() {
   const listSmeta = document.querySelector("[data-smeta]");
 
@@ -86,7 +86,7 @@ export function creatingSmeta() {
   // autoFocusInput(idItem);
   handelKeyDown();
 }
-
+// создание этапа, события onclick
 export function creatingStages(event) {
   const smeta = event.target.closest("[data-smeta-item]");
   const listStage = smeta.querySelector("[data-stages]");
@@ -154,7 +154,7 @@ export function creatingStages(event) {
   // autoFocusInput(idItem);
   handelKeyDown();
 }
-
+// создание позиции, события onclick
 export function creatingPosition(event) {
   const stage = event.target.closest("[data-stage-item]");
 
@@ -209,7 +209,7 @@ export function creatingPosition(event) {
   inintSelect2(id);
   handelKeyDown();
 }
-
+// удаления выбранных элементов через чекбокс, события onclick
 export function deleteSelectedItems() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
@@ -259,7 +259,7 @@ function selectSubtractPosition(positionItem) {
       )
   );
 }
-
+// удаления сметы,этапа и позиции, события onclick
 export function deleteItem(event, dataSelector) {
   if (dataSelector === "data-stage-item") {
     subtractStageSum(event.currentTarget.closest(`[${dataSelector}]`));
@@ -316,45 +316,49 @@ function subtractStageSum(selector) {
 
   sumSmeta.innerText = formatterIntl(sum);
 }
+// поиск по списку, события onkeyup
+export function searchItems(event) {
+  let target = event.target;
+  const parentSearchSelector = target.closest("[data-search-items]");
 
-export function searchItems() {
-  const blcok = document.querySelectorAll("[data-search-items]");
-
-  blcok.forEach((element) => {
-    const input = element.querySelector(
-      "[data-search-items] input[type='text']"
-    );
-
-    if (input && input.value) {
-      const ul = element.querySelector("[data-search-items] > ul");
-      const li = ul.querySelectorAll("li");
-      const filter = input.value.toLowerCase();
-
-      li.forEach((item) => {
-        if (item.textContent.toLowerCase().includes(filter)) {
-          item.style.display = "";
-
-          if (document.querySelector("._not-found")) {
-            document.querySelector("._not-found").remove();
-          }
-        } else if (item.matches("._not-found")) {
-        } else {
-          item.style.display = "none";
-        }
-      });
-
-      const IsNotFoundLi = Array.from(li).every((li) => {
-        if (li.style.display === "none") return true;
-      });
-
-      if (IsNotFoundLi) {
-        const li = document.createElement("li");
-        li.classList.add("_not-found");
-        li.innerText = "Ничего не найдено";
-        ul.append(li);
+  const input = target;
+  const ul = parentSearchSelector.querySelector("[data-search-items] > ul");
+  const li = ul.querySelectorAll("li");
+  const filter = input.value.toLowerCase();
+  if (filter === "") {
+    li.forEach((it) => {
+      if (it.matches("._not-found")) {
+        it.remove();
       }
+
+      it.style.display = "";
+    });
+  }
+  if (input && input.value) {
+    li.forEach((item) => {
+      if (item.textContent.toLowerCase().includes(filter)) {
+        item.style.display = "";
+
+        if (document.querySelector("._not-found")) {
+          document.querySelector("._not-found").remove();
+        }
+      } else if (item.matches("._not-found")) {
+      } else {
+        item.style.display = "none";
+      }
+    });
+
+    const IsNotFoundLi = Array.from(li).every((li) => {
+      if (li.style.display === "none") return true;
+    });
+
+    if (IsNotFoundLi) {
+      const li = document.createElement("li");
+      li.classList.add("_not-found");
+      li.innerText = "Ничего не найдено";
+      ul.append(li);
     }
-  });
+  }
 }
 // События на onblur, чтобы схранить данные с инпута в текст
 export function saveTextInput(event) {
@@ -651,10 +655,11 @@ function inintSelect2(id) {
   // Событие при изменении значения
   changeSelected(id);
 }
+// показать выпадающий список поиска, события onkeyup
 export function showDropDown(event) {
   const target = event.target;
   const dropDown = target
-    .closest(".list-accordion__name")
+    .closest("[data-search-items]")
     .querySelector(".search-position");
 
   if (target.value.length == 0) {
@@ -662,10 +667,10 @@ export function showDropDown(event) {
     return;
   }
 
-  searchItems();
+  searchItems(event);
   dropDown.classList.add("_show");
 }
-
+// в позиции сохранить текст в ячейку, при клике на элемент котрый в списке поиска, соыбтия onclick
 export function saveTextSearchList(event) {
   let target = event.target;
   const textDropDownItem = target.innerText;
@@ -685,4 +690,14 @@ function createingHiddentInput(value, parent) {
   inputHidden.value = value;
   inputHidden.name = name;
   parent.append(inputHidden);
+}
+
+// при потери фокуса выпадающие меню поиска скрывается, события onblur
+export function hiddenDropDown(event) {
+  const target = event.target;
+  const dropDown = target
+    .closest("[data-search-items]")
+    .querySelector(".search-position");
+
+  dropDown.classList.remove("_show");
 }
