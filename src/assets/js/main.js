@@ -13,6 +13,7 @@ import {
   editTextSelect,
   showDropDown,
   saveTextSearchList,
+  searchItems,
 } from "./createElement";
 import {
   collectInputData,
@@ -82,26 +83,27 @@ if (document.querySelector("#reservation")) {
   });
 }
 
-function searchItems() {
-  const blcok = document.querySelectorAll("[data-search-items]");
+// function searchItems() {
+//   debugger;
+//   const blcok = document.querySelectorAll("[data-search-items]");
 
-  blcok.forEach((element) => {
-    const input = element.querySelector("[data-search-items] input");
+//   blcok.forEach((element) => {
+//     const input = element.querySelector("[data-search-items] input");
 
-    const ul = element.querySelector(".search-items__list");
-    const li = ul.querySelectorAll("li");
+//     const ul = element.querySelector(".search-items__list");
+//     const li = ul.querySelectorAll("li");
 
-    const filter = input.value.toLowerCase();
+//     const filter = input.value.toLowerCase();
 
-    li.forEach((item) => {
-      if (item.textContent.toLowerCase().includes(filter)) {
-        item.style.display = "";
-      } else {
-        item.style.display = "none";
-      }
-    });
-  });
-}
+//     li.forEach((item) => {
+//       if (item.textContent.toLowerCase().includes(filter)) {
+//         item.style.display = "";
+//       } else {
+//         item.style.display = "none";
+//       }
+//     });
+//   });
+// }
 export function generateRandomId() {
   return (
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)

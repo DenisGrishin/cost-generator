@@ -321,7 +321,9 @@ export function searchItems() {
   const blcok = document.querySelectorAll("[data-search-items]");
 
   blcok.forEach((element) => {
-    const input = element.querySelector("[data-search-items] input");
+    const input = element.querySelector(
+      "[data-search-items] input[type='text']"
+    );
 
     if (input && input.value) {
       const ul = element.querySelector("[data-search-items] > ul");
