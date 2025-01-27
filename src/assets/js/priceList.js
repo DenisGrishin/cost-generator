@@ -1,3 +1,4 @@
+// взять данные с ряда таблицы, и добавить их в инпты в модальное окно
 export function editPositionPriceList(event) {
   const target = event.target;
   const tr = target.closest("tr");
@@ -31,7 +32,7 @@ const obgСategoryClass = {
   Мех: "_meh-category",
   Док: "_doc-category",
 };
-
+// сохранить редактируемых в модальном окне данных
 export function saveEditPositionPriceList(event) {
   const target = event.target;
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
@@ -61,7 +62,7 @@ export function saveEditPositionPriceList(event) {
     $("#modal-edit-position").modal("hide");
   }
 }
-
+// валидация в модальном окне на пустой инпут
 export function validateEmpty(list) {
   let isValidate = false;
 
@@ -86,7 +87,7 @@ export function validateEmpty(list) {
 
   return isValidate;
 }
-
+// собрать данные в коллекцию
 export function collectInputData(list) {
   return Array.from(list).map((element) => {
     return element.value;

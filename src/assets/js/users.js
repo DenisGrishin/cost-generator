@@ -1,3 +1,4 @@
+// события выбра роли, onchange
 export function changeRole(event) {
   let target = event.target;
 

@@ -15,7 +15,7 @@ export function creatingSmeta() {
         <div class="text-left  accordion__header collapsed middle-title">
           <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
           <label class="accordion__checkbox checkbox">
-            <input hidden data-chkc-smeta type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
+            <input hidden data-chkc-smeta type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="toggleBulkActionBar()">
           </label>
           <div class="accordion__header-content">
             <div class="accordion__name" onclick='editTextInput(event)' data-name='Наименование сметы'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
@@ -84,7 +84,7 @@ export function creatingSmeta() {
   }
 
   // autoFocusInput(idItem);
-  handelKeyDown();
+  initHandelKeyDown();
 }
 // создание этапа, события onclick
 export function creatingStages(event) {
@@ -152,7 +152,7 @@ export function creatingStages(event) {
   });
 
   // autoFocusInput(idItem);
-  handelKeyDown();
+  initHandelKeyDown();
 }
 // создание позиции, события onclick
 export function creatingPosition(event) {
@@ -167,7 +167,7 @@ export function creatingPosition(event) {
     `<li class="list-accordion__item" data-position-item>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
-        <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="showBulkActionBar()">
+        <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="toggleBulkActionBar()">
       </label></div>
     <div>${++numerItem}</div>
     <div></div>
@@ -207,7 +207,7 @@ export function creatingPosition(event) {
   );
 
   inintSelect2(id);
-  handelKeyDown();
+  initHandelKeyDown();
 }
 // удаления выбранных элементов через чекбокс, события onclick
 export function deleteSelectedItems() {
@@ -227,10 +227,10 @@ export function deleteSelectedItems() {
       }
     }
   });
-  showBulkActionBar();
+  toggleBulkActionBar();
   createIterationNumber();
 }
-
+// вычитает сумму при удалении выбранных позиций
 function selectSubtractPosition(positionItem) {
   const dataPositionItem = positionItem;
   const stageSum = positionItem
@@ -270,9 +270,9 @@ export function deleteItem(event, dataSelector) {
   event.currentTarget.closest(`[${dataSelector}]`).remove();
 
   createIterationNumber();
-  showBulkActionBar();
+  toggleBulkActionBar();
 }
-
+// вычитание сумму этапа при удалении одной позиции
 function subtractPositionSum(selector) {
   const sumPosition = selector.querySelector("[data-sum-position]");
   const parentStage = selector.closest("[data-stage-item]");
@@ -285,7 +285,7 @@ function subtractPositionSum(selector) {
       Number(sumPosition.innerText.replace(/\s+/g, ""))
   );
 }
-
+// вычитание сумму сметы при удалении одной позиции
 function subtractSmetaSum(selector, currentSum) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumSmeta = smetaItem.querySelector(
@@ -296,7 +296,7 @@ function subtractSmetaSum(selector, currentSum) {
   sum = sum - Number(currentSum.replace(/\s+/g, ""));
   sumSmeta.innerText = formatterIntl(sum);
 }
-
+// вычитание сумму из сметы при удалении одного этапа
 function subtractStageSum(selector) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumStages = selector.querySelectorAll("[data-sum]");
@@ -349,7 +349,7 @@ export function editTextInput(event) {
   createInputEdit(target);
   sumItemPosition(target);
 }
-
+// создание инпута в смете, этапе и позции на события onclick
 function createInputEdit(parent) {
   const parentText = parent.innerText;
   parent.innerText = "";
@@ -382,10 +382,10 @@ function createInputEdit(parent) {
     }
   }
 
-  handelKeyDown();
+  initHandelKeyDown();
 }
-
-export function showBulkActionBar() {
+// показать скрыть экшн бар, где кнопки "экспортировать", "обновить цену" и "удалить выбранное"
+export function toggleBulkActionBar() {
   const checkboxs = document.querySelectorAll('[name="checkbox-smeta"]');
   const tooltipSmeta = document.querySelector(".bulkActionBar");
   const selectedCount = document.querySelector("[data-selected-count]");
@@ -417,7 +417,8 @@ export function showBulkActionBar() {
   }
 }
 
-function handelKeyDown() {
+// инизацлицаии события onkeydown, чтоб инпут сохранять на нажатия enter
+function initHandelKeyDown() {
   const inputs = document.querySelectorAll("[data-edit-input]");
   inputs.forEach((input) => {
     input.addEventListener("keydown", (e) => {
@@ -427,7 +428,7 @@ function handelKeyDown() {
     });
   });
 }
-
+// находит максимальное большое число в списке
 function findMaxNumber(parentSmeta) {
   const li = parentSmeta.querySelectorAll(`[data-position]  > li`);
   let max = 0;
@@ -490,7 +491,7 @@ function sumItemPosition(selectorDiv) {
     });
   }
 }
-
+// пробеллы в числах '1 000 000'
 function formatterIntl(number) {
   const formatted = new Intl.NumberFormat("ru").format(number);
 
@@ -538,6 +539,7 @@ function sumSmeta(stageLi) {
     );
   });
 }
+// выбрать все чекбоксы в позициях onchange
 export function chooseAllCheckbox(event) {
   const target = event.target;
   const isChecked = event.currentTarget.checked;
@@ -549,9 +551,9 @@ export function chooseAllCheckbox(event) {
     element.checked = isChecked;
   });
 
-  showBulkActionBar();
+  toggleBulkActionBar();
 }
-
+// смена ед.изм на на селект в позициях, события на onclick
 export function editTextSelect(event) {
   let target = event.currentTarget;
 
@@ -562,6 +564,7 @@ export function editTextSelect(event) {
   createSelectEdit(target);
 }
 
+// созадния селекта в позициях
 function createSelectEdit(parent) {
   const parentText = parent.innerText;
 
@@ -586,7 +589,7 @@ function createSelectEdit(parent) {
   $(`[data-select='${id}']`).val(parentText).trigger("change");
   parent.dataset.selectId = parent.children[0].name;
 }
-
+// сохранение выбранного в секте ед.изм в позиции, события срабатывают на закрытие списка элементов селекта
 function changeSelected(id) {
   // Событие при изменении значения
   $(`[data-select='${id}']`).on("select2:close", function (e) {
@@ -658,5 +661,3 @@ export function hiddenDropDown(event) {
 
   dropDown.classList.remove("_show");
 }
-
-// const a = document.querySelector(".handle ._icon-darag");

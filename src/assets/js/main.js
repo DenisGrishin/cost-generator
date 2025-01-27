@@ -1,7 +1,7 @@
 import "../scss/index.scss";
 import { getCurrentDataClient, saveEditClient } from "./clients";
 import {
-  showBulkActionBar,
+  toggleBulkActionBar,
   creatingPosition,
   creatingSmeta,
   creatingStages,
@@ -23,6 +23,7 @@ import {
 } from "./priceList";
 import { changeRole } from "./users";
 
+// инициализация select2
 if (document.querySelector(".select2")) {
   $(".select2").select2({
     placeholder: "",
@@ -35,7 +36,7 @@ if (document.querySelector(".select2")) {
     },
   });
 }
-
+// инициализация select2 defualt
 if (document.querySelector(".select2-defualt")) {
   $(document).ready(function () {
     $(".select2-defualt").select2({
@@ -52,7 +53,7 @@ if (document.querySelector(".select2-defualt")) {
   });
 }
 
-//Date range picker
+// инициализация daterangepicker
 if (document.querySelector("#reservation")) {
   $("#reservation").daterangepicker({
     singleDatePicker: true,
@@ -82,12 +83,13 @@ if (document.querySelector("#reservation")) {
     },
   });
 }
-
+// генератор рандомного id
 export function generateRandomId() {
   return (
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
   );
 }
+// инициализация таблицы "пользователей"
 if (document.querySelector("#tableUser")) {
   if (!$.fn.DataTable.isDataTable("#tableUser")) {
     $("#tableUser").DataTable({
@@ -122,6 +124,7 @@ if (document.querySelector("#tableUser")) {
     });
   }
 }
+// инициализация таблицы "прайс лист"
 if (document.querySelector("#tablePriceList")) {
   var tabel;
   if (!$.fn.DataTable.isDataTable("#tablePriceList")) {
@@ -167,6 +170,7 @@ if (document.querySelector("#tablePriceList")) {
       ],
     });
   }
+  // созданте элемента в таблице "прайс лист"
   function creatingItemPL() {
     const createModal = document.getElementById("modal-create-position");
 
@@ -281,7 +285,7 @@ window.editTextSelect = editTextSelect;
 window.showDropDown = showDropDown;
 window.saveTextSearchList = saveTextSearchList;
 // чекбоксы
-window.showBulkActionBar = showBulkActionBar;
+window.toggleBulkActionBar = toggleBulkActionBar;
 window.chooseAllCheckbox = chooseAllCheckbox;
 
 // удаление элементов сметы

@@ -1,5 +1,5 @@
 import { validateEmpty } from "./priceList";
-
+// взять данные клиента, и добавить их в инпты в модальное окно
 export function getCurrentDataClient() {
   const currentClientData = document.querySelectorAll(
     ".block-item__item .block-item__contetn"
@@ -28,7 +28,7 @@ export function getCurrentDataClient() {
     }
   });
 }
-
+// сохранить редактируемых данных о клиенте
 export function saveEditClient() {
   const modal = document.querySelector("#modal-client");
   const editClientData = modal.querySelectorAll("._edit-input");
