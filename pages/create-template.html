@@ -115,15 +115,15 @@
 						</div>
 					</div>
 					<div class="list-input__item">
-						<label class="list-input__label">Координаты</label>
+						<label class="list-input__label">Комментарий</label>
 						<div class="list-input__wrapper-input">
-							<input autocomplete="off" class="input-default" name="Координаты" type="text">
+							<input autocomplete="off" class="input-default" name="Комментарий" type="text">
 						</div>
 					</div>
 					<div class="list-input__item">
 						<label class="list-input__label">Категория</label>
 						<div class="list-input__wrapper-input">
-							<select class="list-input__select  select2" name="Категория">
+							<select class="list-input__select  select2" name="категория">
 								<option></option>
 								<option>Старк Санса Недовна</option>
 								<option>Старк Бран Недовна</option>
@@ -151,7 +151,7 @@
 										data-card-widget="collapse"></button>
 									<label class="accordion__checkbox checkbox">
 										<input hidden data-chkc-smeta type="checkbox" class="checkbox__input"
-											name="checkbox-smeta" onchange="showBulkActionBar()">
+											name="checkbox-smeta" onchange="toggleBulkActionBar()">
 									</label>
 									<div class="accordion__header-content">
 										<div class="accordion__name" onclick='editTextInput(event)'

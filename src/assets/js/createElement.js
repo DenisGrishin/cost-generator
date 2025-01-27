@@ -169,7 +169,7 @@ export function creatingPosition(event) {
     <div><label class="checkbox">
         <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="toggleBulkActionBar()">
       </label></div>
-    <div>${++numerItem}</div>
+    <div onclick='editTextInput(event)' data-name='№'><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"   class="input-default"></div>
     <div></div>
     <div data-name='Наименование работ' class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
     <input type="text"  onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input  class="input-default">
@@ -376,10 +376,9 @@ function createInputEdit(parent) {
       "beforeend",
       `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
     );
-
-    if (parent.querySelector("[data-edit-input]")) {
-      parent.querySelector("[data-edit-input]").focus();
-    }
+  }
+  if (parent.querySelector("[data-edit-input]")) {
+    parent.querySelector("[data-edit-input]").focus();
   }
 
   initHandelKeyDown();
@@ -587,6 +586,7 @@ function createSelectEdit(parent) {
   inintSelect2(id);
   changeSelected(parent.children[0].name);
   $(`[data-select='${id}']`).val(parentText).trigger("change");
+  $(`[data-select='${id}']`).select2("open");
   parent.dataset.selectId = parent.children[0].name;
 }
 // сохранение выбранного в секте ед.изм в позиции, события срабатывают на закрытие списка элементов селекта
