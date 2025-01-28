@@ -277,6 +277,72 @@ export function searchItems(event) {
     }
   }
 }
+// создание папки
+function createFolder(event) {
+  const modal = document.querySelector("#modal-create-folder");
+  const input = modal.querySelector("._edit-input");
+
+  const block = document.querySelector("[data-search-items]");
+  const ul = block.querySelector("ul");
+
+  const IsValidate = validateEmpty([input]);
+
+  if (IsValidate) {
+    // сокращено data-name-il --- data-name-item-list
+    ul.insertAdjacentHTML(
+      "afterbegin",
+      `<li class="_icon-folder ">
+							<a href="./template-page.html" class="flex-fill "  data-name-il> ${input.value}</a>
+              <span>12.12.2024</span>
+							<div class="search-items__btn-dropdown dropdown-search">
+								<button type="button" class="dropdown-search__btn" data-toggle="dropdown" aria-expanded="true">
+								</button>
+								<div class="dropdown-menu " x-placement="bottom-start">
+						    <button type="button" class="dropdown-item" data-toggle="modal"
+										data-target="#modal-edit-folder" onclick='getNameItemList(event)'>Редактировать</button>
+									<button type="button" class="dropdown-item" onclick="deleteItemList(event)">Удалить</button>
+								</div>
+							</div>
+						</li>`
+    );
+
+    $("#modal-create-folder").modal("hide");
+  }
+}
+// удаления папки
+function deleteItemList(event) {
+  let target = event.target;
+  const li = target.closest("li");
+  li.remove();
+}
+
+function getNameItemList(event) {
+  let target = event.target;
+  const li = target.closest("li");
+  li.dataset.edit = "acitive";
+
+  const nameFolder = li.querySelector("[data-name-il]");
+
+  const modal = document.querySelector("#modal-edit-folder");
+  const input = modal.querySelector("._edit-input");
+
+  input.value = nameFolder.innerText;
+}
+// сохрнаить редкатируемую папку
+function saveEditFolder(event) {
+  const modal = document.querySelector("#modal-edit-folder");
+  const input = modal.querySelector("._edit-input");
+  const block = document.querySelector("[data-search-items]");
+  const ul = block.querySelector("ul");
+  const editLi = ul.querySelector("[data-edit]");
+
+  const IsValidate = validateEmpty([input]);
+  if (IsValidate) {
+    editLi.querySelector("[data-name-il]").innerText = input.value;
+    editLi.removeAttribute("data-edit");
+    $("#modal-edit-folder").modal("hide");
+  }
+}
 // создание элементов сметы
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
@@ -306,3 +372,8 @@ window.getCurrentDataClient = getCurrentDataClient;
 window.saveEditClient = saveEditClient;
 // юезеры
 window.changeRole = changeRole;
+//  папки
+window.createFolder = createFolder;
+window.deleteItemList = deleteItemList;
+window.getNameItemList = getNameItemList;
+window.saveEditFolder = saveEditFolder;

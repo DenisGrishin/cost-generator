@@ -121,50 +121,59 @@
 							новую смету</button>
 						<ul class="search-items__list ">
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Септики</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Септики</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item ">Редактировать</button>
-										<button type="button" class="dropdown-item ">Удалить</button>
+										<button type="button" class="dropdown-item " data-toggle="modal"
+											data-target="#modal-edit-folder"
+											onclick='getNameItemList(event)'>Редактировать</button>
+										<button type="button" class="dropdown-item "
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Канализация</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Канализация</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Фундамент</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Фундамент</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Скважины</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Скважины</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -245,6 +254,12 @@
 						</div>
 					</div>
 					<div class="list-input__item">
+						<label class="list-input__label">Адрес</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Адрес" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
 						<label class="list-input__label">Координаты</label>
 						<div class="list-input__wrapper-input">
 							<input autocomplete="off" class="input-default" name="Координаты" type="text">
@@ -256,7 +271,7 @@
 							<input autocomplete="off" class="input-default" name="Комментарии" type="text">
 						</div>
 					</div>
-					<div class="list-input__item">
+					<div class="list-input__item" style="display: none;">
 						<label class="list-input__label">Статус</label>
 						<div class="list-input__wrapper-input list-input__wrapper-input_w-small">
 							<div class="select-status py-2">
@@ -291,7 +306,8 @@
 
 			<div class="container-content">
 				<label class="very-small-title"> Комментарий к КП которого на самом деле больше нет</label>
-				<input type="text" class="input-default" name="комментарий">
+
+				<textarea ame="комментарий" id="" class="textarea-default"></textarea>
 			</div>
 			<div class="bulkActionBar container-content">
 				<button type="submit" class="butt-success " data-toggle="dropdown" aria-expanded="false">Экспортировать
@@ -371,6 +387,35 @@
 		</div>
 
 	</div>
+	<!-- Начало  Модлаьно  окно редактирование -->
+	<div class="modal fade" id="modal-edit-folder" data-modal-id style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<div class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Редактиование папки</div>
+					<div class="block-item">
+
+
+						<div class="block-item__item">
+							<div class="block-item__label">Имя папки:</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите имя папки" class="input-default _edit-input _validate"></div>
+						</div>
+
+
+
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" onclick="saveEditFolder(event)" class="butt-success ">Сохранить</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Конец Модлаьно окно редактирование-->
 	<!-- jQuery -->
 	<script src="../plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->

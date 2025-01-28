@@ -58,7 +58,7 @@ export function creatingSmeta() {
     </div>
     <div class="mt-3">
       <label class="very-small-title"> Комментарий</label>
-      <input type="text" class="input-default" name="комментарий">
+    	<textarea ame="комментарий" id="" class="textarea-default"></textarea>
     </div>
 
   </div>
@@ -127,7 +127,7 @@ export function creatingStages(event) {
                               </li>
                               <li class="list-accordion__body">
                                 <ul class="todo-list" data-position data-widget="todo-list">
-        
+                                  
                                 </ul>
                               </li>
                               <li class="list-accordion__footer footer-list">
@@ -161,6 +161,7 @@ export function creatingPosition(event) {
   const listPosition = stage.querySelector("[data-position]");
 
   let numerItem = findMaxNumber(listPosition);
+
   let id = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
@@ -169,7 +170,7 @@ export function creatingPosition(event) {
     <div><label class="checkbox">
         <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="toggleBulkActionBar()">
       </label></div>
-    <div onclick='editTextInput(event)' data-name='№'><input data-number   type="text" data-edit-input onblur="saveTextInput(event)"   class="input-default"></div>
+    <div onclick='editTextInput(event)' data-name='№'>${numerItem}</div>
     <div></div>
     <div data-name='Наименование работ' class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
     <input type="text"  onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input  class="input-default">
@@ -223,12 +224,14 @@ export function deleteSelectedItems() {
 
       if (Object.keys(dataCheck)[0] === "chkcPosition") {
         selectSubtractPosition(checkbox.closest("[data-position-item]"));
-        checkbox.closest("[data-position-item]").remove();
+        const check = checkbox.closest("[data-position]");
+        createIterationNumber(check, () =>
+          checkbox.closest("[data-position-item]").remove()
+        );
       }
     }
   });
   toggleBulkActionBar();
-  createIterationNumber();
 }
 // вычитает сумму при удалении выбранных позиций
 function selectSubtractPosition(positionItem) {
@@ -267,9 +270,9 @@ export function deleteItem(event, dataSelector) {
   if (dataSelector === "data-position-item") {
     subtractPositionSum(event.currentTarget.closest(`[${dataSelector}]`));
   }
-  event.currentTarget.closest(`[${dataSelector}]`).remove();
-
-  createIterationNumber();
+  createIterationNumber(event.currentTarget.closest(`[data-position]`), () =>
+    event.currentTarget.closest(`[${dataSelector}]`).remove()
+  );
   toggleBulkActionBar();
 }
 // вычитание сумму этапа при удалении одной позиции
@@ -434,25 +437,31 @@ function findMaxNumber(parentSmeta) {
 
   // если путсая таблица
   if (li.length === 0) {
-    return 0;
+    return 1;
   }
 
-  li.forEach((element, indx) => {
-    if (max < Number(element.children[2].innerText)) {
-      max = Number(element.children[2].innerText);
+  li.forEach((element) => {
+    if (max <= Number(element.children[2].innerText)) {
+      max = Number(element.children[2].innerText) + 1;
     }
   });
 
   return max;
 }
-function createIterationNumber() {
-  const list = document.querySelectorAll("[data-position] > li");
+//  ставит числа по возрастанию при удаление
+function createIterationNumber(selector, callBackDelet) {
+  const parentPosition = selector.closest("[data-position]");
+
+  callBackDelet();
+
+  const list = parentPosition.querySelectorAll("[data-position-item]");
   let numberItem = 0;
   for (let i = 0; i < list.length; i++) {
     const element = list[i];
     element.children[2].innerText = ++numberItem;
   }
 }
+
 //  Считает сумму в этапе от позиции
 function sumItemPosition(selectorDiv) {
   const positionLi = selectorDiv.parentElement;

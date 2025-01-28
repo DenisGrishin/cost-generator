@@ -1,5 +1,6 @@
 // взять данные с ряда таблицы, и добавить их в инпты в модальное окно
 export function editPositionPriceList(event) {
+  debugger;
   const target = event.target;
   const tr = target.closest("tr");
   const editItem = tr.querySelectorAll("._edit");

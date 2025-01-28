@@ -115,7 +115,8 @@
 				</a>
 				<div class="dropdown-menu">
 					<button type="button" class="dropdown-item _icon-smeta">Смету</button>
-					<button type="button" class="dropdown-item _icon-folder">Папку</button>
+					<button type="button" class="dropdown-item _icon-folder" data-toggle="modal"
+						data-target="#modal-create-folder">Папку</button>
 					<button type="button" class="dropdown-item _icon-upload-file">Загрузить файл</button>
 				</div>
 			</div>
@@ -128,38 +129,47 @@
 
 						<ul class="search-items__list ">
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Сметы</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Сметы</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" data-toggle="modal"
+											data-target="#modal-edit-folder"
+											onclick='getNameItemList(event)'>Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
 							<li class="search-items__item _icon-folder ">
-								<span class="flex-fill "> Визуализации</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Визуализации</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" data-toggle="modal"
+											data-target="#modal-edit-folder"
+											onclick='getNameItemList(event)'>Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
 							<li class="_icon-folder ">
-								<span class="flex-fill "> Всякое разное</span> <span>12.12.2024</span>
+								<span class="flex-fill " data-name-il> Всякое разное</span> <span>12.12.2024</span>
 								<div class="search-items__btn-dropdown dropdown-search">
 									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+										<button type="button" class="dropdown-item" data-toggle="modal"
+											data-target="#modal-edit-folder"
+											onclick='getNameItemList(event)'>Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -171,8 +181,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -184,8 +195,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -197,8 +209,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -210,8 +223,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -223,8 +237,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -236,8 +251,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -248,8 +264,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -260,8 +277,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -272,8 +290,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -284,8 +303,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -296,8 +316,9 @@
 										aria-expanded="true">
 									</button>
 									<div class="dropdown-menu " x-placement="bottom-start">
-										<button type="button" class="dropdown-item">Редактировать</button>
-										<button type="button" class="dropdown-item">Удалить</button>
+
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
 									</div>
 								</div>
 							</li>
@@ -430,6 +451,64 @@
 		</div>
 
 	</div>
+	<!-- Начало  Модлаьно  окно создание -->
+	<div class="modal fade" id="modal-create-folder" data-modal-id style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<div class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Создание папки</div>
+					<div class="block-item">
+
+
+						<div class="block-item__item">
+							<div class="block-item__label">Имя папки:</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите имя папки" class="input-default _edit-input _validate"></div>
+						</div>
+
+
+
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" onclick="createFolder(event)" class="butt-success ">Сохранить</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Конец Модлаьно окно создание-->
+	<!-- Начало  Модлаьно  окно редактирование -->
+	<div class="modal fade" id="modal-edit-folder" data-modal-id style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<div class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Редактиование папки</div>
+					<div class="block-item">
+
+
+						<div class="block-item__item">
+							<div class="block-item__label">Имя папки:</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите имя папки" class="input-default _edit-input _validate"></div>
+						</div>
+
+
+
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" onclick="saveEditFolder(event)" class="butt-success ">Сохранить</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Конец Модлаьно окно редактирование-->
 	<!-- jQuery -->
 	<script src="../plugins/jquery/jquery.min.js"></script>
 	<!-- Bootstrap 4 -->
