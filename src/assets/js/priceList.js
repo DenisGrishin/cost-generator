@@ -63,7 +63,8 @@ export function saveEditPositionPriceList(event) {
     $("#modal-edit-position").modal("hide");
   }
 }
-// валидация в модальном окне на пустой инпут
+/*! валидация в модальном окне на пустой инпут */
+
 export function validateEmpty(list) {
   let isValidate = false;
 

@@ -264,15 +264,19 @@ function selectSubtractPosition(positionItem) {
 }
 // удаления сметы,этапа и позиции, события onclick
 export function deleteItem(event, dataSelector) {
+  if (dataSelector === "data-smeta-item") {
+    event.currentTarget.closest(`[${dataSelector}]`).remove();
+  }
   if (dataSelector === "data-stage-item") {
+    event.currentTarget.closest(`[${dataSelector}]`).remove();
     subtractStageSum(event.currentTarget.closest(`[${dataSelector}]`));
   }
   if (dataSelector === "data-position-item") {
     subtractPositionSum(event.currentTarget.closest(`[${dataSelector}]`));
+    createIterationNumber(event.currentTarget.closest(`[data-position]`), () =>
+      event.currentTarget.closest(`[${dataSelector}]`).remove()
+    );
   }
-  createIterationNumber(event.currentTarget.closest(`[data-position]`), () =>
-    event.currentTarget.closest(`[${dataSelector}]`).remove()
-  );
   toggleBulkActionBar();
 }
 // вычитание сумму этапа при удалении одной позиции

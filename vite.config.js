@@ -4,4 +4,9 @@ export default defineConfig({
   build: {
     minify: false,
   },
+  terserOptions: {
+    format: {
+      comments: "some",
+    },
+  },
 });

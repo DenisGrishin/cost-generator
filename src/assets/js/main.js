@@ -328,8 +328,9 @@ function getNameItemList(event) {
 
   input.value = nameFolder.innerText;
 }
-// сохрнаить редкатируемую папку
 function saveEditFolder(event) {
+  // сохрнаить редкатируемую папку
+  /* сохрнаить редкатируемую папку */
   const modal = document.querySelector("#modal-edit-folder");
   const input = modal.querySelector("._edit-input");
   const block = document.querySelector("[data-search-items]");
