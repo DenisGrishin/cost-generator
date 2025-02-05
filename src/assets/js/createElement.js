@@ -20,14 +20,13 @@ export function creatingSmeta() {
           <div class="accordion__header-content">
             <div class="accordion__name" onclick='editTextInput(event)' data-name='Наименование сметы'><input type="text" data-edit-input onblur="saveTextInput(event)"  class="input-default"></div>
             <div class="accordion__select ">
-                <label class="accordion__name-select">Статус</label>
-              <div class="select-status">
-                <select class="select2  select2-hidden-accessible" name="Статус" style="width: 100%;"
+                <label class="accordion__name-select">Печать</label>
+              <div class="select-stamp">
+                <select class="select2 select2-stamp  select2-hidden-accessible" name="Печать" style="width: 100%;"
                   data-select2-id="select-status-" tabindex="-1" aria-hidden="true">
-                  <option value="Выполнено" class="select-status__completed">Выполнено</option>
-                  <option selected value="В работе" class="select-status__in-progress">В работе</option>
-                  <option value="Отменено" class="select-status__cancelled">Отменено</option>
-                  <option value="Отложено" class="select-status__postponed">Отложено</option>
+                  <option value="Без печати" class="select-status__completed" selected >Без печати</option>
+                  <option  value="С печатью" class="select-status__in-progress">С печатью</option>
+                
                 </select>
               </div>
             </div>
@@ -68,21 +67,46 @@ export function creatingSmeta() {
     $(".todo-list").sortable({
       placeholder: "stage-highlight",
       handle: ".handle",
-    });
 
-    // Инициализируем Select2 на новом элементе <select>
-    $(".select2").select2({
-      placeholder: "",
-      allowClear: true,
-      width: "resolve",
-      language: {
-        noResults: function () {
-          return "Ничего не найдено";
-        },
+      revert: 100, // Плавная анимация возврата
+      start: function (event, ui) {
+        // setTimeout(() => {
+        //   let target = event.target;
+        //   const accordions = target.querySelectorAll(".card");
+        //   accordions.forEach((element) => {
+        //     if (!element.matches(".collapsed-card")) {
+        //       element.classList.add("collapsed-card", "_opened");
+        //     }
+        //   });
+        // }, 100);
+      },
+      stop: function (event, ui) {
+        // setTimeout(() => {
+        //   let target = event.target;
+        //   const accordions = target.querySelectorAll(".card");
+        //   accordions.forEach((element) => {
+        //     if (element.matches("._opened")) {
+        //       element.classList.remove("collapsed-card", "_opened");
+        //     }
+        //   });
+        // }, 100);
       },
     });
   }
+  // Инициализируем Select2 на новом элементе <select>
+  $(".select2-stamp").select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: "",
+    dropdownCssClass: "select-stamp__drop-down",
 
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
+    },
+  });
   // autoFocusInput(idItem);
   initHandelKeyDown();
 }
@@ -146,12 +170,13 @@ export function creatingStages(event) {
   );
 
   // Инициализируем D&D
+
   $(".todo-list").sortable({
-    placeholder: "position-highlight",
-    handle: ".handle",
+    placeholder: "position-highlight", // Класс для подсветки
+    handle: ".handle", // Перетаскивание только за этот элемент
+    revert: 100,
   });
 
-  // autoFocusInput(idItem);
   initHandelKeyDown();
 }
 // создание позиции, события onclick
@@ -188,7 +213,7 @@ export function creatingPosition(event) {
     	</ul>
     </div>
     <div onclick='editTextSelect(event)' data-name='Ед. изм.'>
-                <select onblur="saveTextInput(event)" class="list-input__select   select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
+                <select onblur="saveTextInput(event)" class="select2 select2-unit  _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
                   <option value="сотка">сотка</option>
                   <option value="м²">м²</option>
@@ -360,7 +385,10 @@ export function editTextInput(event) {
 function createInputEdit(parent) {
   const parentText = parent.innerText;
   parent.innerText = "";
-  const dataNumbers = Object.keys(parent.dataset)[0] ? "data-number" : "";
+  const IsNumber =
+    parent.matches("[data-qty-position]") ||
+    parent.matches("[data-price-position]");
+
   if (parent.matches(".list-accordion__name")) {
     parent.insertAdjacentHTML(
       "beforeend",
@@ -381,7 +409,9 @@ function createInputEdit(parent) {
   } else {
     parent.insertAdjacentHTML(
       "beforeend",
-      `<input type="text" onblur="saveTextInput(event)" ${dataNumbers}   data-edit-input value="${parentText}"  class="input-default">`
+      `<input type="text" onblur="saveTextInput(event)" ${
+        IsNumber ? "data-number" : ""
+      }   data-edit-input value="${parentText}"  class="input-default">`
     );
   }
   if (parent.querySelector("[data-edit-input]")) {
@@ -584,7 +614,7 @@ function createSelectEdit(parent) {
   const id = generateRandomId();
   parent.insertAdjacentHTML(
     "beforeend",
-    `<select onblur="saveTextInput(event)" value='сотка'  class="list-input__select  select2 select2-defualt _edit-input" data-select='${id}' name="Единица измерения">
+    `<select onblur="saveTextInput(event)" value='сотка'  class="  select2 select2-unit  _edit-input" data-select='${id}' name="Единица измерения">
                 <option value="-">-</option>
                   <option value="сотка">сотка</option>
                   <option value="м²">м²</option>
@@ -614,9 +644,10 @@ if (document.querySelector("[data-smeta-item]")) {
 }
 
 function inintSelect2(id) {
-  $(".select2").select2({
+  $(".select2-unit").select2({
     placeholder: "",
     allowClear: true,
+    dropdownCssClass: "select-unit__drop-down",
     width: "resolve",
     minimumResultsForSearch: Infinity,
     language: {

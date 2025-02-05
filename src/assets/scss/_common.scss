@@ -37,6 +37,86 @@
 	font-size: 18px;
 }
 // select
+.select2-unit {
+	& + .select2-selection__rendered {
+		font-size: 16px;
+	}
+	& + .select2 .select2-selection__arrow {
+		&::after {
+			display: none;
+		}
+	}
+}
+.select-unit__drop-down {
+	font-size: 14px;
+	& .select2-results__option {
+		padding: 4px !important;
+		text-align: center;
+	}
+}
+.select-stamp {
+	& .select2-container--default {
+		border-bottom: 1px solid transparent;
+	}
+	& .select2-container--default.select2-container--focus .select2-selection--single {
+		border-bottom: none;
+	}
+	& .select2 .select2-selection {
+		border: none;
+		display: flex;
+		align-items: center;
+	}
+	& .select2-container--default.select2-container--open.select2-container--focus {
+		border-bottom: 1px solid var(--c-gray-2);
+	}
+	.select2-container--default .select2-selection--single .select2-selection__rendered {
+		margin-top: 0;
+	}
+	& .select2-selection__clear {
+		display: none;
+	}
+	& .select2-selection__arrow {
+		transform: translate(25px, 0px);
+	}
+	& .selection .select2-selection .select2-selection__rendered {
+		border-radius: 4px;
+		padding: 6px;
+		color: #fff;
+		&[title*="С печатью"] {
+			background-color: var(--c-green);
+		}
+		&[title*="Без печати"] {
+			background: #dc3545 linear-gradient(180deg, #e15361, #dc3545) repeat-x;
+		}
+	}
+	.select2-selection__rendered {
+		font-size: 14px;
+	}
+	.select2-selection {
+		padding: 0 10px;
+	}
+}
+.select-stamp__drop-down {
+	font-size: 14px;
+	.select2-results__options {
+		& li:nth-child(2) {
+			background-color: var(--c-green);
+		}
+		& li:nth-child(1) {
+			background: #dc3545 linear-gradient(180deg, #e15361, #dc3545) repeat-x;
+		}
+	}
+	.select2-results__option .select2-results__option--highlighted {
+		background-color: transparent;
+	}
+	& .select2-results__options .select2-results__option {
+		padding: 6px;
+		color: #fff;
+
+		border-radius: 4px;
+		line-height: 1;
+	}
+}
 .select2 {
 	width: 100% !important;
 	& .select2-selection {
@@ -85,8 +165,8 @@
 		margin: 4px;
 	}
 	& .select2-results__option--highlighted {
-		background-color: var(--bg) !important;
-		color: var(--c-black) !important;
+		background-color: var(--bg);
+		color: var(--c-black);
 		border-radius: 8px;
 	}
 	& .select2-dropdown {
@@ -110,28 +190,28 @@
 			background-color: var(--bg-completed);
 			color: var(--c-completed);
 			&.select2-results__option--highlighted {
-				background-color: var(--bg-completed) !important;
+				background-color: var(--bg-completed);
 			}
 		}
 		& li:nth-child(2) {
 			background-color: var(--bg-inProgress);
 			color: var(--c-inProgress);
 			&.select2-results__option--highlighted {
-				background-color: var(--bg-inProgress) !important;
+				background-color: var(--bg-inProgress);
 			}
 		}
 		& li:nth-child(3) {
 			background-color: var(--bg-cancelled);
 			color: var(--c-cancelled);
 			&.select2-results__option--highlighted {
-				background-color: var(--bg-cancelled) !important;
+				background-color: var(--bg-cancelled);
 			}
 		}
 		& li:nth-child(4) {
 			background-color: var(--bg-postponed);
 			color: var(--c-postponed);
 			&.select2-results__option--highlighted {
-				background-color: var(--bg-postponed) !important;
+				background-color: var(--bg-postponed);
 			}
 		}
 	}
@@ -157,7 +237,7 @@
 .select2-selection__rendered {
 	display: inline-block;
 	padding: 4px;
-	color: var(--c-black) !important;
+	color: var(--c-black);
 	font-weight: 400 !important;
 	&[title*="Выполнено"] {
 		background-color: var(--bg-completed);
@@ -180,6 +260,7 @@
 	.selection {
 		display: flex;
 	}
+
 	.select2 .select2-selection__rendered {
 		font-size: 12px;
 		line-height: 1.25;

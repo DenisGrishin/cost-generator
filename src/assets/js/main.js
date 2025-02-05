@@ -38,21 +38,33 @@ if (document.querySelector(".select2")) {
 }
 // инициализация select2 defualt
 if (document.querySelector(".select2-defualt")) {
-  $(document).ready(function () {
-    $(".select2-defualt").select2({
-      minimumResultsForSearch: Infinity, // Отключаем поиск
-      placeholder: "",
-      allowClear: true,
-      width: "resolve",
-      language: {
-        noResults: function () {
-          return "Ничего не найдено";
-        },
+  $(".select2-defualt").select2({
+    minimumResultsForSearch: Infinity, // Отключаем поиск
+    placeholder: "",
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
       },
-    });
+    },
   });
 }
+if (document.querySelector(".select2-stamp")) {
+  $(".select2-stamp").select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: "",
+    dropdownCssClass: "select-stamp__drop-down",
 
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
+    },
+  });
+}
 // инициализация daterangepicker
 if (document.querySelector("#reservation")) {
   $("#reservation").daterangepicker({
