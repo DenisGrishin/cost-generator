@@ -40,7 +40,7 @@ export function creatingSmeta() {
 
         <div class="accordion__body card-body">
           <!-- Этапы работы -->
-          <ul class="todo-list   mt-3" data-stages data-widget="todo-list">
+          <ul class="todo-list   mt-3" data-stages >
 
           </ul>
   
@@ -65,31 +65,34 @@ export function creatingSmeta() {
     );
     // Инициализируем D&D
     $(".todo-list").sortable({
-      placeholder: "stage-highlight",
+      tolerance: "pointer", // Улучшает точность Drag & Drop
+      placeholder: "position-highlight",
       handle: ".handle",
-
-      revert: 100, // Плавная анимация возврата
+      revert: 100,
+      connectWith: "[data-stage-item]",
+      forcePlaceholderSize: true,
       start: function (event, ui) {
-        // setTimeout(() => {
-        //   let target = event.target;
-        //   const accordions = target.querySelectorAll(".card");
-        //   accordions.forEach((element) => {
-        //     if (!element.matches(".collapsed-card")) {
-        //       element.classList.add("collapsed-card", "_opened");
-        //     }
-        //   });
-        // }, 100);
+        ui.placeholder.height(ui.item.height());
+      },
+      // Плавная анимация возврата
+      start: function (event, ui) {
+        let target = event.target;
+        const accordions = target.querySelectorAll(".card");
+        ui.placeholder.height(ui.item.height());
+        accordions.forEach((element) => {
+          if (!element.matches(".collapsed-card")) {
+            element.classList.add("collapsed-card", "_opened");
+          }
+        });
       },
       stop: function (event, ui) {
-        // setTimeout(() => {
-        //   let target = event.target;
-        //   const accordions = target.querySelectorAll(".card");
-        //   accordions.forEach((element) => {
-        //     if (element.matches("._opened")) {
-        //       element.classList.remove("collapsed-card", "_opened");
-        //     }
-        //   });
-        // }, 100);
+        let target = event.target;
+        const accordions = target.querySelectorAll(".card");
+        accordions.forEach((element) => {
+          if (element.matches("._opened")) {
+            element.classList.remove("collapsed-card", "_opened");
+          }
+        });
       },
     });
   }
@@ -117,7 +120,7 @@ export function creatingStages(event) {
 
   listStage.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item p-0 " data-stage-item>
+    `    <li class="todo-list__item  " data-stage-item>
                       <div class="todo-list__contetn">
                         <span class="handle  _icon-darag">
                         </span>
@@ -150,7 +153,7 @@ export function creatingStages(event) {
                                 <div></div>
                               </li>
                               <li class="list-accordion__body">
-                                <ul class="todo-list" data-position data-widget="todo-list">
+                                <ul class="todo-list" data-position >
                                   
                                 </ul>
                               </li>
@@ -172,9 +175,33 @@ export function creatingStages(event) {
   // Инициализируем D&D
 
   $(".todo-list").sortable({
-    placeholder: "position-highlight", // Класс для подсветки
-    handle: ".handle", // Перетаскивание только за этот элемент
+    tolerance: "pointer", // Улучшает точность Drag & Drop
+    placeholder: "position-highlight",
+    handle: ".handle",
     revert: 100,
+    connectWith: "[data-stage-item]",
+    forcePlaceholderSize: true,
+
+    start: function (event, ui) {
+      ui.placeholder.height(ui.item.height());
+      let target = event.target;
+      const accordions = target.querySelectorAll(".card");
+      ui.placeholder.height(ui.item.height());
+      accordions.forEach((element) => {
+        if (!element.matches(".collapsed-card")) {
+          element.classList.add("collapsed-card", "_opened");
+        }
+      });
+    },
+    stop: function (event, ui) {
+      let target = event.target;
+      const accordions = target.querySelectorAll(".card");
+      accordions.forEach((element) => {
+        if (element.matches("._opened")) {
+          element.classList.remove("collapsed-card", "_opened");
+        }
+      });
+    },
   });
 
   initHandelKeyDown();

@@ -62,12 +62,17 @@ li.todo-list {
 }
 .ui-sortable-placeholder.stage-highlight {
 	background-color: var(--bg);
-	height: 40px;
+	// height: 40px;
 	border-radius: 8px;
 	border: 0;
 	margin: 22px 0;
 }
-
+.position-highlight {
+	background: rgba(0, 0, 0, 0.1);
+	border: 1px dashed #ccc;
+	min-height: 40px; /* Или другое значение, подходящее под твои элементы */
+	visibility: visible !important;
+}
 .ui-sortable-placeholder.position-highlight {
 	background-color: var(--bg);
 	border-radius: 8px;
@@ -76,15 +81,15 @@ li.todo-list {
 	box-shadow: inset 0 0px 20px #10293827;
 	border: 2px dashed #10293885;
 }
-[data-smeta] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
-}
-[data-stages] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
-}
-[data-position] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
-}
+// [data-smeta] .ui-sortable-placeholder.position-highlight {
+// 	height: 30px;
+// }
+// [data-stages] .ui-sortable-placeholder.position-highlight {
+// 	height: 30px;
+// }
+// [data-position] .ui-sortable-placeholder.position-highlight {
+// 	height: 30px;
+// }
 
 .todo-list {
 	// overflow-x: hidden !important;
@@ -100,8 +105,11 @@ li.todo-list {
 		flex-direction: column;
 		border-radius: 8px !important;
 		background-color: var(--c-white);
+		&[data-stages] {
+			padding: 0 !important;
+		}
 		&:not(:last-child) {
-			margin-bottom: 32px;
+			padding-bottom: 32px;
 		}
 	}
 
