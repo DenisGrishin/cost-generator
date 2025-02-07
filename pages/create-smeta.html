@@ -268,8 +268,7 @@
 					<div class="list-input__item align-items-start">
 						<label class="list-input__label">Комментарии</label>
 						<div class="list-input__wrapper-input">
-							<textarea ame="комментарий" id="" class="textarea-default" data-lt-tmp-id="lt-324781"
-								spellcheck="false" data-gramm="false"></textarea>
+							<textarea name="комментарий" class="textarea-default"></textarea>
 						</div>
 					</div>
 					<div class="list-input__item" style="display: none;">
@@ -291,17 +290,19 @@
 			</div>
 
 
-			<ul class="todo-list " data-smeta data-widget="todo-list">
+			<ul class="list-smeta mb-4" data-smeta>
 
 
 			</ul>
 
 
 
-			<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
-				class="butt my-4 butt-success">Добавить смету</button>
-
-
+			<div class="d-flex mb-4  align-items-center">
+				<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+					class="butt butt-success mr-3">Добавить смету</button>
+				<button type="submit" class="butt-success " data-toggle="dropdown" aria-expanded="false">Экспортировать
+				</button>
+			</div>
 
 
 
@@ -311,8 +312,6 @@
 				<textarea name="Примечание к КП" id="" class="textarea-default"></textarea>
 			</div>
 			<div class="bulkActionBar container-content">
-				<button type="submit" class="butt-success " data-toggle="dropdown" aria-expanded="false">Экспортировать
-				</button>
 				<button class="butt">Обновить цены</button>
 				<button class="butt bg-gradient-danger" onclick="deleteSelectedItems()" type="button">Удалить
 					выброное</button>

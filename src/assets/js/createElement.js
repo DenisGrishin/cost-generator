@@ -6,12 +6,12 @@ export function creatingSmeta() {
   if (listSmeta) {
     listSmeta.insertAdjacentHTML(
       "beforeend",
-      `  <li class="todo-list__item   d-flex" data-smeta-item>
-  <div class="todo-list__wrapper">
-    <div class="todo-list__contetn">
+      `  <li class="list-smeta__item   d-flex" data-smeta-item>
+  <div class="list-smeta__wrapper">
+    <div class="list-smeta__contetn">
       <span class="handle  _icon-darag">
       </span>
-      <div class="todo-list__accordion accordion  card ">
+      <div class="list-smeta__accordion accordion  card ">
         <div class="text-left  accordion__header collapsed middle-title">
           <button type="button" class="accordion__btn" data-animation-speed="0" data-card-widget="collapse"></button>
           <label class="accordion__checkbox checkbox">
@@ -40,7 +40,7 @@ export function creatingSmeta() {
 
         <div class="accordion__body card-body">
           <!-- Этапы работы -->
-          <ul class="todo-list   mt-3" data-stages >
+          <ul class="list-smeta   mt-3" data-stages >
 
           </ul>
   
@@ -50,7 +50,7 @@ export function creatingSmeta() {
 
       </div>
     </div>
-    <div class="todo-list__footer footer-list">
+    <div class="list-smeta__footer footer-list">
       <button type="button" class="butt-plus" onclick="creatingStages(event)" data-create-stage><span>Этап
           работ</span></button>
       <span class="footer-list__sum">Итого по смете: <span data-sum data-name='Итого по смете'>0</span> р.</span>
@@ -64,7 +64,7 @@ export function creatingSmeta() {
 </li>`
     );
     // Инициализируем D&D
-    $(".todo-list").sortable({
+    $(".list-smeta").sortable({
       tolerance: "pointer", // Улучшает точность Drag & Drop
       placeholder: "position-highlight",
       handle: ".handle",
@@ -76,23 +76,23 @@ export function creatingSmeta() {
       },
       // Плавная анимация возврата
       start: function (event, ui) {
-        let target = event.target;
-        const accordions = target.querySelectorAll(".card");
-        ui.placeholder.height(ui.item.height());
-        accordions.forEach((element) => {
-          if (!element.matches(".collapsed-card")) {
-            element.classList.add("collapsed-card", "_opened");
-          }
-        });
+        // let target = event.target;
+        // const accordions = target.querySelectorAll(".card");
+        // ui.placeholder.height(ui.item.height());
+        // accordions.forEach((element) => {
+        //   if (!element.matches(".collapsed-card")) {
+        //     element.classList.add("collapsed-card", "_opened");
+        //   }
+        // });
       },
       stop: function (event, ui) {
-        let target = event.target;
-        const accordions = target.querySelectorAll(".card");
-        accordions.forEach((element) => {
-          if (element.matches("._opened")) {
-            element.classList.remove("collapsed-card", "_opened");
-          }
-        });
+        // let target = event.target;
+        // const accordions = target.querySelectorAll(".card");
+        // accordions.forEach((element) => {
+        //   if (element.matches("._opened")) {
+        //     element.classList.remove("collapsed-card", "_opened");
+        //   }
+        // });
       },
     });
   }
@@ -120,11 +120,11 @@ export function creatingStages(event) {
 
   listStage.insertAdjacentHTML(
     "beforeend",
-    `    <li class="todo-list__item  " data-stage-item>
-                      <div class="todo-list__contetn">
+    `    <li class="list-smeta__item  " data-stage-item>
+                      <div class="list-smeta__contetn">
                         <span class="handle  _icon-darag">
                         </span>
-                        <div class="todo-list__accordion accordion card ">
+                        <div class="list-smeta__accordion accordion card ">
                           <!-- Начала Позиций  -->
 
                           <div class=" text-left accordion__header middle-title">
@@ -137,8 +137,8 @@ export function creatingStages(event) {
                             </div>
                           </div>
                           <div class="accordion__body card-body ">
-                            <ul class=" accordion__list list-accordion">
-                              <li class=" list-accordion__head">
+                            <ul class=" accordion__list list-position">
+                              <li class=" list-position__head">
                                 <div></div>
                                 <div><label class="checkbox">
                                     	<input hidden="" onchange="chooseAllCheckbox(event)"
@@ -152,12 +152,12 @@ export function creatingStages(event) {
                                 <div>Сумма р.</div>
                                 <div></div>
                               </li>
-                              <li class="list-accordion__body">
-                                <ul class="todo-list" data-position >
+                              <li class="list-position__body">
+                                <ul class="list-position" data-position >
                                   
                                 </ul>
                               </li>
-                              <li class="list-accordion__footer footer-list">
+                              <li class="list-position__footer footer-list">
                                 <button type="button" class="butt-plus" onclick="creatingPosition(event)"
                                   data-create-position><span>Позиция</span></button>
                                 <span class="footer-list__sum">Итого:<span
@@ -174,7 +174,7 @@ export function creatingStages(event) {
 
   // Инициализируем D&D
 
-  $(".todo-list").sortable({
+  $(".list-position").sortable({
     tolerance: "pointer", // Улучшает точность Drag & Drop
     placeholder: "position-highlight",
     handle: ".handle",
@@ -184,23 +184,12 @@ export function creatingStages(event) {
 
     start: function (event, ui) {
       ui.placeholder.height(ui.item.height());
-      let target = event.target;
-      const accordions = target.querySelectorAll(".card");
-      ui.placeholder.height(ui.item.height());
-      accordions.forEach((element) => {
-        if (!element.matches(".collapsed-card")) {
-          element.classList.add("collapsed-card", "_opened");
-        }
-      });
     },
     stop: function (event, ui) {
       let target = event.target;
-      const accordions = target.querySelectorAll(".card");
-      accordions.forEach((element) => {
-        if (element.matches("._opened")) {
-          element.classList.remove("collapsed-card", "_opened");
-        }
-      });
+      if (target.matches("[data-position]")) {
+        createIterationNumber(target);
+      }
     },
   });
 
@@ -217,16 +206,16 @@ export function creatingPosition(event) {
   let id = generateRandomId();
   listPosition.insertAdjacentHTML(
     "beforeend",
-    `<li class="list-accordion__item" data-position-item>
+    `<li class="list-position__item" data-position-item>
     <div class="handle _icon-darag"></div>
     <div><label class="checkbox">
         <input  hidden data-chkc-position type="checkbox" class="checkbox__input" name="checkbox-smeta" onchange="toggleBulkActionBar()">
       </label></div>
     <div onclick='editTextInput(event)' data-name='№'>${numerItem}</div>
     <div></div>
-    <div data-name='Наименование работ' class="list-accordion__name" onclick='editTextInput(event)' data-search-items>
+    <div data-name='Наименование работ' class="list-position__name" onclick='editTextInput(event)' data-search-items>
     <input type="text"  onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input  class="input-default">
-      <ul class="list-accordion__search search-position">
+      <ul class="list-position__search search-position">
       <li onclick="saveTextSearchList(event)">Скважины</li>
       <li onclick="saveTextSearchList(event)">Септики</li>
       <li onclick="saveTextSearchList(event)">Баратеон</li>
@@ -276,8 +265,8 @@ export function deleteSelectedItems() {
 
       if (Object.keys(dataCheck)[0] === "chkcPosition") {
         selectSubtractPosition(checkbox.closest("[data-position-item]"));
-        const check = checkbox.closest("[data-position]");
-        createIterationNumber(check, () =>
+        const listPosition = checkbox.closest("[data-position]");
+        createIterationNumber(listPosition, () =>
           checkbox.closest("[data-position-item]").remove()
         );
       }
@@ -294,7 +283,7 @@ function selectSubtractPosition(positionItem) {
 
   const smetaSum = positionItem
     .closest("[data-smeta-item]")
-    .querySelector(".todo-list__wrapper > .footer-list  [data-sum]");
+    .querySelector(".list-smeta__wrapper > .footer-list  [data-sum]");
 
   stageSum.innerText = formatterIntl(
     Number(stageSum.innerText.replace(/\s+/g, "")) -
@@ -348,7 +337,7 @@ function subtractPositionSum(selector) {
 function subtractSmetaSum(selector, currentSum) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumSmeta = smetaItem.querySelector(
-    ".todo-list__wrapper > .footer-list  [data-sum]"
+    ".list-smeta__wrapper > .footer-list  [data-sum]"
   );
 
   let sum = Number(sumSmeta.innerText.replace(/\s+/g, ""));
@@ -360,7 +349,7 @@ function subtractStageSum(selector) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumStages = selector.querySelectorAll("[data-sum]");
   const sumSmeta = smetaItem.querySelector(
-    ".todo-list__wrapper > .footer-list  [data-sum]"
+    ".list-smeta__wrapper > .footer-list  [data-sum]"
   );
 
   const listSumStage = Array.from(sumStages).map((el) => {
@@ -416,11 +405,11 @@ function createInputEdit(parent) {
     parent.matches("[data-qty-position]") ||
     parent.matches("[data-price-position]");
 
-  if (parent.matches(".list-accordion__name")) {
+  if (parent.matches(".list-position__name")) {
     parent.insertAdjacentHTML(
       "beforeend",
       `<input type="text" onblur="saveTextInput(event)"   onkeyup="showDropDown(event)"  data-edit-input value="${parentText}"  class="input-default">
-      <ul class="list-accordion__search search-position">
+      <ul class="list-position__search search-position">
       <li onclick="saveTextSearchList(event)">Скважины</li>
       <li onclick="saveTextSearchList(event)">Септики</li>
       <li onclick="saveTextSearchList(event)">Баратеон</li>
@@ -510,10 +499,12 @@ function findMaxNumber(parentSmeta) {
   return max;
 }
 //  ставит числа по возрастанию при удаление
-function createIterationNumber(selector, callBackDelet) {
+function createIterationNumber(selector, callBackDelet = "") {
   const parentPosition = selector.closest("[data-position]");
 
-  callBackDelet();
+  if (callBackDelet) {
+    callBackDelet();
+  }
 
   const list = parentPosition.querySelectorAll("[data-position-item]");
   let numberItem = 0;
@@ -527,7 +518,7 @@ function createIterationNumber(selector, callBackDelet) {
 function sumItemPosition(selectorDiv) {
   const positionLi = selectorDiv.parentElement;
 
-  const stageLi = selectorDiv.parentElement.closest(".todo-list__item");
+  const stageLi = selectorDiv.parentElement.closest(".list-smeta__item");
 
   const qty = positionLi.querySelector("[data-qty-position] input");
   const price = positionLi.querySelector("[data-price-position] input");
@@ -599,12 +590,12 @@ function sumSmeta(stageLi) {
       sum += Number(element.innerText.replace(/\s+/g, ""));
     });
 
-    smeta.querySelector(".todo-list__footer [data-sum]").innerText =
+    smeta.querySelector(".list-smeta__footer [data-sum]").innerText =
       formatterIntl(sum);
 
     createingHiddentInput(
       sum,
-      smeta.querySelector(".todo-list__footer [data-sum]")
+      smeta.querySelector(".list-smeta__footer [data-sum]")
     );
   });
 }
@@ -613,7 +604,7 @@ export function chooseAllCheckbox(event) {
   const target = event.target;
   const isChecked = event.currentTarget.checked;
 
-  const stageItem = target.closest(".list-accordion");
+  const stageItem = target.closest(".list-position");
   const checkboxs = stageItem.querySelectorAll("[data-chkc-position]");
 
   checkboxs.forEach((element) => {
@@ -706,7 +697,7 @@ export function saveTextSearchList(event) {
   let target = event.target;
   const textDropDownItem = target.innerText;
 
-  const parent = target.closest(".list-accordion__name");
+  const parent = target.closest(".list-position__name");
 
   parent.innerText = textDropDownItem;
   createingHiddentInput(textDropDownItem, parent);

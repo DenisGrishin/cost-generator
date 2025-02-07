@@ -1,4 +1,5 @@
 import { validateEmpty } from "./priceList";
+
 // взять данные клиента, и добавить их в инпты в модальное окно
 export function getCurrentDataClient() {
   const currentClientData = document.querySelectorAll(
