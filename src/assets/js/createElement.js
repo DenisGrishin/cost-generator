@@ -64,7 +64,30 @@ export function creatingSmeta() {
 </li>`
     );
     // Инициализируем D&D
-    $(".list-smeta").sortable({
+    initSortable(".list-smeta");
+  }
+  // Инициализируем Select2 на новом элементе <select>
+  $(".select2-stamp").select2({
+    minimumResultsForSearch: Infinity,
+    placeholder: "",
+    dropdownCssClass: "select-stamp__drop-down",
+
+    allowClear: true,
+    width: "resolve",
+    language: {
+      noResults: function () {
+        return "Ничего не найдено";
+      },
+    },
+  });
+  // autoFocusInput(idItem);
+  initHandelKeyDown();
+}
+// Инициализируем D&D
+initSortable(".list-smeta");
+function initSortable(selector) {
+  if (selector) {
+    $(selector).sortable({
       tolerance: "pointer", // Улучшает точность Drag & Drop
       placeholder: "position-highlight",
       handle: ".handle",
@@ -96,22 +119,6 @@ export function creatingSmeta() {
       },
     });
   }
-  // Инициализируем Select2 на новом элементе <select>
-  $(".select2-stamp").select2({
-    minimumResultsForSearch: Infinity,
-    placeholder: "",
-    dropdownCssClass: "select-stamp__drop-down",
-
-    allowClear: true,
-    width: "resolve",
-    language: {
-      noResults: function () {
-        return "Ничего не найдено";
-      },
-    },
-  });
-  // autoFocusInput(idItem);
-  initHandelKeyDown();
 }
 // создание этапа, события onclick
 export function creatingStages(event) {
