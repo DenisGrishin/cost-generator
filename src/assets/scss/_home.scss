@@ -42,70 +42,47 @@
 		padding: 8px 75px;
 	}
 }
-li.todo-list {
-	overflow: hidden;
 
-	&__item {
-		border: none;
-		background-color: var(--c-white);
-		& .handle {
-			margin-right: 16px;
-			margin-left: 0;
-		}
-		& ._icon-darag {
-			&::before {
-				transform: translate(0px, 2px);
-				margin-right: 0;
-			}
-		}
-	}
+.ui-sortable-helper {
+	background-color: var(--c-white);
+	border-radius: 4px;
+	opacity: 0.7;
 }
-.ui-sortable-placeholder.stage-highlight {
-	background-color: var(--bg);
-	height: 40px;
-	border-radius: 8px;
-	border: 0;
-	margin: 22px 0;
+.list-position__item.ui-sortable-helper {
+	background-color: var(--c-white);
+	border-radius: 4px;
+	opacity: 0.8;
 }
-
 .ui-sortable-placeholder.position-highlight {
 	background-color: var(--bg);
 	border-radius: 8px;
-	border: 0;
-	margin: 12px 0;
 	box-shadow: inset 0 0px 20px #10293827;
 	border: 2px dashed #10293885;
-}
-[data-smeta] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
-}
-[data-stages] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
-}
-[data-position] .ui-sortable-placeholder.position-highlight {
-	height: 30px;
+	padding: 0;
 }
 
-.todo-list {
-	// overflow-x: hidden !important;
+.list-smeta {
 	overflow: visible;
+	display: flex;
+	row-gap: 32px;
+	flex-direction: column;
+	// .list-smeta__item
 
-	// .todo-list__item
-	&__wrapper {
-		// max-width: 1060px;
-	}
 	&__item {
 		display: flex;
 		justify-content: flex-start;
 		flex-direction: column;
 		border-radius: 8px !important;
+
+		padding: 16px;
+
 		background-color: var(--c-white);
-		&:not(:last-child) {
-			margin-bottom: 32px;
+		[data-stages] & {
+			padding: 0;
 		}
 	}
 
-	// .todo-list__contetn
+	// .list-smeta__contetn
 	&__contetn {
 		display: flex;
 		justify-content: space-between;
@@ -114,8 +91,8 @@ li.todo-list {
 	}
 }
 
-.todo-list > li {
-	padding: 16px;
+.list-smeta > li {
+	// padding: 16px;
 }
 .accordion {
 	width: 100%;
@@ -204,8 +181,11 @@ li.todo-list {
 		}
 	}
 }
-.list-accordion {
-	// .list-accordion__head
+.list-position {
+	// .list-position__head
+	display: flex;
+	flex-direction: column;
+	row-gap: 16px;
 	overflow: visible;
 	&__head,
 	&__item {
@@ -213,19 +193,15 @@ li.todo-list {
 		grid-template-columns: 1.606426% 1.606426% 2.710843% 5.02008% 44.678715% 5.62249% 4.819277% 8.433735% 8.032129% auto;
 		column-gap: 16px;
 		text-wrap: nowrap;
-		background-color: var(--c-white) !important;
+
 		border: none !important;
 
 		padding: 8px 0;
 	}
 	&__item {
-		padding: 0 !important;
 		color: var(--c-black) !important;
 		overflow: visible;
-		&:not(:last-child) {
-			margin-bottom: 16px;
-		}
-
+		padding: 2px;
 		& input {
 			padding: 0;
 		}
@@ -240,11 +216,16 @@ li.todo-list {
 
 		& .select2-selection__rendered {
 			padding: 0;
-			margin-top: 0;
+			margin-top: 0 !important;
 		}
 
 		& .select2-container--default .select2-selection--single {
 			height: auto;
+		}
+		& > div {
+			display: flex;
+			align-items: center;
+			justify-content: flex-start;
 		}
 	}
 	&__head {
@@ -266,7 +247,7 @@ li.todo-list {
 				text-wrap: wrap;
 			}
 		}
-	} // .list-accordion__search
+	} // .list-position__search
 
 	&__search {
 	}

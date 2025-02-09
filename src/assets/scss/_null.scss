@@ -42,7 +42,7 @@ body {
 input,
 button,
 textarea {
-	font-family: $fontFamily;
+	font-family: $fontFamily, Arial, Helvetica, sans-serif;
 	font-size: inherit;
 }
 button {
