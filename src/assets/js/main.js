@@ -1,4 +1,5 @@
 import "../scss/index.scss";
+
 import { getCurrentDataClient, saveEditClient } from "./clients";
 import {
   toggleBulkActionBar,

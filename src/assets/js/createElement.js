@@ -86,7 +86,7 @@ export function creatingSmeta() {
 // Инициализируем D&D
 initSortable(".list-smeta");
 function initSortable(selector) {
-  if (selector) {
+  if (document.querySelector(selector)) {
     $(selector).sortable({
       tolerance: "pointer", // Улучшает точность Drag & Drop
       placeholder: "position-highlight",

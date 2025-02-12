@@ -7,10 +7,11 @@
     "dev": "vite",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
-    "build": "vite build",
+    "build": "vite build && node scripts/copyFiles.js",
     "preview": "vite preview"
   },
   "devDependencies": {
+    "fs-extra": "^11.3.0",
     "gh-pages": "^6.3.0",
     "sass": "^1.83.1",
     "vite": "^6.0.5"
