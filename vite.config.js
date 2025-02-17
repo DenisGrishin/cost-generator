@@ -19,6 +19,11 @@ export default defineConfig({
         templates: resolve(__dirname, "pages/templates.html"),
         usersPage: resolve(__dirname, "pages/users-page.html"),
       },
+      output: {
+        entryFileNames: "js/[name].js",
+        chunkFileNames: "js/[name]-[hash].js",
+        assetFileNames: "css/[name]-[hash].[ext]",
+      },
     },
   },
   terserOptions: {
