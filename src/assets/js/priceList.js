@@ -1,6 +1,5 @@
-// взять данные с ряда таблицы, и добавить их в инпты в модальное окно
+/* ! взять данные с ряда таблицы, и добавить их в инпты в модальное окно */
 export function editPositionPriceList(event) {
-  debugger;
   const target = event.target;
   const tr = target.closest("tr");
   const editItem = tr.querySelectorAll("._edit");
@@ -33,7 +32,7 @@ const obgСategoryClass = {
   Мех: "_meh-category",
   Док: "_doc-category",
 };
-// сохранить редактируемых в модальном окне данных
+/* ! сохранить редактируемых в модальном окне данных */
 export function saveEditPositionPriceList(event) {
   const target = event.target;
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
@@ -89,7 +88,7 @@ export function validateEmpty(list) {
 
   return isValidate;
 }
-// собрать данные в коллекцию
+/*! собрать данные в коллекцию */
 export function collectInputData(list) {
   return Array.from(list).map((element) => {
     return element.value;

@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Создание сметы</title>
+
+	<link rel="stylesheet" href="./plugins/select2/css/select2.min.css">
+
+
+	<link rel="stylesheet" href="./adminlte/adminlte.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+	<!-- Календарь -->
+	<link rel="stylesheet" href="./plugins/daterangepicker/daterangepicker.css">
+
+</head>
+
+<body class="sidebar-mini layout-fixed">
+
+
+
+	<div class="wrapper">
+
+		<!-- Начала главгый сайдбар -->
+		<aside class="main-sidebar sidebar-no-expand">
+
+
+			<!-- Sidebar -->
+			<div
+				class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
+				<div class="os-resize-observer-host observed">
+					<div class="os-resize-observer"></div>
+				</div>
+
+				<div class="os-padding">
+					<div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
+						<div class="os-content px-3">
+							<button type="button" class=" mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu"
+								type="button"></button>
+							<!-- Sidebar user (optional) -->
+							<div class="user-panel mt-4  mb-4 d-flex align-items-center">
+								<div class="image">
+									<img src="./src/assets/img/avatar.png" class="img-rounded " alt="User Image">
+								</div>
+								<div class="info d-flex align-items-center">
+									<a href="#" class="d-block ">Мой профиль</a>
+								</div>
+							</div>
+
+
+
+							<nav class="mt-4">
+								<ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
+									data-accordion="false">
+
+
+									<li class="nav-item">
+										<a href="./index.html" class="nav-link p-2 _active-page font-weight-bold _icon-dashboard">
+											<p>Дашборд</p>
+										</a>
+
+									</li>
+									<li class="nav-item">
+										<a href="./price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
+											<p> Прайс-лист</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./clients.html" class="nav-link font-weight-bold p-2 _icon-client">
+											<p>Клиенты</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./templates.html" class="nav-link font-weight-bold p-2 _icon-pattern">
+											<p> Шаблоны</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./users-page.html" class="nav-link  font-weight-bold p-2 _icon-user">
+											<p> Пользователи </p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./file-storage.html" class="nav-link font-weight-bold p-2 _icon-folder">
+											<p> Файловое хранилище </p>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<!-- Конец главгый сайдбар -->
+		<!-- Начала папки шаблонами -->
+		<aside class="control-sidebar  secondary-sidebar">
+			<div class="secondary-sidebar__bg" data-widget="control-sidebar"></div>
+
+			<div class="secondary-sidebar__wrapper  control-sidebar-content ">
+
+				<div class="os-padding p-3 overflow-auto">
+					<div class=" d-flex justify-content-between mb-3">
+						<span class="d-flex">
+							<button type="button" class="_icon-arrow-back"></button><span class="small-title ">Шаблоны
+								смет</span>
+						</span>
+						<button class="align-items-center d-flex _icon-close " type="button" data-widget="control-sidebar"
+							data-controlsidebar-slide="true"></button>
+					</div>
+					<div class="search-items" data-search-items>
+						<div class="search-items__input search-block _icon-search mb-3">
+							<input type="text" onkeyup="searchItems(event)" placeholder="Поиск" class=" input-default">
+						</div>
+						<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+							class="butt my-3 butt-success _icon-plus d-flex align-items-center"
+							onclick="creatingSmeta()">Cоздать
+							новую смету</button>
+						<ul class="search-items__list ">
+							<li class="_icon-folder ">
+								<span class="flex-fill " data-name-il> Септики</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item " data-toggle="modal"
+											data-target="#modal-edit-folder"
+											onclick='getNameItemList(event)'>Редактировать</button>
+										<button type="button" class="dropdown-item "
+											onclick="deleteItemList(event)">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="_icon-folder ">
+								<span class="flex-fill " data-name-il> Канализация</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="_icon-folder ">
+								<span class="flex-fill " data-name-il> Фундамент</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
+									</div>
+								</div>
+							</li>
+							<li class="_icon-folder ">
+								<span class="flex-fill " data-name-il> Скважины</span> <span>12.12.2024</span>
+								<div class="search-items__btn-dropdown dropdown-search">
+									<button type="button" class="dropdown-search__btn" data-toggle="dropdown"
+										aria-expanded="true">
+									</button>
+									<div class="dropdown-menu " x-placement="bottom-start">
+										<button type="button" class="dropdown-item" onclick='getNameItemList(event)'
+											data-toggle="modal" data-target="#modal-edit-folder">Редактировать</button>
+										<button type="button" class="dropdown-item"
+											onclick="deleteItemList(event)">Удалить</button>
+									</div>
+								</div>
+							</li>
+
+						</ul>
+
+
+
+					</div>
+				</div>
+
+
+
+
+			</div>
+		</aside>
+		<!-- Конец папки шаблонами -->
+		<form class="content-wrapper p-4 ">
+			<h1 class="big-title">Создать смету</h1>
+			<div class="container-content">
+				<h2 class="middle-title mb-3">Информация</h2>
+				<div class="list-input">
+					<div class="list-input__item">
+						<label class="list-input__label">Клиент</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Клиент">
+								<option></option>
+								<option>Старк Санса Недовна</option>
+								<option>Старк Бран Недовна</option>
+								<option>Старк Джон Недовна</option>
+								<option>Старк Ария Недовна</option>
+								<option>Баратеон Станис Стеффович</option>
+
+							</select>
+						</div>
+
+						<button type="button" class="list-input__butt-plus butt-plus" data-toggle="modal"
+							data-target="#modal-client">Создать клиента</button>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Менеджер</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Менеджер">
+								<option></option>
+								<option>Дмитрий</option>
+								<option>Наталья</option>
+								<option>Дмитрий(Митя)</option>
+							</select>
+						</div>
+
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Инженер</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" multiple="multiple" name="Инженер">
+								<option></option>
+								<option>Биба</option>
+								<option>Боба</option>
+
+							</select>
+						</div>
+
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Дата</label>
+						<div class="list-input__wrapper-input list-input__wrapper-input_w-small">
+							<div class="input-group">
+								<input type="text" class=" daterangepicker-input " id="reservation">
+								<div class="_icon-calendar"></div>
+							</div>
+						</div>
+
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Название КП</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Название КП" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Адрес</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Адрес" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Координаты</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Координаты" type="text">
+						</div>
+					</div>
+					<div class="list-input__item align-items-start">
+						<label class="list-input__label">Комментарии</label>
+						<div class="list-input__wrapper-input">
+							<textarea name="комментарий" class="textarea-default"></textarea>
+						</div>
+					</div>
+					<div class="list-input__item" style="display: none;">
+						<label class="list-input__label">Статус</label>
+						<div class="list-input__wrapper-input list-input__wrapper-input_w-small">
+							<div class="select-status py-2">
+								<select class="select2  select2-hidden-accessible" name="Статус" data-select2-id="select-status"
+									tabindex="-1" aria-hidden="true">
+									<option value="Выполнено" class="select-status__completed">Выполнено</option>
+									<option selected value="В работе" class="select-status__in-progress">В работе</option>
+									<option value="Отменено" class="select-status__cancelled">Отменено</option>
+									<option value="Отложено" class="select-status__postponed">Отложено</option>
+								</select>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+
+			<ul class="list-smeta mb-4" data-smeta>
+
+
+			</ul>
+
+
+
+			<div class="d-flex mb-4  align-items-center">
+				<button type="button" data-widget="control-sidebar" data-controlsidebar-slide="true"
+					class="butt butt-success mr-3">Добавить смету</button>
+				<button type="submit" class="butt-success ">Экспортирует всё кп
+					(все сметы)
+				</button>
+			</div>
+
+
+
+			<div class="container-content">
+				<label class="very-small-title">Примечание к КП (не отображается в смете)</label>
+
+				<textarea name="Примечание к КП" id="" class="textarea-default"></textarea>
+			</div>
+			<div class="bulkActionBar container-content">
+				<button type="submit" class="butt-success ">Экспортировать
+				</button>
+				<button class="butt">Обновить цены</button>
+				<button class="butt bg-gradient-danger" onclick="deleteSelectedItems()" type="button">Удалить
+					выброное</button>
+				<div>Кол-во выбраных: <span data-selected-count>0</span></div>
+			</div>
+		</form>
+
+	</div>
+
+
+
+
+
+	<div class="modal fade" id="modal-client" style="display: none;">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<form class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Создание
+						клиента</div>
+					<div class="block-item">
+
+						<div class="block-item__item">
+							<div class="block-item__label">Ф.И.О</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите Ф.И.О" class="input-default _validate _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Адрес</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Адрес"
+									placeholder="Введите Адрес" class="input-default _validate _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Координаты</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Координаты"
+									placeholder="Введите координаты" class="input-default _edit-input"></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label">Комментарии</div>
+							<div class="block-item__contetn"><textarea name="Комментарии" placeholder="Введите комментарии "
+									class="textarea-default _edit-input"></textarea></div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Менеджер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Менеджер">
+									<option></option>
+									<option value="Дмитрий">Дмитрий</option>
+									<option value="Наталья">Наталья</option>
+									<option value="Дмитрий(Митя)">Дмитрий(Митя)</option>
+								</select>
+
+							</div>
+						</div>
+						<div class="block-item__item">
+							<div class="block-item__label mb-0">Инженер</div>
+							<div class="block-item__contetn">
+								<select class="list-input__select  select2 _edit-input" multiple="multiple" name="Инженер">
+									<option></option>
+									<option value="Биба">Биба</option>
+									<option value="Боба">Боба</option>
+								</select>
+
+							</div>
+						</div>
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" class="butt-success" onclick="saveEditClient()">Создать</button>
+					</div>
+				</form>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Начало  Модлаьно  окно редактирование -->
+	<div class="modal fade" id="modal-edit-folder" data-modal-id style="display: none;" aria-hidden="true">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content modal-custom">
+				<div class="modal-custom__content">
+					<div class="modal-custom__title middle-title mb-3">Редактиование папки</div>
+					<div class="block-item">
+
+
+						<div class="block-item__item">
+							<div class="block-item__label">Имя папки:</div>
+							<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя"
+									placeholder="Введите имя папки" class="input-default _edit-input _validate"></div>
+						</div>
+
+
+
+					</div>
+					<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+						<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+						<button type="button" onclick="saveEditFolder(event)" class="butt-success ">Сохранить</button>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+	<!-- Конец Модлаьно окно редактирование-->
+	<!-- jQuery -->
+	<script src="./plugins/jquery/jquery.min.js"></script>
+	<!-- Bootstrap 4 -->
+	<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<!-- Select2 -->
+	<script src="./plugins/select2/js/select2.full.min.js"></script>
+	<!-- jQuery UI 1.11.4 -->
+	<script src="./plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+
+	<script src="./plugins/moment/moment.min.js"></script>
+
+
+
+
+
+	<!-- Календарь -->
+	<script src="./plugins/daterangepicker/daterangepicker.js"></script>
+
+
+
+
+	<script src="./adminlte/adminlte.min.js"></script>
+
+
+	<script type="module" src="./src/assets/js/main.js"></script>
+</body>
+
+</html>

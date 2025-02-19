@@ -24,7 +24,7 @@ import {
 } from "./priceList";
 import { changeRole } from "./users";
 
-// инициализация select2
+/*!  инициализация select2 */
 if (document.querySelector(".select2")) {
   $(".select2").select2({
     placeholder: "",
@@ -37,7 +37,7 @@ if (document.querySelector(".select2")) {
     },
   });
 }
-// инициализация select2 defualt
+/*! инициализация select2 defualt */
 if (document.querySelector(".select2-defualt")) {
   $(".select2-defualt").select2({
     minimumResultsForSearch: Infinity, // Отключаем поиск
@@ -66,7 +66,7 @@ if (document.querySelector(".select2-stamp")) {
     },
   });
 }
-// инициализация daterangepicker
+/*!  инициализация daterangepicker */
 if (document.querySelector("#reservation")) {
   $("#reservation").daterangepicker({
     singleDatePicker: true,
@@ -96,13 +96,13 @@ if (document.querySelector("#reservation")) {
     },
   });
 }
-// генератор рандомного id
+/*! генератор рандомного id */
 export function generateRandomId() {
   return (
     "id-" + Math.random().toString(36).substr(2, 9) + Date.now().toString(36)
   );
 }
-// инициализация таблицы "пользователей"
+/*! инициализация таблицы "пользователей" */
 if (document.querySelector("#tableUser")) {
   if (!$.fn.DataTable.isDataTable("#tableUser")) {
     $("#tableUser").DataTable({
@@ -137,7 +137,7 @@ if (document.querySelector("#tableUser")) {
     });
   }
 }
-// инициализация таблицы "прайс лист"
+/*! инициализация таблицы "прайс лист" */
 if (document.querySelector("#tablePriceList")) {
   var tabel;
   if (!$.fn.DataTable.isDataTable("#tablePriceList")) {
@@ -182,71 +182,73 @@ if (document.querySelector("#tablePriceList")) {
         { className: "_edit", targets: 5 },
       ],
     });
-  }
-  // созданте элемента в таблице "прайс лист"
-  function creatingItemPL() {
-    const createModal = document.getElementById("modal-create-position");
+    /*! созданте элемента в таблице "прайс лист" */
+    function creatingItemPL() {
+      const createModal = document.getElementById("modal-create-position");
 
-    const itemEdit = createModal.querySelectorAll("._edit-input");
+      const itemEdit = createModal.querySelectorAll("._edit-input");
 
-    const arrData = collectInputData(itemEdit);
+      const arrData = collectInputData(itemEdit);
 
-    const obgСategoryClass = {
-      Мат: "_mat-category",
-      Раб: "_rab-category",
-      Мех: "_meh-category",
-      Док: "_doc-category",
-    };
-    let isValidate = validateEmpty(itemEdit);
+      const obgСategoryClass = {
+        Мат: "_mat-category",
+        Раб: "_rab-category",
+        Мех: "_meh-category",
+        Док: "_doc-category",
+      };
+      let isValidate = validateEmpty(itemEdit);
+      if (isValidate) {
+        tabel.row
+          .add([
+            "",
+            `<span class='${obgСategoryClass[arrData[0]]}'>${
+              arrData[0]
+            }</span>`,
+            "",
+            `${arrData[1]}`,
+            `${arrData[2]}`,
+            `${arrData[3]}`,
+            `${arrData[4]}`,
+            "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
+            "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
+          ])
+          .draw();
 
-    if (isValidate) {
-      tabel.row
-        .add([
-          "",
-          `<span class='${obgСategoryClass[arrData[0]]}'>${arrData[0]}</span>`,
-          "",
-          `${arrData[1]}`,
-          `${arrData[2]}`,
-          `${arrData[3]}`,
-          "<td><button type='button' onclick='editPositionPriceList(event)' data-toggle='modal' data-target='#modal-edit-position' class='btn-edit'></button></td>",
-          "<button type='button' onclick='deleteItemPL(event)' class='btn-del-small'>",
-        ])
-        .draw();
-
-      $("#modal-create-position").modal("hide");
-    }
-  }
-
-  function deleteItemPL(event) {
-    let target = event.target;
-    tabel.row($(target).parents(target)).remove().draw();
-  }
-
-  function clearInputPL() {
-    const createModal = document.getElementById("modal-create-position");
-
-    const itemEdit = createModal.querySelectorAll(".block-item > div");
-
-    itemEdit.forEach((el, indx) => {
-      const input = el.querySelector("._edit-input");
-      if (indx === 0) {
-        $("[name='Категория']").val("").trigger("change");
-      } else if (indx === 2) {
-        $("[name='Единица измерения']").val("-").trigger("change");
-      } else {
-        input.classList.remove("_error");
-
-        input.value = "";
+        $("#modal-create-position").modal("hide");
       }
-    });
+    }
+
+    function deleteItemPL(event) {
+      let target = event.target;
+      tabel.row($(target).parents(target)).remove().draw();
+    }
+
+    function clearInputPL() {
+      const createModal = document.getElementById("modal-create-position");
+
+      const itemEdit = createModal.querySelectorAll(".block-item > div");
+
+      itemEdit.forEach((el, indx) => {
+        const input = el.querySelector("._edit-input");
+        if (indx === 0) {
+          $("[name='Категория']").val("").trigger("change");
+        } else if (indx === 2) {
+          $("[name='Единица измерения']").val("-").trigger("change");
+        } else {
+          input.classList.remove("_error");
+
+          input.value = "";
+        }
+      });
+    }
+    // создание элементов в прайс-листе */
+    window.creatingItemPL = creatingItemPL;
+    // удаления в прайс-листе
+    window.deleteItemPL = deleteItemPL;
+    window.clearInputPL = clearInputPL;
   }
-  // создание элементов в прайс-листе
-  window.creatingItemPL = creatingItemPL;
-  // удаления в прайс-листе
-  window.deleteItemPL = deleteItemPL;
-  window.clearInputPL = clearInputPL;
 }
-// поиск по списку, события onkeyup
+/*! поиск по списку, события onkeyup */
 export function searchItems(event) {
   let target = event.target;
   const parentSearchSelector = target.closest("[data-search-items]");
@@ -290,7 +292,7 @@ export function searchItems(event) {
     }
   }
 }
-// создание папки
+/*! создание папки */
 function createFolder(event) {
   const modal = document.querySelector("#modal-create-folder");
   const input = modal.querySelector("._edit-input");
@@ -301,7 +303,7 @@ function createFolder(event) {
   const IsValidate = validateEmpty([input]);
 
   if (IsValidate) {
-    // сокращено data-name-il --- data-name-item-list
+    /*! сокращено data-name-il --- data-name-item-list */
     ul.insertAdjacentHTML(
       "afterbegin",
       `<li class="_icon-folder ">
@@ -322,7 +324,7 @@ function createFolder(event) {
     $("#modal-create-folder").modal("hide");
   }
 }
-// удаления папки
+/*! удаления папки */
 function deleteItemList(event) {
   let target = event.target;
   const li = target.closest("li");
@@ -343,7 +345,7 @@ function getNameItemList(event) {
 }
 function saveEditFolder(event) {
   // сохрнаить редкатируемую папку
-  /* сохрнаить редкатируемую папку */
+  /*! сохрнаить редкатируемую папку */
   const modal = document.querySelector("#modal-edit-folder");
   const input = modal.querySelector("._edit-input");
   const block = document.querySelector("[data-search-items]");
@@ -357,36 +359,36 @@ function saveEditFolder(event) {
     $("#modal-edit-folder").modal("hide");
   }
 }
-// создание элементов сметы
+/*! создание элементов сметы */
 window.creatingSmeta = creatingSmeta;
 window.creatingStages = creatingStages;
 window.creatingPosition = creatingPosition;
 window.editTextSelect = editTextSelect;
 window.showDropDown = showDropDown;
 window.saveTextSearchList = saveTextSearchList;
-// чекбоксы
+/*! чекбоксы */
 window.toggleBulkActionBar = toggleBulkActionBar;
 window.chooseAllCheckbox = chooseAllCheckbox;
 
-// удаление элементов сметы
+/*! удаление элементов сметы */
 window.deleteSelectedItems = deleteSelectedItems;
 window.deleteItem = deleteItem;
-// поиск
+/*! поиск */
 window.searchItems = searchItems;
 window.hiddenDropDown = hiddenDropDown;
 
 window.saveTextInput = saveTextInput;
 window.editTextInput = editTextInput;
 
-// прайс лист
+/*! прайс лист */
 window.editPositionPriceList = editPositionPriceList;
 window.saveEditPositionPriceList = saveEditPositionPriceList;
-// клиент
+/*! клиент */
 window.getCurrentDataClient = getCurrentDataClient;
 window.saveEditClient = saveEditClient;
-// юезеры
+/*! юезеры */
 window.changeRole = changeRole;
-//  папки
+/*!  папки */
 window.createFolder = createFolder;
 window.deleteItemList = deleteItemList;
 window.getNameItemList = getNameItemList;
