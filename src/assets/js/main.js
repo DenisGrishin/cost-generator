@@ -19,6 +19,7 @@ import {
 import {
   collectInputData,
   editPositionPriceList,
+  hiddenErrorMessage,
   saveEditPositionPriceList,
   validateEmpty,
 } from "./priceList";
@@ -143,7 +144,7 @@ if (document.querySelector("#tablePriceList")) {
   if (!$.fn.DataTable.isDataTable("#tablePriceList")) {
     tabel = $("#tablePriceList").DataTable({
       dom: "ftp",
-      paging: true,
+      paging: false,
       pageLength: 25,
       searching: true,
       ordering: true,
@@ -223,31 +224,37 @@ if (document.querySelector("#tablePriceList")) {
       tabel.row($(target).parents(target)).remove().draw();
     }
 
-    function clearInputPL() {
-      const createModal = document.getElementById("modal-create-position");
-
-      const itemEdit = createModal.querySelectorAll(".block-item > div");
-
-      itemEdit.forEach((el, indx) => {
-        const input = el.querySelector("._edit-input");
-        if (indx === 0) {
-          $("[name='Категория']").val("").trigger("change");
-        } else if (indx === 2) {
-          $("[name='Единица измерения']").val("-").trigger("change");
-        } else {
-          input.classList.remove("_error");
-
-          input.value = "";
-        }
-      });
-    }
     // создание элементов в прайс-листе */
     window.creatingItemPL = creatingItemPL;
     // удаления в прайс-листе
     window.deleteItemPL = deleteItemPL;
-    window.clearInputPL = clearInputPL;
   }
 }
+/*! учитсь все поля от ошибок и текста*/
+function clearInputPL() {
+  // const createModal = document.getElementById("modal-create-position");
+  const createModal = document.querySelector(".modal");
+  debugger;
+  const itemEdit = createModal.querySelectorAll(".block-item > div");
+
+  itemEdit.forEach((el, indx) => {
+    const input = el.querySelector("._edit-input");
+    if (indx === 0) {
+      $("[name='Категория']").val("").trigger("change");
+      hiddenErrorMessage(input);
+      input.classList.remove("_error");
+    } else if (indx === 2) {
+      $("[name='Единица измерения']").val("-").trigger("change");
+      hiddenErrorMessage(input);
+      input.classList.remove("_error");
+    } else {
+      input.classList.remove("_error");
+      hiddenErrorMessage(input);
+      input.value = "";
+    }
+  });
+}
+
 /*! поиск по списку, события onkeyup */
 export function searchItems(event) {
   let target = event.target;
@@ -383,6 +390,7 @@ window.editTextInput = editTextInput;
 /*! прайс лист */
 window.editPositionPriceList = editPositionPriceList;
 window.saveEditPositionPriceList = saveEditPositionPriceList;
+window.clearInputPL = clearInputPL;
 /*! клиент */
 window.getCurrentDataClient = getCurrentDataClient;
 window.saveEditClient = saveEditClient;
