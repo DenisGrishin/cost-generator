@@ -1,5 +1,5 @@
 import { generateRandomId, searchItems } from "./main";
-// создание сметы, события onclick
+/*! создание сметы, события onclick */
 export function creatingSmeta() {
   const listSmeta = document.querySelector("[data-smeta]");
 
@@ -63,10 +63,10 @@ export function creatingSmeta() {
   </div>
 </li>`
     );
-    // Инициализируем D&D
+    /*! Инициализируем D&D */
     initSortable(".list-smeta");
   }
-  // Инициализируем Select2 на новом элементе <select>
+  /*! Инициализируем Select2 на новом элементе <select> */
   $(".select2-stamp").select2({
     minimumResultsForSearch: Infinity,
     placeholder: "",
@@ -80,10 +80,10 @@ export function creatingSmeta() {
       },
     },
   });
-  // autoFocusInput(idItem);
+  // autoFocusInput(idItem); */
   initHandelKeyDown();
 }
-// Инициализируем D&D
+/*! Инициализируем D&D */
 initSortable(".list-smeta");
 function initSortable(selector) {
   if (document.querySelector(selector)) {
@@ -120,7 +120,7 @@ function initSortable(selector) {
     });
   }
 }
-// создание этапа, события onclick
+/*! создание этапа, события onclick */
 export function creatingStages(event) {
   const smeta = event.target.closest("[data-smeta-item]");
   const listStage = smeta.querySelector("[data-stages]");
@@ -179,7 +179,7 @@ export function creatingStages(event) {
       `
   );
 
-  // Инициализируем D&D
+  /*! Инициализируем D&D */
 
   $(".list-position").sortable({
     tolerance: "pointer", // Улучшает точность Drag & Drop
@@ -202,7 +202,7 @@ export function creatingStages(event) {
 
   initHandelKeyDown();
 }
-// создание позиции, события onclick
+/*! создание позиции, события onclick */
 export function creatingPosition(event) {
   const stage = event.target.closest("[data-stage-item]");
 
@@ -258,7 +258,7 @@ export function creatingPosition(event) {
   inintSelect2(id);
   initHandelKeyDown();
 }
-// удаления выбранных элементов через чекбокс, события onclick
+/*! удаления выбранных элементов через чекбокс, события onclick */
 export function deleteSelectedItems() {
   const checkboxes = document.querySelectorAll('input[name="checkbox-smeta"]');
 
@@ -281,7 +281,7 @@ export function deleteSelectedItems() {
   });
   toggleBulkActionBar();
 }
-// вычитает сумму при удалении выбранных позиций
+/*! вычитает сумму при удалении выбранных позиций */
 function selectSubtractPosition(positionItem) {
   const dataPositionItem = positionItem;
   const stageSum = positionItem
@@ -310,7 +310,7 @@ function selectSubtractPosition(positionItem) {
       )
   );
 }
-// удаления сметы,этапа и позиции, события onclick
+/*! удаления сметы,этапа и позиции, события onclick */
 export function deleteItem(event, dataSelector) {
   if (dataSelector === "data-smeta-item") {
     event.currentTarget.closest(`[${dataSelector}]`).remove();
@@ -327,7 +327,7 @@ export function deleteItem(event, dataSelector) {
   }
   toggleBulkActionBar();
 }
-// вычитание сумму этапа при удалении одной позиции
+/*! вычитание сумму этапа при удалении одной позиции */
 function subtractPositionSum(selector) {
   const sumPosition = selector.querySelector("[data-sum-position]");
   const parentStage = selector.closest("[data-stage-item]");
@@ -340,7 +340,7 @@ function subtractPositionSum(selector) {
       Number(sumPosition.innerText.replace(/\s+/g, ""))
   );
 }
-// вычитание сумму сметы при удалении одной позиции
+/*! вычитание сумму сметы при удалении одной позиции */
 function subtractSmetaSum(selector, currentSum) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumSmeta = smetaItem.querySelector(
@@ -351,7 +351,7 @@ function subtractSmetaSum(selector, currentSum) {
   sum = sum - Number(currentSum.replace(/\s+/g, ""));
   sumSmeta.innerText = formatterIntl(sum);
 }
-// вычитание сумму из сметы при удалении одного этапа
+/*! вычитание сумму из сметы при удалении одного этапа */
 function subtractStageSum(selector) {
   const smetaItem = selector.closest("[data-smeta-item]");
   const sumStages = selector.querySelectorAll("[data-sum]");
@@ -372,7 +372,7 @@ function subtractStageSum(selector) {
   sumSmeta.innerText = formatterIntl(sum);
 }
 
-// События на onblur, чтобы схранить данные с инпута в текст
+/*! События на onblur, чтобы схранить данные с инпута в текст */
 export function saveTextInput(event) {
   setTimeout(() => {
     let target = event.target;
@@ -392,7 +392,7 @@ export function saveTextInput(event) {
     }
   }, 100);
 }
-// События на onclick, чтобы создать input
+/*! События на onclick, чтобы создать input */
 export function editTextInput(event) {
   let target = event.currentTarget;
 
@@ -404,7 +404,7 @@ export function editTextInput(event) {
   createInputEdit(target);
   sumItemPosition(target);
 }
-// создание инпута в смете, этапе и позции на события onclick
+/*! создание инпута в смете, этапе и позции на события onclick */
 function createInputEdit(parent) {
   const parentText = parent.innerText;
   parent.innerText = "";
@@ -443,7 +443,7 @@ function createInputEdit(parent) {
 
   initHandelKeyDown();
 }
-// показать скрыть экшн бар, где кнопки "экспортировать", "обновить цену" и "удалить выбранное"
+/*! показать скрыть экшн бар, где кнопки "экспортировать", "обновить цену" и "удалить выбранное" */
 export function toggleBulkActionBar() {
   const checkboxs = document.querySelectorAll('[name="checkbox-smeta"]');
   const tooltipSmeta = document.querySelector(".bulkActionBar");
@@ -476,7 +476,7 @@ export function toggleBulkActionBar() {
   }
 }
 
-// инизацлицаии события onkeydown, чтоб инпут сохранять на нажатия enter
+/*! инизацлицаии события onkeydown, чтоб инпут сохранять на нажатия enter */
 function initHandelKeyDown() {
   const inputs = document.querySelectorAll("[data-edit-input]");
   inputs.forEach((input) => {
@@ -487,12 +487,12 @@ function initHandelKeyDown() {
     });
   });
 }
-// находит максимальное большое число в списке
+/*! находит максимальное большое число в списке */
 function findMaxNumber(parentSmeta) {
   const li = parentSmeta.querySelectorAll(`[data-position]  > li`);
   let max = 0;
 
-  // если путсая таблица
+  /*! если путсая таблица */
   if (li.length === 0) {
     return 1;
   }
@@ -505,7 +505,7 @@ function findMaxNumber(parentSmeta) {
 
   return max;
 }
-//  ставит числа по возрастанию при удаление
+/*! ставит числа по возрастанию при удаление */
 function createIterationNumber(selector, callBackDelet = "") {
   const parentPosition = selector.closest("[data-position]");
 
@@ -521,7 +521,7 @@ function createIterationNumber(selector, callBackDelet = "") {
   }
 }
 
-//  Считает сумму в этапе от позиции
+/*!  Считает сумму в этапе от позиции */
 function sumItemPosition(selectorDiv) {
   const positionLi = selectorDiv.parentElement;
 
@@ -558,14 +558,14 @@ function sumItemPosition(selectorDiv) {
     });
   }
 }
-// пробеллы в числах '1 000 000'
+/*! пробеллы в числах '1 000 000' */
 function formatterIntl(number) {
   const formatted = new Intl.NumberFormat("ru").format(number);
 
   return formatted.replace(",", ".");
 }
 
-// считает сумму этапа
+/*! считает сумму этапа */
 function sumStage(stageLi) {
   const selectorSumStage = stageLi.querySelector("[data-sum]");
   let sum = 0;
@@ -582,7 +582,7 @@ function sumStage(stageLi) {
   createingHiddentInput(sum, selectorSumStage);
   sumSmeta(stageLi);
 }
-// считает сумму cметы
+/*! считает сумму cметы */
 function sumSmeta(stageLi) {
   const listSelectorSmeta = stageLi.closest("[data-smeta]");
 
@@ -606,7 +606,7 @@ function sumSmeta(stageLi) {
     );
   });
 }
-// выбрать все чекбоксы в позициях onchange
+/*! выбрать все чекбоксы в позициях onchange */
 export function chooseAllCheckbox(event) {
   const target = event.target;
   const isChecked = event.currentTarget.checked;
@@ -620,7 +620,7 @@ export function chooseAllCheckbox(event) {
 
   toggleBulkActionBar();
 }
-// смена ед.изм на на селект в позициях, события на onclick
+/*!смена ед.изм на на селект в позициях, события на onclick */
 export function editTextSelect(event) {
   let target = event.currentTarget;
 
@@ -631,7 +631,7 @@ export function editTextSelect(event) {
   createSelectEdit(target);
 }
 
-// созадния селекта в позициях
+/*! созадния селекта в позициях */
 function createSelectEdit(parent) {
   const parentText = parent.innerText;
 
@@ -657,9 +657,9 @@ function createSelectEdit(parent) {
   $(`[data-select='${id}']`).select2("open");
   parent.dataset.selectId = parent.children[0].name;
 }
-// сохранение выбранного в секте ед.изм в позиции, события срабатывают на закрытие списка элементов селекта
+/*! сохранение выбранного в секте ед.изм в позиции, события срабатывают на закрытие списка элементов селекта */
 function changeSelected(id) {
-  // Событие при изменении значения
+  /*! Событие при изменении значения */
   $(`[data-select='${id}']`).on("select2:close", function (e) {
     saveTextInput(e);
   });
@@ -681,10 +681,10 @@ function inintSelect2(id) {
       },
     },
   });
-  // Событие при изменении значения
+  /*! Событие при изменении значения */
   changeSelected(id);
 }
-// показать выпадающий список поиска, события onkeyup
+/*! показать выпадающий список поиска, события onkeyup */
 export function showDropDown(event) {
   const target = event.target;
   const dropDown = target
@@ -699,7 +699,7 @@ export function showDropDown(event) {
   searchItems(event);
   dropDown.classList.add("_show");
 }
-// в позиции сохранить текст в ячейку, при клике на элемент котрый в списке поиска, соыбтия onclick
+/*! в позиции сохранить текст в ячейку, при клике на элемент котрый в списке поиска, соыбтия onclick */
 export function saveTextSearchList(event) {
   let target = event.target;
   const textDropDownItem = target.innerText;
@@ -711,7 +711,7 @@ export function saveTextSearchList(event) {
   event.stopPropagation();
 }
 
-/* Функция которая создает скрытый input */
+/*! Функция которая создает скрытый input */
 function createingHiddentInput(value, parent) {
   const name = parent.dataset.name;
   const inputHidden = document.createElement("input");
@@ -721,7 +721,7 @@ function createingHiddentInput(value, parent) {
   parent.append(inputHidden);
 }
 
-// при потери фокуса выпадающие меню поиска скрывается, события onblur
+/*! при потери фокуса выпадающие меню поиска скрывается, события onblur */
 export function hiddenDropDown(event) {
   const target = event.target;
   const dropDown = target

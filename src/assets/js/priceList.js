@@ -1,6 +1,5 @@
-// взять данные с ряда таблицы, и добавить их в инпты в модальное окно
+/* ! взять данные с ряда таблицы, и добавить их в инпты в модальное окно */
 export function editPositionPriceList(event) {
-  debugger;
   const target = event.target;
   const tr = target.closest("tr");
   const editItem = tr.querySelectorAll("._edit");
@@ -22,7 +21,7 @@ export function editPositionPriceList(event) {
     } else if (input.tagName === "SELECT" && indx === 2) {
       $("[name='Единица измерения']").val(arrData[indx]).trigger("change");
     } else {
-      input.classList.remove("_error");
+      hiddenErrorMessage(input);
       input.value = arrData[indx];
     }
   });
@@ -33,7 +32,7 @@ const obgСategoryClass = {
   Мех: "_meh-category",
   Док: "_doc-category",
 };
-// сохранить редактируемых в модальном окне данных
+/* ! сохранить редактируемых в модальном окне данных */
 export function saveEditPositionPriceList(event) {
   const target = event.target;
   const modalId = target.closest("[data-modal-id]").dataset.modalId;
@@ -63,15 +62,35 @@ export function saveEditPositionPriceList(event) {
     $("#modal-edit-position").modal("hide");
   }
 }
-/*! валидация в модальном окне на пустой инпут */
+/*! валидация почты */
+export function validateMail() {
+  const inputs = document.querySelectorAll("input[type='email']");
+  const regExtEmail = /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,8})+$/;
+  inputs.forEach((input) => {
+    if (regExtEmail.test(input.value)) {
+      input.classList.remove("_error");
+      hiddenErrorMessage(input);
+      return true;
+    } else {
+      input.classList.add("_error");
+      showErrorMessage(input, "Введите корректный email");
+      return false;
+    }
+  });
+}
 
+/*! валидация в модальном окне на пустой инпут */
 export function validateEmpty(list) {
   let isValidate = false;
 
   list.forEach((element) => {
     if (!element.value && element.matches("._validate")) {
       element.classList.add("_error");
-    } else {
+      showErrorMessage(element, "Это поле обязательно для заполнения.");
+    }
+
+    if (element.value && element.matches("._validate")) {
+      hiddenErrorMessage(element);
       element.classList.remove("_error");
     }
   });
@@ -89,7 +108,26 @@ export function validateEmpty(list) {
 
   return isValidate;
 }
-// собрать данные в коллекцию
+/*! создает поле для ошибки */
+function showErrorMessage(input, textError) {
+  const parent = input.parentElement;
+  if (parent.querySelector("._error-message")) return;
+
+  const div = document.createElement("div");
+  div.classList.add("_error-message");
+  div.innerText = textError;
+  parent.appendChild(div);
+}
+/*! удаляет поле для ошибки */
+export function hiddenErrorMessage(input) {
+  const parent = input.parentElement;
+  if (!parent.querySelector("._error-message")) return;
+
+  const blockErrorMessage = parent.querySelector("._error-message");
+  blockErrorMessage.remove();
+}
+
+/*! собрать данные в коллекцию */
 export function collectInputData(list) {
   return Array.from(list).map((element) => {
     return element.value;

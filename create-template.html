@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<link rel="icon" type="image/svg+xml" href="/vite.svg" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Создание шаблона</title>
+
+	<!-- Select2 -->
+	<link rel="stylesheet" href="./plugins/select2/css/select2.min.css">
+
+
+
+	<!-- Theme style -->
+	<link rel="stylesheet" href="./adminlte/adminlte.min.css">
+	<!-- overlayScrollbars -->
+	<link rel="stylesheet" href="./plugins/overlayScrollbars/css/OverlayScrollbars.min.css">
+
+</head>
+
+<body class="sidebar-mini layout-fixed">
+
+
+
+	<div class="wrapper">
+
+		<!-- Начала главгый сайдбар -->
+		<aside class="main-sidebar sidebar-no-expand">
+
+
+			<!-- Sidebar -->
+			<div
+				class="sidebar os-host os-theme-light os-host-overflow os-host-overflow-y os-host-resize-disabled os-host-transition os-host-scrollbar-horizontal-hidden">
+				<div class="os-resize-observer-host observed">
+					<div class="os-resize-observer"></div>
+				</div>
+
+				<div class="os-padding">
+					<div class="os-viewport os-viewport-native-scrollbars-invisible" style="overflow-y: scroll;">
+						<div class="os-content px-3">
+							<button class=" mt-4 d-block _icon-sidebar-arrow " data-widget="pushmenu" type="button"></button>
+							<!-- Sidebar user (optional) -->
+							<div class="user-panel mt-4  mb-4 d-flex align-items-center">
+								<div class="image">
+									<img src="./src/assets/img/avatar.png" class="img-rounded " alt="User Image">
+								</div>
+								<div class="info d-flex align-items-center">
+									<a href="#" class="d-block ">Мой профиль</a>
+								</div>
+							</div>
+
+
+
+							<nav class="mt-4">
+								<ul class="nav nav-pills nav-sidebar flex-column " data-widget="treeview" role="menu"
+									data-accordion="false">
+
+
+									<li class="nav-item">
+										<a href="./index.html" class="nav-link p-2  font-weight-bold _icon-dashboard">
+											<p>Дашборд</p>
+										</a>
+
+									</li>
+									<li class="nav-item">
+										<a href="./price-list.html" class="nav-link p-2 font-weight-bold _icon-priceList">
+											<p> Прайс-лист</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./clients.html" class="nav-link font-weight-bold p-2 _icon-client">
+											<p>Клиенты</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="templates.html" class="nav-link _active-page font-weight-bold p-2 _icon-pattern">
+											<p> Шаблоны</p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./users-page.html" class="nav-link   font-weight-bold p-2 _icon-user">
+											<p> Пользователи </p>
+										</a>
+									</li>
+									<li class="nav-item">
+										<a href="./file-storage.html" class="nav-link font-weight-bold p-2 _icon-folder">
+											<p> Файловое хранилище </p>
+										</a>
+									</li>
+								</ul>
+							</nav>
+						</div>
+					</div>
+				</div>
+			</div>
+		</aside>
+		<!-- Конец главгый сайдбар -->
+
+		<form class="content-wrapper p-4 ">
+			<h1 class="big-title">Создать шаблон</h1>
+
+			<div class="container-content" data-select2-id="14">
+				<h2 class="middle-title mb-3">Информация</h2>
+				<div class="list-input">
+
+
+
+
+					<div class="list-input__item">
+						<label class="list-input__label">Название</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Название" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Комментарий</label>
+						<div class="list-input__wrapper-input">
+							<input autocomplete="off" class="input-default" name="Комментарий" type="text">
+						</div>
+					</div>
+					<div class="list-input__item">
+						<label class="list-input__label">Категория</label>
+						<div class="list-input__wrapper-input">
+							<select class="list-input__select  select2" name="категория">
+								<option></option>
+								<option>Старк Санса Недовна</option>
+								<option>Старк Бран Недовна</option>
+								<option>Старк Джон Недовна</option>
+								<option>Старк Ария Недовна</option>
+								<option>Баратеон Станис Стеффович</option>
+							</select>
+						</div>
+
+						<button type="button" class="list-input__butt-plus butt-plus" data-toggle="modal"
+							data-target="#modal-create-category">Создать категорию</button>
+					</div>
+
+				</div>
+			</div>
+
+			<ul class="list-smeta" data-smeta>
+				<li class="list-smeta__item   d-flex" data-smeta-item>
+					<div class="list-smeta__wrapper">
+						<div class="list-smeta__contetn">
+							<span class="handle  _icon-darag">
+							</span>
+							<div class="list-smeta__accordion accordion  card ">
+								<div class="text-left  accordion__header collapsed middle-title">
+									<button type="button" class="accordion__btn" data-animation-speed="0"
+										data-card-widget="collapse"></button>
+									<label class="accordion__checkbox checkbox">
+										<input hidden data-chkc-smeta type="checkbox" class="checkbox__input"
+											name="checkbox-smeta" onchange="toggleBulkActionBar()">
+									</label>
+									<div class="accordion__header-content">
+										<div class="accordion__name" onclick='editTextInput(event)'
+											data-name='Наименование сметы'><input type="text" data-edit-input
+												onblur="saveTextInput(event)" class="input-default"></div>
+										<div class="accordion__select ">
+											<label class="accordion__name-select">Печать</label>
+											<div class="select-stamp">
+												<select class="select2 select2-stamp  select2-hidden-accessible" name="Печать"
+													style="width: 100%;" data-select2-id="select-status-" tabindex="-1"
+													aria-hidden="true">
+													<option value="Без печати" class="select-status__completed" selected>Без печати
+													</option>
+													<option value="С печатью" class="select-status__in-progress">С печатью</option>
+
+												</select>
+											</div>
+										</div>
+										<div class="accordion__del-btn">
+											<button type="button" onclick="deleteItem(event,'data-smeta-item')"
+												class="btn-del-big"><span>Удалить</span></button>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="accordion__body card-body">
+									<!-- Этапы работы -->
+									<ul class="list-smeta   mt-3" data-stages>
+
+									</ul>
+
+									<!-- Конец Этапы работы -->
+								</div>
+
+
+							</div>
+						</div>
+						<div class="list-smeta__footer footer-list">
+							<button type="button" class="butt-plus" onclick="creatingStages(event)"
+								data-create-stage><span>Этап
+									работ</span></button>
+							<span class="footer-list__sum">Итого по смете: <span data-sum data-name='Итого по смете'>0</span>
+								р.</span>
+						</div>
+						<div class="mt-3">
+							<label class="very-small-title"> Комментарий</label>
+							<textarea ame="комментарий" id="" class="textarea-default"></textarea>
+						</div>
+
+					</div>
+				</li>
+			</ul>
+
+
+			<div class="bulkActionBar container-content">
+				<button type="submit" class="butt-success ">Экспортировать
+				</button>
+				<button class="butt">Обновить цены</button>
+				<button class="butt bg-gradient-danger" onclick="deleteSelectedItems()">Удалить выброное</button>
+				<div>Кол-во выбраных: <span data-selected-count>0</span></div>
+			</div>
+
+
+		</form>
+		<!-- Начало  Модлаьно  окно создание -->
+		<div class="modal fade" id="modal-create-category" data-modal-id style="display: none;" aria-hidden="true">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content modal-custom">
+					<div class="modal-custom__content">
+						<div class="modal-custom__title middle-title mb-3">Создание категории</div>
+						<div class="block-item">
+
+
+							<div class="block-item__item">
+								<div class="block-item__label">Имя категории:</div>
+								<div class="block-item__contetn"><input autocomplete="off" type="text" name="Имя категории"
+										placeholder="Введите имя категории" class="input-default _edit-input _validate"></div>
+							</div>
+
+
+
+						</div>
+						<div class="d-flex mt-5 justify-content-between modal-custom__footer">
+							<button type="button" data-dismiss="modal" class="butt">Отмена</button>
+							<button type="button" onclick="createFolder(event)" class="butt-success ">Создать</button>
+						</div>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+		<!-- Конец Модлаьно окно создание-->
+		<!-- jQuery -->
+		<script src="./plugins/jquery/jquery.min.js"></script>
+		<!-- Bootstrap 4 -->
+		<script src="./plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+		<!-- Select2 -->
+		<script src="./plugins/select2/js/select2.full.min.js"></script>
+
+		<!-- jQuery UI 1.11.4 -->
+		<script src="./plugins/jquery-ui/jquery-ui.min.js"></script>
+
+
+
+
+
+
+		<script src="./adminlte/adminlte.min.js"></script>
+
+		<script type="module" src="./src/assets/js/main.js"></script>
+
+
+
+</body>
+
+</html>

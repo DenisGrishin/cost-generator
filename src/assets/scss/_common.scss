@@ -705,3 +705,9 @@
 .modal {
 	z-index: 10000000;
 }
+._error-message {
+	color: var(--c-red);
+	font-size: 14px;
+	line-height: 1.2;
+	margin-top: 7px;
+}
